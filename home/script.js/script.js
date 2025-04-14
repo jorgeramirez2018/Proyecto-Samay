@@ -1,19 +1,23 @@
-// Cargar Navbar
-fetch("/Proyecto-Samay/navbar/navbar.html")
-  .then((res) => res.text())
-  .then((data) => {
-    document.getElementById("navbar").innerHTML = data;
-    activarHamburguesa(); 
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/Proyecto-Samay/navbar/navbar.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("navbar").innerHTML = data;
+      activarHamburguesa();
+    });
+});
 
-// Cargar Hamburgesa
+//boton hamburguesa
+
 function activarHamburguesa() {
   const menuToggle = document.querySelector("#menu-toggle");
   const navbar = document.querySelector(".navbar");
 
   if (menuToggle && navbar) {
-    menuToggle.addEventListener("change", () => {
+    menuToggle.addEventListener("click", () => {
       navbar.classList.toggle("active");
     });
+  } else {
+    console.warn("No se encontró el botón o el navbar");
   }
 }
