@@ -21,34 +21,41 @@
     <header class="header">
       <a href="index.html" class="logo">
         <img
-          src="/Proyecto-Samay/navbar/imagenes/Solo icono blanco.png"
-          alt=""
+          src="/Proyecto-Samay/navbar/imagenes/iconoSamay.png"
+          alt="Logo Samay"
           style="height: 40px"
         />
       </a>
-      <nav class="navbar">
-        <a href="/Proyecto-Samay/home/index.html" class="active">Inicio</a>
-        <a href="/Proyecto-Samay/aboutUs/acercaDe.html">Acerca de</a>
-        <a href="/Proyecto-Samay/contact/contacto.html">Contáctenos</a>
-        <a href="/Proyecto-Samay/productos/productos.html">Productos</a>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <box-icon name="menu" color="#FFD54F" size="md"></box-icon>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <a href="../home/index.html" class="active">Inicio</a>
+        <a href="../aboutUs/acercaDe.html">Acerca de</a>
+        <a href="../contact/contacto.html">Contáctenos</a>
+        <a href="../productos/productos.html">Productos</a>
         <a href="#">Historias</a>
 
         <div class="navbar-actions">
-          <a href="/Proyecto-Samay/Registro/registro.html" class="btn-login"
+          <a href="../Registro/registro.html" class="btn-login"
             >Iniciar Sesión</a
           >
-          <a href="/Proyecto-Samay/Registro/registro.html" class="btn-register"
+          <a href="../Registro/registro.html" class="btn-register"
             >Registrarse</a
           >
-          <a href="#">
-            <box-icon
+          <a href="#"
+            ><box-icon
               name="cart"
               color="#0a0a09"
               style="width: 40px; height: 35px"
-            ></box-icon>
-          </a>
+            ></box-icon
+          ></a>
         </div>
       </nav>
     </header>
+
+    <script src="script.js/script.js"></script>
   </body>
 </html>
