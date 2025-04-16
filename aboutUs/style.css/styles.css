@@ -1,0 +1,218 @@
+body {
+  background-color:#F5F3F9;
+}
+ 
+
+.nosotros {
+  position: relative;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-nosotros { 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.nosotros::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.nosotros h1 {
+  position: relative;
+  color: #F5F3F9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5rem;
+  z-index: 2;
+  text-align: center;
+  margin: 0;
+  padding: 0 2rem;
+  transition: font-size 0.3s ease;
+}
+.nosotros h1 {
+  font-size: clamp(2rem, 8vw, 5rem); 
+  transition: transform 0.3s ease;
+}
+.logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.logo-nosotros {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: contain;
+}
+#quienes-somos {
+  background-color: #5c4033;
+  padding: 2rem 1rem; 
+  font-family: 'Raleway', 'serif';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px; 
+  width: 100%; 
+  border-radius: 30px ;
+}
+.texto {
+  width: 50%; 
+  padding-right: 1rem;
+  max-width: 400px; 
+  text-align: center;
+}
+.texto h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+ 
+  color: #F5F3F9;
+ 
+}
+
+.texto p {
+  color: #F5F3F9;
+  line-height: 1.6;
+  margin-top: 0;
+}
+.somos {
+  width: 50%; 
+}
+
+.imagen-somos {
+  width: 100%; 
+  height: 350px;
+}
+
+.container {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+
+#compromisos {
+  display: flex;
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  margin-top: 2rem;
+}
+
+
+.carta {
+  background-color: #F5F3F9;
+  border: 1px solid #789064;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 30%; 
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.imagen-carta {
+  width: 100%;
+  height: 300px;
+}
+
+.carta h3 {
+  font-size: 1.5rem;
+  color: #F5F3F9;
+  margin-bottom: 1rem;
+  background-color: #789064;
+}
+
+
+.carta p {
+  font-size: 1rem;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.carta p {
+  text-align: left;
+  list-style-type: decimal;
+  padding-left: 20px;
+  color: #000000;
+}
+
+.equipo {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #F5F3F9;
+}
+.equipo h2{
+  text-align: center;
+}
+.compañeros {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.compañero {
+  width: 150px;
+  font-size: 14px;
+  margin: 10px auto; 
+}
+
+.compañero img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.compañero h3,.compañero p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .nosotros h1 {
+    font-size: 3rem;
+  }
+
+  .logo-nosotros {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nosotros {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .nosotros h1 {
+    font-size: 2.2rem;
+  }
+
+  .logo-nosotros {
+    max-width: 140px;
+    margin-top: 1rem;
+  }
+}
+
