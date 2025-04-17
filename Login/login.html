@@ -8,12 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
-    />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
     />
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   </head>
@@ -61,19 +59,18 @@
         <!-- Columna izquierda - Dos imágenes apiladas -->
     <div class="login-image">
       <div class="image-container">
-        <img src="./imagenes/imagen1.png" alt="Imagen 1" class="login-img" width="800" height="600">
-        <img src="./imagenes/imagen2.png" alt="Imagen 2" class="login-img" width="800" height="600">
+        <img src="./imagenes/imagen1.png" alt="Imagen 1" class="login-img" width="800" height="400">
+        <img src="./imagenes/imagen2.png" alt="Imagen 2" class="login-img" width="800" height="400">
       </div>
     </div>
       
       <!-- Columna derecha - Formulario de login -->
-      <div class="logo-oscuro">
-        <img src="imagenes/logooscuro.png" width="300" height="300" >
-      </div>
+
       
       <div class="login-form-container">
         <div class="login-form-wrapper">
-          <div>
+          <div class="logo-container">
+            <img class="login-logo-oscuro shine-effect" src="./imagenes/logooscuro.png" alt="Logo Samay" />
           </div>
           <h1 class="login-title">Login</h1>
           
@@ -90,7 +87,9 @@
               <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
             
-            <button type="submit" class="login-button">Login</button>
+            <div class="button-container">
+              <button type="submit" class="login-button">Login</button>
+            </div>
           </form>
           
           <div class="register-link">
