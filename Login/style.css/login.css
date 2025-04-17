@@ -49,14 +49,14 @@
   .logo {
     font-size: 2.5rem;
     color: var(--maiz);
-    font-weight: 900;
+    font-weight: 100;
     transition-duration: 0.5s;
   }
   
   .logo:hover {
     transform: scale(1.05);
   }
-  
+
   .navbar {
     display: flex;
     gap: 3rem;
@@ -298,19 +298,24 @@
     justify-content: center;
     align-items: center;
     padding: 4rem;
+    position: relative  ;
   }
   
   .login-form-wrapper {
     width: 100%;
     max-width: 40rem;
-    height: 800px;
+    height: 600px;
   }
+
+  
   
   .login-title {
-    font-size: 3.2rem;
+    font-size: 4rem;
     color: var(--tierra);
     margin-bottom: 3rem;
+    height: 100px;
     font-weight: 700;
+    text-align: center;
   }
   
   .form-group {
@@ -452,3 +457,5 @@
   .login-img:last-child {
     height: 50%; /* La segunda imagen ocupa el 50% */
   }
+
+  
