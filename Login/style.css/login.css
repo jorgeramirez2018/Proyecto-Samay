@@ -303,6 +303,7 @@
   .login-form-wrapper {
     width: 100%;
     max-width: 40rem;
+    height: 800px;
   }
   
   .login-title {
@@ -438,10 +439,10 @@
   }
 
   .image-container {
-    display: flex;
+    display:;
     flex-direction: column;
     width: 80%;
-    height: 80%;
+    height: 100%;
   }
   
   .login-img:first-child {
