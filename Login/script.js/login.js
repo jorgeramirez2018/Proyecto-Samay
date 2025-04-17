@@ -31,3 +31,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Control del menú toggle en móvil
+  const menuToggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      navbar.classList.toggle('active');
+    });
+  }
+  
+  // Manejo del formulario de login
+  const loginForm = document.querySelector('.login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Aquí iría la lógica de autenticación
+      console.log('Formulario enviado');
+    });
+  }
+});
