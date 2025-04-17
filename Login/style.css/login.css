@@ -46,7 +46,8 @@
     padding: 1.5rem 10%;
     background-color: #5c3c2e;
   }
-  
+
+
   .logo {
     font-size: 2.5rem;
     color: var(--maiz);
@@ -62,6 +63,9 @@
     display: flex;
     gap: 8rem;
     align-items: center;
+    font-family: "Montserrat", serif;
+    font-variant: var(--algodon);
+
   }
   
   .navbar a {
@@ -79,20 +83,22 @@
   .navbar-actions {
     display: flex;
     align-items: center;
+    font-family: "Montserrat", serif;
     gap: 2rem;
+    font-style: #ffffff;
   }
   
   .btn-login,
   .btn-register {
     padding: 0.6rem 1rem;
-    border-radius: 5px;
+    border-radius: 1px;
     font-weight: 600;
     font-size: 1.2rem;
-    transition: 0.3s ease;
+    transition: 0.1s ease;
   }
   
   .btn-login {
-    color: var(--maiz);
+    color: var(--algodon);
   }
   
   .btn-login:hover {
@@ -102,11 +108,11 @@
   .btn-register {
     background-color: var(--arcilla);
     color: var(--algodon);
-    border-radius: 5px;
+    border-radius: 2px;
   }
   
   .btn-register:hover {
-    background-color: var(--maiz);
+    background-color: var(--algodon);
     color: var(--text-color);
   }
   
@@ -115,8 +121,12 @@
     align-items: center;
   }
   
+.logo-samay {
+    color: var(--maiz)
+  }
 
 .button-container {
+  color: var(--algodon);
   display: flex;
   justify-content: center;
   width: 35rem;
@@ -339,6 +349,8 @@
   @media (max-width: 900px) {
     .login-container {
       flex-direction: column;
+      max-width: auto;
+      max-height: auto ;
     }
     
     .footer-content {
@@ -346,7 +358,11 @@
     }
   
     .login-form-container {
-      padding: 2rem;
+      display: flex;
+      height: 100%;
+      margin-top: 8%;
+      padding: 3%;
+      max-width: 200%;
     }
     
     .login-form-wrapper {
@@ -373,9 +389,9 @@
     }
 
     .login-image {
-      display: flex;
+      display: none;
       max-height: 200px;
-      max-width:auto;
+      max-width:20%;
       border-radius: 10px;
       flex-direction: column;
     }
