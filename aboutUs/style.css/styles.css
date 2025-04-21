@@ -57,7 +57,7 @@ body {
   background-color: #5c4033;
   color: #F5F3F9;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: center;
   padding: 0.5rem 2rem;
   border-radius: 10px;
@@ -344,5 +344,48 @@ body {
 
   .compañero {
     width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bloque-logo-flecha {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px; 
+    gap: 10px; 
+  }
+
+  .imagen-logo {
+    width: 150px; 
+    margin-bottom: 10px; 
+  }
+
+  .flecha {
+    font-size: 2rem;
+    transform: rotate(90deg);
+    margin: 0; 
+  }
+
+  .texto-logo {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .texto-logo p {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+
+  .mensaje-final {
+    padding: 15px 10px;
+    font-size: 1rem;
+  }
+
+  .contenedor-logo {
+    padding: 0 10px;
   }
 }
