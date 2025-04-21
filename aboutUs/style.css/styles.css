@@ -1,5 +1,6 @@
 body {
   background-color:#F5F3F9;
+  font-family: 'Raleway', sans-serif;
 }
  
 
@@ -149,7 +150,7 @@ body {
 }
 
 .carta p {
-  text-align: left;
+  text-align: justify;
   list-style-type: decimal;
   padding-left: 20px;
   color: #000000;
