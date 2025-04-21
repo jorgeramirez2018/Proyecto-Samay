@@ -48,21 +48,82 @@ body {
   font-size: clamp(2rem, 8vw, 5rem); 
   transition: transform 0.3s ease;
 }
-.logo {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+.explicacion-logo-final {
+  background-color: #F5F3F9;
+  padding: 60px 20px;
 }
 
-.logo-nosotros {
-  width: 100%;
-  max-width: 350px;
-  height: auto;
-  object-fit: contain;
+.titulo-logo {
+  background-color: #5c4033;
+  color: #F5F3F9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  margin: 0 auto 2.5rem;
+  width: fit-content;
+  display: block;
 }
+
+.contenedor-logo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.bloque-logo-flecha {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: nowrap; 
+  justify-content: center;
+
+}
+
+.imagen-logo {
+  width: 200px;
+  height: auto;
+}
+
+.flecha {
+  font-size: 2.2rem;
+  color: #000;
+}
+
+.texto-logo {
+  max-width: 700px;
+  color: #333;
+  flex: 1;
+  
+}
+
+.texto-logo p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  font-family: 'Raleway', 'sans-serif';
+}
+
+.mensaje-final {
+  background-color: #789064 ;
+  color: #F5F3F9;
+  padding: 5px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  max-width: 100%;
+  margin: 40px auto 0;
+}
+
+.mensaje-final strong {
+  font-weight: bold;
+  color: #F5F3F9;
+}
+
+
 #quienes-somos {
   background-color: #5c4033;
   padding: 2rem 1rem; 
