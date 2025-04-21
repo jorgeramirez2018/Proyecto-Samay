@@ -48,25 +48,85 @@ body {
   font-size: clamp(2rem, 8vw, 5rem); 
   transition: transform 0.3s ease;
 }
-.logo {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+.explicacion-logo-final {
+  background-color: #F5F3F9;
+  padding: 60px 20px;
 }
 
-.logo-nosotros {
-  width: 100%;
-  max-width: 350px;
-  height: auto;
-  object-fit: contain;
+.titulo-logo {
+  background-color: #5c4033;
+  color: #F5F3F9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  margin: 0 auto 2.5rem;
+  width: fit-content;
+  display: block;
 }
+
+.contenedor-logo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.bloque-logo-flecha {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: nowrap; 
+  justify-content: center;
+
+}
+
+.imagen-logo {
+  width: 200px;
+  height: auto;
+}
+
+.flecha {
+  font-size: 2.2rem;
+  color: #000;
+}
+
+.texto-logo {
+  max-width: 700px;
+  color: #333;
+  flex: 1;
+  
+}
+
+.texto-logo p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  font-family: 'Raleway', 'sans-serif';
+}
+
+.mensaje-final {
+  background-color: #789064 ;
+  color: #F5F3F9;
+  padding: 5px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  max-width: 100%;
+  margin: 40px auto 0;
+}
+
+.mensaje-final strong {
+  font-weight: bold;
+  color: #F5F3F9;
+}
+
+
 #quienes-somos {
   background-color: #5c4033;
   padding: 2rem 1rem; 
-  font-family: 'Raleway', 'serif';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,15 +145,15 @@ body {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 0.5rem;
- 
+  font-family: 'Montserrat', sans-serif; 
   color: #F5F3F9;
- 
 }
 
 .texto p {
   color: #F5F3F9;
   line-height: 1.6;
   margin-top: 0;
+  font-family: 'Raleway', 'sans-serif';
 }
 .somos {
   width: 50%; 
@@ -127,17 +187,22 @@ body {
   width: 30%; 
   box-sizing: border-box;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .imagen-carta {
   width: 100%;
   height: 300px;
+  object-fit: cover;
 }
 
 .carta h3 {
   font-size: 1.5rem;
   color: #F5F3F9;
   margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
   background-color: #789064;
 }
 
@@ -145,14 +210,12 @@ body {
 .carta p {
   font-size: 1rem;
   color: #000000;
-  line-height: 1.6;
-}
-
-.carta p {
-  text-align: left;
+  line-height: 1.3;
+  text-align: justify;
   list-style-type: decimal;
   padding-left: 20px;
   color: #000000;
+  font-family: 'Raleway', 'sans-serif';
 }
 
 .equipo {
@@ -162,6 +225,14 @@ body {
 }
 .equipo h2{
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #5c4033; 
+  color: #F5F3F9; 
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  
 }
 .compañeros {
   display: flex;
@@ -182,11 +253,22 @@ body {
   border-radius: 50%;
   display: block;
   margin: 0 auto;
+  transition: transform 0.3s ease;
 }
 
-.compañero h3,.compañero p {
+.compañero img:hover {
+    transform: scale(1.1);
+}
+
+.compañero h3 .compañero p{
   margin: 5px 0;
   text-align: center;
+}
+
+#biografia{
+  text-align: justify;
+  font-size: 15px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -216,3 +298,94 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  #quienes-somos {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .texto, .somos {
+    width: 100%;
+    padding: 0;
+  }
+
+  .imagen-somos {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    margin-top: 1rem;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .carta {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  #compromisos {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .compañeros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .compañero {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bloque-logo-flecha {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px; 
+    gap: 10px; 
+  }
+
+  .imagen-logo {
+    width: 150px; 
+    margin-bottom: 10px; 
+  }
+
+  .flecha {
+    font-size: 2rem;
+    transform: rotate(90deg);
+    margin: 0; 
+  }
+
+  .texto-logo {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .texto-logo p {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+
+  .mensaje-final {
+    padding: 15px 10px;
+    font-size: 1rem;
+  }
+
+  .contenedor-logo {
+    padding: 0 10px;
+  }
+}
