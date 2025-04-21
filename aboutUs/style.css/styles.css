@@ -165,6 +165,12 @@ body {
 .equipo h2{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  background-color: #5c4033; 
+  color: #F5F3F9; 
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
   
 }
 .compañeros {
@@ -186,7 +192,12 @@ body {
   border-radius: 50%;
   display: block;
   margin: 0 auto;
-  }
+  transition: transform 0.3s ease;
+}
+
+.compañero img:hover {
+    transform: scale(1.1);
+}
 
 .compañero h3 .compañero p{
   margin: 5px 0;
@@ -196,6 +207,7 @@ body {
 #biografia{
   text-align: justify;
   font-size: 15px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -225,3 +237,51 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  #quienes-somos {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .texto, .somos {
+    width: 100%;
+    padding: 0;
+  }
+
+  .imagen-somos {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    margin-top: 1rem;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .carta {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  #compromisos {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .compañeros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .compañero {
+    width: 90%;
+  }
+}
