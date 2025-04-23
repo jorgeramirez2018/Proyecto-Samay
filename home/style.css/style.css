@@ -232,10 +232,6 @@ p{
 
 
 
-
-
-
-
 /*No tocar Responsive*/
 
 @media (max-width: 1200px) {
@@ -282,6 +278,93 @@ p{
   .estrella {
     font-size: 2rem;
   }
+
+
+
+
+
+
+
+
+
+
+
+    .footer {
+      background-color: var(--tierra);
+      color: var(--algodon);
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 5px;
+      flex-wrap: wrap;
+    }
+  
+    /* Cada sección */
+    .footersection {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+  
+    /* Íconos sociales */
+    .icons {
+      margin: 0 8px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: brightness(1.2);
+    }
+  
+    .icons:hover {
+      transform: scale(1.2);
+      filter: brightness(1.5);
+    }
+  
+    /* Lista de contacto */
+    .footersection ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+  
+    .footersection li {
+      margin-bottom: 5px;
+    }
+  
+    /* Formulario newsletter */
+    .footersection form {
+      margin-top: 10px;
+    }
+  
+    .footersection input[type="email"] {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 80%;
+    }
+  
+    .footersection button {
+      padding: 8px 15px;
+      background-color: var(--maiz);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+  
+    .footersection button:hover {
+      background-color: var(--arcilla);
+      color: var(--algodon);
+    }
+  
+    /* Texto pequeño */
+    .footersection p {
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
 
   /* Ajuste para el icono del menú hamburguesa si usas uno con clase .menu-icon */
   .menu-icon {

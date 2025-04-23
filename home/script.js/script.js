@@ -26,6 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/footer/footer.html")
     .then((res) => res.text())
     .then((data) => {
-      document.getElementById("footer").innerHTML = data;
+      const container = document.getElementById("footer");
+      const shadow = container.attachShadow({ mode: "open" });
+      shadow.innerHTML = `
+        <link rel="stylesheet" href="/footer/style/footerstyle.css">
+        ${data}
+      `;
     });
 });
