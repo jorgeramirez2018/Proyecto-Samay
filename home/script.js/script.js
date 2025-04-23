@@ -21,3 +21,11 @@ function activarHamburguesa() {
     console.warn("No se encontró el botón o el navbar");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/footer/footer.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("footer").innerHTML = data;
+    });
+});
