@@ -1,0 +1,158 @@
+
+   :root {
+    --tierra: #5c4033;
+    --arcilla: #bb684d;
+    --text-color: #222222;
+    --maiz: #ffd54f;
+    --algodon: #f5f3f9;
+    --verde: #789064;
+  }
+  
+  /* Sección general */
+  #contacto {
+    background-color: rgba(245, 243, 249, 0.01);
+    color: var(--text-color);
+    font-family: 'Fredoka', 'Quicksand', sans-serif;
+    padding: 40px 20px;
+    position: relative;
+  }
+  
+  /* Fondo fijo */
+  .contacto-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://artesaniasdecolombia.com.co/Documentos/Contenido/20525_molas-g.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  
+  /* Estilo de bloques destacados */
+  .cajon-fondo-titulos {
+    background-color: var(--tierra);
+    color: var(--algodon);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  
+  /* Contenedor para centrar horizontalmente */
+  .bloque-centrado {
+    text-align: center;
+  }
+  
+  /* Grid de contacto */
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Imagen */
+  .contact-image {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+  
+  /* Formulario */
+  .contact-form {
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .subtitulo-form {
+    font-size: 1.4rem;
+    color: var(--arcilla);
+    margin-bottom: 15px;
+  }
+  
+  .contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--verde);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    background-color: var(--algodon);
+  }
+  
+  .contact-form button {
+    background-color: var(--maiz);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: var(--arcilla);
+    color: var(--algodon);
+  }
+  
+  /* Mapa */
+  .mapa-final {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .mapa-final iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Información de contacto */
+  .contact-info {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  
+  .contact-info i {
+    color: var(--arcilla);
+  }
+  
+  .separador {
+    margin: 0 10px;
+    color: var(--verde);
+  }
+  
