@@ -45,7 +45,7 @@ function emailJs() {
       await emailjs.send(serviceID, templateID, datos);
       alert("Gracias por contactarnos");
 
-      saludo.textContent = `¡Hola ${nombre}! ⚡ Gracias por enviar tus datos, nos contactaremos pronto contigo.`;
+      saludo.textContent = `¡Hola ${nombre}! 🔶 Gracias por enviar tus datos, nos contactaremos pronto contigo.`;
       saludo.style.color = "green";
 
       formulario.reset();

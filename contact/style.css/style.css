@@ -12,7 +12,7 @@
   #contacto {
     background-color: rgba(245, 243, 249, 0.01);
     color: var(--text-color);
-    font-family: 'Fredoka', 'Quicksand', sans-serif;
+    font-family: 'Montserrat', 'Raleway', sans-serif;
     padding: 40px 20px;
     position: relative;
   }
@@ -28,14 +28,24 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -1;
-    opacity: 0.8;
+    z-index: -2;
     pointer-events: none;
+  }
+
+  .contacto-background::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4); /* este valor controla la oscuridad */
+    z-index: -1;
   }
   
   /* Estilo de bloques destacados */
   .cajon-fondo-titulos {
-    background-color: var(--tierra);
+    background-color: var(--verde);
     color: var(--algodon);
     padding: 15px 25px;
     border-radius: 12px;
@@ -43,6 +53,18 @@
     text-align: center;
     display: inline-block;
     margin-bottom: 30px;
+    font-size: 1rem;
+    
+  }
+  
+  .titulo-contacto{
+    font-size: 35px;
+    font-family: "Montserrat", "sans-serif";
+  }
+
+  .mapa-title{
+    font-size: 25px;
+    font-family: "Montserrat", "sans-serif";
   }
   
   /* Contenedor para centrar horizontalmente */
@@ -75,7 +97,13 @@
     max-width: 400px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease-in-out;
   }
+
+  .contact-image img:hover{
+    transform: scale(1.08);
+  }
+
   
   /* Formulario */
   .contact-form {
@@ -88,7 +116,7 @@
   }
   
   .subtitulo-form {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--arcilla);
     margin-bottom: 15px;
   }
@@ -101,18 +129,19 @@
   
   .contact-form input,
   .contact-form textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid var(--verde);
     border-radius: 8px;
     margin-bottom: 15px;
     font-size: 1rem;
     background-color: var(--algodon);
+    font-family: "Raleway", "sans-serif";
   }
   
   .contact-form button {
-    background-color: var(--maiz);
-    color: var(--text-color);
+    background-color: var(--verde);
+    color: var(--algodon);
     border: none;
     padding: 12px 25px;
     font-size: 1rem;
@@ -125,7 +154,8 @@
     background-color: var(--arcilla);
     color: var(--algodon);
   }
-  
+
+ 
   /* Mapa */
   .mapa-final {
     margin-top: 40px;
@@ -138,21 +168,98 @@
     height: 300px;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px var(--verde)
+  }
+
+  .mapa-final i{
+    color: var(--maiz);
+    margin-right: 12px;
+    transition: transform 0.3s ease, color 0.3s ease;
   }
   
+  .mapa-final i:hover{
+    transform: scale(1.3);
+    color: var(--arcilla);
+  }
   /* Información de contacto */
   .contact-info {
     font-size: 1rem;
     margin-top: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .contact-info:hover {
+    transform: translateY(-3px);
   }
   
   .contact-info i {
-    color: var(--arcilla);
+    color: var(--maiz);
+    transition: transform 0.3s ease, color 0.3s ease;
   }
+
+  .contact-info i:hover{
+    transform: scale(1.3);
+    color: var(--arcilla);
+  }  
   
   .separador {
     margin: 0 10px;
-    color: var(--verde);
+    color: var(--maiz);
   }
   
+  /*Responsive*/
+
+  @media (max-width: 1024px) {
+    .contact-grid {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .contact-image,
+    .contact-form {
+      max-width: 70%;
+      
+    }
+  
+    .mapa-final iframe {
+      max-width: 90%;
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .titulo-contacto {
+      font-size: 22px;
+    }
+  
+    .mapa-title {
+      font-size: 22px;
+    }
+  
+    .subtitulo-form {
+      font-size: 1.1rem;
+    }
+  
+    .contact-form input,
+    .contact-form textarea {
+      font-size: 0.95rem;
+      width: 90%;
+    }
+  
+    .contact-form button {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .cajon-fondo-titulos {
+      padding: 10px 20px;
+    } 
+  
+    .contact-info {
+      font-size: 0.9rem;
+    }
+  
+    .mapa-final iframe {
+      height: 220px;
+    }
+  }
