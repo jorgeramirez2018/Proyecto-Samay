@@ -28,7 +28,6 @@ function emailJs() {
       return;
     }
 
-    // ✅ Datos a enviar
     const datos = {
       nombre,
       email: correo,

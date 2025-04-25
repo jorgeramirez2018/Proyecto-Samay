@@ -18,7 +18,7 @@
   }
   
   /* Fondo fijo */
-  .contact-background {
+  .contacto-background {
     position: fixed;
     top: 0;
     left: 0;
@@ -34,7 +34,7 @@
   }
   
   /* Estilo de bloques destacados */
-  .highlight-box {
+  .cajon-fondo-titulos {
     background-color: var(--tierra);
     color: var(--algodon);
     padding: 15px 25px;
@@ -46,7 +46,7 @@
   }
   
   /* Contenedor para centrar horizontalmente */
-  .centered-block {
+  .bloque-centrado {
     text-align: center;
   }
   
