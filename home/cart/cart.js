@@ -42,7 +42,7 @@ const displayCart = () => {
           <span class="quantity-input">${product.quanty}</span>
           <span class="quantity-btn-increse">+</span>
         </div>
-        <div class="price">${product.price * product.quanty} $</div>
+        <div class="price">${parseFloat(product.price) * parseFloat(product.quanty)} $</div>
         <div class="delete-product">❌</div>
       </div>
     `;
