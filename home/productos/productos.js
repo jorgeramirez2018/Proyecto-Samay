@@ -1,0 +1,58 @@
+const productos = [
+  {
+    id: 1,
+    productName: "Manilla",
+    price: 360.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 2,
+    productName: "Manilla",
+    price: 25.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 3,
+    productName: "Manilla",
+    price: 35.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 4,
+    productName: "Manilla",
+    price: 28.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 5,
+    productName: "Manilla",
+    price: 60.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 6,
+    productName: "Manilla",
+    price: 70.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 7,
+    productName: "Manilla",
+    price: 20.000,
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+  {
+    id: 8,
+    productName: "Manilla",
+    price: "$287.000",
+    quanty: 1,
+    img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
+  },
+];
