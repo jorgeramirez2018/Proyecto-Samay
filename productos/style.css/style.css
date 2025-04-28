@@ -33,18 +33,18 @@
     position: relative;
     color: #F5F3F9;
     font-family: 'Montserrat', sans-serif;
-    font-size: 5rem;
+    font-size: clamp(2rem, 8vw, 5rem); 
     z-index: 2;
     text-align: center;
     margin: 0;
     padding: 0 2rem;
-    transition: font-size 0.3s ease;
+    transition: font-size 0.3s ease; 
+}
+
+.productos h1:hover {
+    font-size: 6rem;
   }
 
-  .productos h1 {
-    font-size: clamp (2rem, 8vw, 5rem);
-    transition: transform 0.3s ease;
-  }
   
   /* Botón hamburguesa */
   .menu-button {
