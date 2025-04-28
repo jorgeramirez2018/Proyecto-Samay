@@ -7,6 +7,7 @@
     --algodon: #f5f3f9;
     --verde: #789064;
   }
+
   
   /* Sección general */
   #contacto {
@@ -15,6 +16,7 @@
     font-family: 'Montserrat', 'Raleway', sans-serif;
     padding: 40px 20px;
     position: relative;
+    margin-top: 10rem;
   }
   
   /* Fondo fijo */
@@ -53,12 +55,12 @@
     text-align: center;
     display: inline-block;
     margin-bottom: 30px;
-    font-size: 1rem;
+    font-size: 2rem;
     
   }
   
   .titulo-contacto{
-    font-size: 35px;
+    font-size: 38px;
     font-family: "Montserrat", "sans-serif";
   }
 
@@ -134,7 +136,7 @@
     border: 1px solid var(--verde);
     border-radius: 8px;
     margin-bottom: 15px;
-    font-size: 1rem;
+    font-size: 2rem;
     background-color: var(--algodon);
     font-family: "Raleway", "sans-serif";
   }
@@ -144,7 +146,7 @@
     color: var(--algodon);
     border: none;
     padding: 12px 25px;
-    font-size: 1rem;
+    font-size: 2rem;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -183,7 +185,7 @@
   }
   /* Información de contacto */
   .contact-info {
-    font-size: 1rem;
+    font-size: 2rem;
     margin-top: 20px;
     transition: transform 0.3s ease;
   }
