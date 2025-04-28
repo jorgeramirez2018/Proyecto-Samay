@@ -1,8 +1,10 @@
 body {
-  background-color:#F5F3F9;
+  background-color: #F5F3F9;
+  margin-top: 8.5rem;
 }
- 
-
+section{
+  min-height: 10vh !important;
+}
 .nosotros {
   position: relative;
   height: 30vh;
@@ -12,7 +14,7 @@ body {
   overflow: hidden;
 }
 
-.fondo-nosotros { 
+.fondo-nosotros {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -37,20 +39,23 @@ body {
   position: relative;
   color: #F5F3F9;
   font-family: 'Montserrat', sans-serif;
-  font-size: 5rem;
+  font-size: 20rem;
   z-index: 2;
   text-align: center;
   margin: 0;
   padding: 0 2rem;
   transition: font-size 0.3s ease;
 }
+
 .nosotros h1 {
-  font-size: clamp(2rem, 8vw, 5rem); 
+  font-size: clamp(2rem, 8vw, 5rem);
   transition: transform 0.3s ease;
 }
+
 .explicacion-logo-final {
   background-color: #F5F3F9;
   padding: 60px 20px;
+  margin-bottom: 30px;
 }
 
 .titulo-logo {
@@ -77,7 +82,7 @@ body {
   align-items: center;
   gap: 40px;
   margin-bottom: 40px;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
   justify-content: center;
 
 }
@@ -96,24 +101,24 @@ body {
   max-width: 700px;
   color: #333;
   flex: 1;
-  
+
 }
 
 .texto-logo p {
   margin-bottom: 12px;
-  font-size: 1rem;
+  font-size: 2rem;
   line-height: 1.6;
   text-align: justify;
   font-family: 'Raleway', 'sans-serif';
 }
 
 .mensaje-final {
-  background-color: #789064 ;
+  background-color: #789064;
   color: #F5F3F9;
   padding: 5px;
   text-align: center;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 2rem;
   max-width: 100%;
   margin: 40px auto 0;
 }
@@ -126,26 +131,28 @@ body {
 
 #quienes-somos {
   background-color: #5c4033;
-  padding: 2rem 1rem; 
+  padding: 2rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1200px; 
-  width: 100%; 
-  border-radius: 30px ;
+  width: 1200px;
+  border-radius: 30px;
+  min-height: 350px;
 }
+
 .texto {
-  width: 50%; 
+  width: 50%;
   padding-right: 1rem;
-  max-width: 400px; 
+  max-width: 400px;
   text-align: center;
 }
+
 .texto h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
   margin-bottom: 0.5rem;
-  font-family: 'Montserrat', sans-serif; 
+  font-family: 'Montserrat', sans-serif;
   color: #F5F3F9;
 }
 
@@ -155,12 +162,13 @@ body {
   margin-top: 0;
   font-family: 'Raleway', 'sans-serif';
 }
+
 .somos {
-  width: 50%; 
+  width: 50%;
 }
 
 .imagen-somos {
-  width: 100%; 
+  width: 100%;
   height: 350px;
 }
 
@@ -173,8 +181,8 @@ body {
 
 #compromisos {
   display: flex;
-  justify-content: space-between; 
-  flex-wrap: wrap; 
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: 2rem;
 }
 
@@ -182,9 +190,10 @@ body {
 .carta {
   background-color: #F5F3F9;
   border: 1px solid #789064;
+  margin-top: none;
   border-radius: 8px;
   padding: 1rem;
-  width: 30%; 
+  width: 30%;
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -199,7 +208,7 @@ body {
 }
 
 .carta h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #F5F3F9;
   margin-bottom: 1rem;
   font-family: 'Montserrat', sans-serif;
@@ -208,12 +217,12 @@ body {
 
 
 .carta p {
-  font-size: 1rem;
+  font-size: 2.1rem;
   color: #000000;
   line-height: 1.3;
   text-align: justify;
   list-style-type: decimal;
-  padding-left: 20px;
+
   color: #000000;
   font-family: 'Raleway', 'sans-serif';
 }
@@ -223,17 +232,19 @@ body {
   padding: 40px 20px;
   background-color: #F5F3F9;
 }
-.equipo h2{
+
+.equipo h2 {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  background-color: #5c4033; 
-  color: #F5F3F9; 
+  background-color: #5c4033;
+  color: #F5F3F9;
   display: inline-block;
   padding: 0.5rem 1.5rem;
   border-radius: 10px;
   margin-bottom: 2rem;
-  
+
 }
+
 .compañeros {
   display: flex;
   justify-content: center;
@@ -244,7 +255,7 @@ body {
 .compañero {
   width: 150px;
   font-size: 14px;
-  margin: 10px auto; 
+  margin: 10px auto;
 }
 
 .compañero img {
@@ -257,135 +268,114 @@ body {
 }
 
 .compañero img:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-.compañero h3 .compañero p{
+.compañero h3 .compañero p {
   margin: 5px 0;
   text-align: center;
 }
 
-#biografia{
+#biografia {
   text-align: justify;
   font-size: 15px;
   margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .nosotros h1 {
-    font-size: 3rem;
-  }
+/* ========== MEDIA QUERIES (RESPONSIVE) ========== */
 
-  .logo-nosotros {
-    max-width: 180px;
-  }
-}
-
-@media (max-width: 480px) {
-  .nosotros {
-    flex-direction: column;
-    height: auto;
-    padding: 2rem 1rem;
-  }
-
-  .nosotros h1 {
-    font-size: 2.2rem;
-  }
-
-  .logo-nosotros {
-    max-width: 140px;
-    margin-top: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  #quienes-somos {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .texto, .somos {
-    width: 100%;
-    padding: 0;
-  }
-
-  .imagen-somos {
-    height: auto;
-    max-height: 300px;
-    object-fit: cover;
-    margin-top: 1rem;
-  }
-}
-
-
+/* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
+  #quienes-somos {
+    width: 90%;
+    flex-direction: column;
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .texto,
+  .somos {
+    width: 100% !important;
+    padding-right: 0;
+  }
+
+  .texto h2 {
+    font-size: 2.5rem;
+  }
+
   .carta {
-    width: 45%;
+    width: 48%;
+    /* 2 columnas en tablet */
     margin-bottom: 20px;
   }
 
-  #compromisos {
-    justify-content: center;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .carta {
-    width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .compañeros {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .compañero {
-    width: 90%;
-  }
-}
-
-@media (max-width: 768px) {
   .bloque-logo-flecha {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 25px; 
-    gap: 10px; 
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   .imagen-logo {
-    width: 150px; 
-    margin-bottom: 10px; 
+    margin: 0 auto;
+  }
+}
+
+/* Móvil (hasta 768px) */
+@media (max-width: 768px) {
+  body {
+    margin-top: 6rem;
+    /* Reduce espacio para navbar móvil */
   }
 
-  .flecha {
-    font-size: 2rem;
-    transform: rotate(90deg);
-    margin: 0; 
+  .nosotros h1 {
+    font-size: 3.5rem !important;
   }
 
-  .texto-logo {
-    max-width: 100%;
-    padding: 0 10px;
+  .carta {
+    width: 100% !important;
+    /* 1 columna en móvil */
   }
 
-  .texto-logo p {
-    text-align: center;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin-bottom: 10px;
-    text-align: justify;
+  .imagen-carta {
+    height: 200px;
+  }
+
+  .compañeros {
+    gap: 15px;
+  }
+
+  .compañero {
+    width: 120px;
+  }
+
+  .texto-logo p,
+  .carta p {
+    font-size: 1.6rem !important;
+    text-align: left;
   }
 
   .mensaje-final {
-    padding: 15px 10px;
-    font-size: 1rem;
+    font-size: 1.8rem;
+    padding: 10px;
+  }
+}
+
+/* Pantallas muy pequeñas (hasta 480px) */
+@media (max-width: 480px) {
+  .nosotros h1 {
+    font-size: 2.5rem !important;
+    padding: 0 1rem;
   }
 
-  .contenedor-logo {
-    padding: 0 10px;
+  .titulo-logo {
+    font-size: 1.5rem;
+  }
+
+  .texto h2 {
+    font-size: 2rem;
+  }
+
+  .flecha {
+    display: none;
+    /* Oculta flechas en móviles muy pequeños */
   }
 }
