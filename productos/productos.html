@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo de productos</title>
-    <link rel="stylesheet" href="/productos/style.css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos</title>
+  <link rel="stylesheet" href="/productos/style.css/style.css">
 </head>
 <body>
-    <h1>CATÁLOGO DE PRODUCTOS</h1>
 
   
+  <div class="productos">
+    <img src="/productos/style.css/fondoproductos.jpg" alt="Fondo productos" class="fondo-productos">    
+    <h1>Catálogo de Productos</h1>
+  </div>
+
+  <!-- Botón de hamburguesa para filtros en móvil -->
+  <button id="menu-toggle" class="menu-button">☰ Filtros</button>
+
+  <!-- Contenedor principal: sidebar + contenido -->
+  <div class="container">
+    
+    <!-- Sidebar para filtros (generado dinámicamente) -->
+    <aside class="sidebar" id="sidebar">
+      <h2>Filtros</h2>
+      <ul id="lista-filtros">
+        <!-- Aquí se insertarán los filtros desde JS -->
+      </ul>
+    </aside>
+
+    
+    <main class="main-content">
+
+      <!-- Barra de búsqueda -->
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar productos..." id="input-busqueda">
+        <button id="boton-busqueda">🔍</button>
+      </div>
+
+      <!-- Contenedor donde se cargarán los productos -->
+      <div id="contenedor-productos" class="productos-grid">
+        <!-- Aquí van los productos desde JS -->
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/productos/script.js"></script>
 </body>
 </html>
