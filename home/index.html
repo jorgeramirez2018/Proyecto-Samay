@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link rel="stylesheet" href="/home/style.css/style.css">
   <link rel="stylesheet" href="footer/style/footerstyle.css">
-  
+
 
 </head>
 
@@ -32,72 +32,27 @@
     </div>
   </section>
 
+  <!--Carritoo--------------------------------------------------------------------------->
   <main class="products container" id="lista-1">
     <h2>Productos Populares</h2>
-    <div class="products-content">
-      <div class="product">
-        <img src="/home/recursos/Manilla-tejida-a-mano-celeste.jpg" alt="Imagen de artesania">
-        <div class="product-txt">
-          <h3>Producto</h3>
-          <p class="precio">$15.000</p>
-          <div class="estrellas">
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-          </div>
-          <a href="#" class="agregar-carrito btn-2" data-1="">Agregar</a>
-        </div>
-      </div>
-      <div class="product">
-        <img src="/home/recursos/Manilla-tejida-a-mano-celeste.jpg" alt="Imagen de artesania">
-        <div class="product-txt">
-          <h3>Producto</h3>
-          <p class="precio">$15.000</p>
-          <div class="estrellas">
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-          </div>
-          <a href="#" class="agregar-carrito btn-2" data-1="">Agregar</a>
-        </div>
-      </div>
-      <div class="product">
-        <img src="/home/recursos/Manilla-tejida-a-mano-celeste.jpg" alt="Imagen de artesania">
-        <div class="product-txt">
-          <h3>Producto</h3>
-          <p class="precio">$15.000</p>
-          <div class="estrellas">
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-          </div>
-          <a href="#" class="agregar-carrito btn-2" data-1="">Agregar</a>
-        </div>
-      </div>
-      <div class="product">
-        <img src="/home/recursos/Manilla-tejida-a-mano-celeste.jpg" alt="Imagen de artesania">
-        <div class="product-txt">
-          <h3>Producto</h3>
-          <p class="precio">$15.000</p>
-          <div class="estrellas">
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-            <span class="estrella">&#9733;</span>
-          </div>
-          <a href="#" class="agregar-carrito btn-2" data-1="">Agregar</a>
-        </div>
-      </div>
+    <div class="products-content" id="productos">
     </div>
     <a href="/productos/productos.html" class="btn-3">Ver nuestro catalogos de productos</a>
   </main>
+
+
+  <div class="cart-container">
+    <div class="cart-btn" id="cart-btn">🛒</div>
+    <span class="cart-counter" id="cart-counter">0</span>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-container" id="modal-container"></div>
+  </div>
+
+
+
+
 
   <section class="history">
     <h2>Historias de productos</h2>
@@ -120,7 +75,9 @@
   <div id="footer">
 
   </div>
-  <script src="./script.js/script.js"></script>
+  <script src="productos/productos.js"></script>
+  <script src="script.js/script.js"></script>
+  <script src="cart/cart.js"></script>
 </body>
 
 </html>
