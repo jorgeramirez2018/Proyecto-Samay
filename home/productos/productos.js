@@ -44,7 +44,7 @@ const productos = [
   {
     id: 7,
     productName: "Manilla",
-    price: 20.000,
+    price: 20000,
     quanty: 1,
     img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
   },
