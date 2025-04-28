@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo de Productos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/productos/style.css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
   
-  <div class="productos">
-    <img src="/productos/style.css/fondoproductos.jpg" alt="Fondo productos" class="fondo-productos">    
+  <div class="catproductos">
+    <img src="/productos/style.css/fondoproductos.jpg" alt="Fondo productos" class="fondo-catproductos">    
     <h1>Catálogo de Productos</h1>
   </div>
 
@@ -18,7 +21,7 @@
   <button id="menu-toggle" class="menu-button">☰ Filtros</button>
 
   <!-- Contenedor principal: sidebar + contenido -->
-  <div class="container">
+  <div class="container-catproductos">
     
     <!-- Sidebar para filtros (generado dinámicamente) -->
     <aside class="sidebar" id="sidebar">
@@ -29,16 +32,16 @@
     </aside>
 
     
-    <main class="main-content">
+    <main class="main-content-catproductos">
 
       <!-- Barra de búsqueda -->
       <div class="search-bar">
         <input type="text" placeholder="Buscar productos..." id="input-busqueda">
-        <button id="boton-busqueda">🔍</button>
+        <button id="boton-busqueda"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
 
       <!-- Contenedor donde se cargarán los productos -->
-      <div id="contenedor-productos" class="productos-grid">
+      <div id="contenedor-catproductos" class="catproductos-grid">
         <!-- Aquí van los productos desde JS -->
       </div>
 
