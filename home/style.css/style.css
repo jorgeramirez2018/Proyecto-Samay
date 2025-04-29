@@ -62,7 +62,6 @@
   color: white;
   border-radius: 2.5rem;
   background-color: var(--maiz);
-
   text-transform: capitalize;
   font-weight: 600;
   transition: 0.3s ease;
@@ -118,6 +117,7 @@
     transform: translateX(0);
   }
 }
+
 /*Productos--------------------------------------------------------*/
 .products {
   padding: 0 0 10rem 0;
@@ -230,7 +230,7 @@
 /*Historias----------------------------------------------------------------*/
 
 .history {
-  background-color: #c4bcaf;
+  background-color: #dedede;
 }
 
 .history-content {
@@ -239,15 +239,21 @@
   justify-content: center;
   align-items: stretch;
   gap: 9rem;
+  margin-bottom: 6rem;
 }
 
 .history-item {
   flex: 1 1 30rem;
-  background-color: var(--maiz);
+  background-color: var(--arcilla);
   padding: 6rem 2rem 6rem;
   border-radius: 2rem;
   box-shadow: 0 0 .5rem var(--other-color);
   transition: all .5s ease;
+}
+
+.history-item:hover {
+  box-shadow: 0 0 1rem #dd992b;
+    transform: scale(1.05)
 }
 
 .history-item img {
@@ -264,6 +270,43 @@
   color: var();
   margin-bottom: 4rem;
 }
+
+.titulo-historias {
+  color: var(--algodon);
+  font-size: 3rem;
+}
+
+.parrafo-historias {
+  font-size: 2rem;
+  color: var(--algodon);
+  margin-bottom: 2rem;
+}
+
+.btn-history {
+  display: inline-block;
+  padding: 1.3rem 2.5rem;
+  color: white;
+  border-radius: 2.5rem;
+  background-color: var(--verde);
+  text-transform: capitalize;
+  font-weight: 600;
+  transition: 0.3s ease;
+  font-size: 1.8rem;
+
+}
+
+.btn-history:hover {
+  background-color: #dd992b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+
+
+
+
+
+
 
 /*Estilos del carrito...........................................*/
 .cart-container {
@@ -423,17 +466,20 @@
   background-color: #ccc;
   transform: scale(0.95);
 }
+
 .modal-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
 }
+
 .total-price {
   font-size: 2.8rem;
   text-align: end;
   margin: 0;
-} 
+}
+
 .btn-buy {
   display: flex;
   padding: 0.7rem 2rem;
@@ -452,6 +498,8 @@
   box-shadow: 0 0 1rem #dd992b;
   transform: scale(1.05);
 }
+
+
 
 
 
@@ -552,5 +600,88 @@
   .btn-1 {
     font-size: 1.5rem;
     padding: 1rem 2rem;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .history-content {
+    gap: 5rem;
+  }
+
+  .history-item {
+    padding: 4rem 2rem;
+  }
+
+  .history-item img {
+    height: 28rem;
+  }
+
+  .titulo-historias {
+    font-size: 2.5rem;
+  }
+
+  .parrafo-historias {
+    font-size: 1.8rem;
+  }
+
+  .btn-history {
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .history h2 {
+    font-size: 4rem;
+  }
+
+  .history-item {
+    flex: 1 1 100%;
+    padding: 3rem 1.5rem;
+  }
+
+  .history-item img {
+    height: 24rem;
+  }
+
+  .titulo-historias {
+    font-size: 2.2rem;
+  }
+
+  .parrafo-historias {
+    font-size: 1.6rem;
+  }
+
+  .btn-history {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .history h2 {
+    font-size: 3rem;
+  }
+
+  .history-content {
+    gap: 3rem;
+  }
+
+  .history-item img {
+    height: 20rem;
+  }
+
+  .titulo-historias {
+    font-size: 2rem;
+  }
+
+  .parrafo-historias {
+    font-size: 1.4rem;
+  }
+
+  .btn-history {
+    font-size: 1.4rem;
+    padding: 0.7rem 1.5rem;
   }
 }
