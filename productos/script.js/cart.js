@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const displayCart = () => {
+    cart = JSON.parse(localStorage.getItem("cart")) || []; //
     modalContainer.innerHTML = "";
     modalContainer.style.display = "block";
     modalOverlay.style.display = "block";
