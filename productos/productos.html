@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo de Productos</title>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/productos/style.css/style.css">
+  <link href="/home/style.css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
-  
+  <!--Nav-->
+  <div id="navbar"></div>
+
+
+
   <div class="catproductos">
-    <img src="/productos/style.css/fondoproductos.jpg" alt="Fondo productos" class="fondo-catproductos">    
+    <img src="/productos/style.css/fondoproductos.jpg" alt="Fondo productos" class="fondo-catproductos">
     <h1>Catálogo de Productos</h1>
   </div>
 
@@ -23,7 +31,7 @@
 
   <!-- Contenedor principal: sidebar + contenido -->
   <div class="container-catproductos">
-    
+
     <!-- Sidebar para filtros (generado dinámicamente) -->
     <aside class="sidebar" id="sidebar">
       <h2>Filtros</h2>
@@ -32,7 +40,7 @@
       </ul>
     </aside>
 
-    
+
     <main class="main-content-catproductos">
 
       <!-- Barra de búsqueda -->
@@ -47,27 +55,34 @@
       </div>
 
     </main>
+
+
+
+    <!--Productos-->
+  </div>
+  <div class="products container" id="lista-1">
+    <div class="products-content" id="productos">
+    </div>
   </div>
 
-  <script src="/productos/script.js"></script>
+
+  <!--Carrito modal-->
+  <div class="cart-container">
+    <div class="cart-btn" id="cart-btn">🛒</div>
+    <span class="cart-counter" id="cart-counter">0</span>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-container" id="modal-container"></div>
+  </div>
+
+  <div id="footer"></div>
+
+
+  <script src="/home/productos/productos.js"></script>
+  <script src="script.js/productos.js"></script>
+  <script src="script.js/cart.js"></script>
+  <script src="script.js/script.js"></script>
 </body>
-
-
-
-
-   <link href="/home/style.css/style.css" rel="stylesheet">
-
-
-    <div class="cart-container">
-        <div class="cart-btn" id="cart-btn">🛒</div>
-        <span class="cart-counter" id="cart-counter">0</span>
-    </div>
-
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-container" id="modal-container"></div>
-    </div>
-    <script src="script.js/cart.js"></script>
-
-
 
 </html>
