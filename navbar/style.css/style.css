@@ -99,23 +99,24 @@
 
   .btn-login {
     background-color: transparent;
-    color: var(--maiz);
-    border: 2px solid var(--maiz);
+    color: var(--text-color);
+    border: 3px solid var(--maiz);
   }
 
   .btn-login:hover {
     background-color: var(--tierra);
-    color: var(--text-color);
+    color: var(--maiz);
+   
   }
 
   .btn-register {
-    background-color: var(--maiz);
+    background-color: transparent;
     color: var(--text-color);
-    border: 2px solid var(--maiz);
+    border: 3px solid var(--maiz);
   }
 
   .btn-register:hover {
-    background-color: transparent;
+    background-color: var(--tierra);
     color: var(--maiz);
   }
 
@@ -124,7 +125,7 @@
     cursor: pointer;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1010px) {
     .menu-toggle {
       display: block;
     }
@@ -143,19 +144,42 @@
       z-index: 99;
     }
 
+    
     .navbar.active {
       display: flex;
     }
 
     .navbar-actions {
       flex-direction: column;
-      width: 100%;
+      width: 100%;     
       align-items: flex-start;
     }
 
     .btn-login,
     .btn-register {
       width: 100%;
+      padding: 1rem;
       text-align: center;
+      border-width: 2px;
     }
   }
+
+  @media (max-width: 1075px) {
+    .navbar {
+      gap: 1.5rem;
+    }
+  
+    .navbar a {
+      font-size: 1.4rem;
+      padding: 0.4rem 0.8rem;
+    }
+  
+    .btn-login,
+    .btn-register {
+      font-size: 1.3rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+  }
+  
+  
