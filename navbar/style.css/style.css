@@ -125,7 +125,7 @@
     cursor: pointer;
   }
 
-  @media (max-width: 1010px) {
+  @media (max-width: 1012px) {
     .menu-toggle {
       display: block;
     }
