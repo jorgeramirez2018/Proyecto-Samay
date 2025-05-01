@@ -99,7 +99,7 @@
 
   .btn-login {
     background-color: transparent;
-    color: var(--maiz);
+    color: var(--text-color);
     border: 2px solid var(--maiz);
   }
 

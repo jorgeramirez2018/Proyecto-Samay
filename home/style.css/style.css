@@ -238,14 +238,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
-  gap: 9rem;
-  margin-bottom: 6rem;
+  gap: 5rem;
+  margin-bottom: 5rem;
 }
 
 .history-item {
-  flex: 1 1 30rem;
+  flex: 1 1 24rem;
   background-color: var(--arcilla);
-  padding: 6rem 2rem 6rem;
+  padding: 4rem 2rem;
   border-radius: 2rem;
   box-shadow: 0 0 .5rem var(--other-color);
   transition: all .5s ease;
@@ -253,12 +253,12 @@
 
 .history-item:hover {
   box-shadow: 0 0 1rem #dd992b;
-    transform: scale(1.05)
+  transform: scale(1.05);
 }
 
 .history-item img {
   display: inline-block;
-  height: 35rem;
+  height: 30rem;
   width: 100%;
   border-radius: 1rem;
   margin-bottom: 1rem;
@@ -266,33 +266,32 @@
 
 .history h2 {
   text-align: center;
-  font-size: 5rem;
-  color: var();
-  margin-bottom: 4rem;
+  font-size: 4.5rem;
+  color: var(--text-color);
+  margin-bottom: 3.5rem;
 }
 
 .titulo-historias {
   color: var(--algodon);
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .parrafo-historias {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--algodon);
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
 .btn-history {
   display: inline-block;
-  padding: 1.3rem 2.5rem;
+  padding: 1.2rem 2.3rem;
   color: white;
   border-radius: 2.5rem;
   background-color: var(--verde);
   text-transform: capitalize;
   font-weight: 600;
   transition: 0.3s ease;
-  font-size: 1.8rem;
-
+  font-size: 1.6rem;
 }
 
 .btn-history:hover {
@@ -300,9 +299,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transform: translateY(-3px);
 }
-
-
-
 
 
 
@@ -356,7 +352,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 50rem;
+  max-width: 65rem;
   width: 100%;
   z-index: 1;
   max-height: 80vh;
@@ -500,6 +496,65 @@
 }
 
 
+.conoce {
+  display: flex;
+  background-color: #f4f1ea;
+  padding: 4rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 2rem rgba(100, 80, 50, 0.2);
+}
+
+.content-conoce {
+  display: inline;
+  color: #4b3d2a;
+}
+
+.titulo-conoce {
+  font-size: 5rem;
+  margin-bottom: 8rem;
+  color: #6b4226;
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(107, 66, 38, 0.2);
+}
+
+.parrafo-conoce {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  line-height: 1.5;
+  color: #5c4a36;
+}
+
+.img-nosotros {
+  height: 50rem;
+  padding: 1rem;
+  border: 0.2rem dashed #6b4226;
+  border-radius: 2rem;
+  margin-left: 12rem;
+  background-color: #fff8f0;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.img-nosotros:hover {
+  transform: scale(1.03);
+  border-color: #a36d3c;
+}
+.btn-nosotros {
+  display: inline-block;
+  padding: 1.3rem 2.5rem;
+  color: white;
+  border-radius: 2.5rem;
+  background-color: var(--arcilla);
+  text-transform: capitalize;
+  font-weight: 600;
+  transition: 0.3s ease;
+  font-size: 1.8rem;
+}
+
+.btn-nosotros:hover {
+  background-color: #dd992b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
 
 
 
