@@ -100,7 +100,11 @@
   .btn-login {
     background-color: transparent;
     color: var(--text-color);
+
+    border: 2px solid var(--maiz);
+
     border: 3px solid var(--maiz);
+
   }
 
   .btn-login:hover {
