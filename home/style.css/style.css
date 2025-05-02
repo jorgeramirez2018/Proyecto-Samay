@@ -561,182 +561,129 @@
 
 /*No tocar Responsive*/
 
-@media (max-width: 1200px) {
-  .products-content {
-    grid-template-columns: repeat(3, 1fr);
+/* Responsive: tabletas (<=1024px) */
+@media (max-width: 1024px) {
+  .home {
+    padding: 4rem 2rem;
+    flex-direction: column;
+    text-align: center;
   }
-}
 
-@media (max-width: 900px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-text h1 {
+    font-size: 3.5rem;
+  }
+
+  .header-text p {
+    font-size: 1.8rem;
+  }
+
+  .header-img img {
+    width: 36rem;
+    margin-top: 2rem;
+  }
+
   .products-content {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .product img {
-    width: 100%;
-    height: auto;
+  .img-nosotros {
+    margin-left: 0;
+    margin-top: 3rem;
+    height: 40rem;
+  }
+
+  .conoce {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
 
-@media (max-width: 600px) {
-  .products {
-    margin: 0 1.5rem;
-    /* Ajuste para evitar que sobresalga */
-    padding: 0 1rem;
-    /* Agrega espacio interno lateral */
+/* Responsive: móviles (<=768px) */
+@media (max-width: 768px) {
+  .header-text h1 {
+    font-size: 3rem;
   }
 
-  .products h2 {
-    font-size: 3rem;
+  .header-text p {
+    font-size: 1.6rem;
+  }
+
+  .header-img img {
+    width: 100%;
   }
 
   .products-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
   }
 
   .product {
     padding: 3rem 2rem;
-    /* Ajusta padding interno para móviles */
   }
 
-  .btn-2 {
-    font-size: 2rem;
-    padding: 0.6rem 1.5rem;
-  }
-
-  .estrella {
-    font-size: 2rem;
-  }
-
-
-  /* Ajuste para el icono del menú hamburguesa si usas uno con clase .menu-icon */
-  .menu-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1000;
-  }
-}
-
-@media (max-width: 992px) {
-  .header-content {
+  .history-content {
     flex-direction: column;
-    align-items: center;
-    margin: 5rem 2rem 0;
-    text-align: center;
   }
 
-  .header-text,
-  .header-img {
-    flex-basis: 100%;
+  .titulo-conoce {
+    font-size: 3.5rem;
   }
 
-  .header-text h1 {
-    font-size: 4rem;
-  }
-
-  .header-img img {
-    width: 90%;
-    max-width: 35rem;
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .header-text h1 {
-    font-size: 3rem;
-  }
-
-  p {
-    font-size: 1.6rem;
-  }
-
-  .btn-1 {
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
-  }
-}
-
-
-@media screen and (max-width: 1024px) {
-  .history-content {
-    gap: 5rem;
-  }
-
-  .history-item {
-    padding: 4rem 2rem;
-  }
-
-  .history-item img {
-    height: 28rem;
-  }
-
-  .titulo-historias {
-    font-size: 2.5rem;
-  }
-
-  .parrafo-historias {
-    font-size: 1.8rem;
-  }
-
-  .btn-history {
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .history h2 {
-    font-size: 4rem;
-  }
-
-  .history-item {
-    flex: 1 1 100%;
-    padding: 3rem 1.5rem;
-  }
-
-  .history-item img {
-    height: 24rem;
-  }
-
-  .titulo-historias {
-    font-size: 2.2rem;
-  }
-
-  .parrafo-historias {
-    font-size: 1.6rem;
-  }
-
-  .btn-history {
-    font-size: 1.5rem;
-    padding: 0.8rem 1.8rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .history h2 {
-    font-size: 3rem;
-  }
-
-  .history-content {
-    gap: 3rem;
-  }
-
-  .history-item img {
-    height: 20rem;
-  }
-
-  .titulo-historias {
+  .parrafo-conoce {
     font-size: 2rem;
   }
 
-  .parrafo-historias {
-    font-size: 1.4rem;
+  .img-nosotros {
+    width: 100%;
+    height: auto;
   }
 
+  .cart-container {
+    right: 2rem;
+    top: 85vh;
+  }
+
+  .modal-container {
+    width: 90%;
+    padding: 2rem;
+  }
+}
+
+/* Responsive: teléfonos pequeños (<=480px) */
+@media (max-width: 480px) {
+
+  .btn-1,
+  .btn-2,
+  .btn-3,
+  .btn-nosotros,
+  .btn-buy,
   .btn-history {
     font-size: 1.4rem;
-    padding: 0.7rem 1.5rem;
+    padding: 1rem 1.8rem;
+  }
+
+  .total-price {
+    font-size: 2rem;
+  }
+
+  .modal-product {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .quantity {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .conoce {
+    padding: 2rem;
   }
 }
