@@ -1,0 +1,139 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Estilos del sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #5C4033 !important;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.sidebar .nav-link:hover {
+    color: #528e5d;
+}
+
+.sidebar a {
+    color: white;
+}
+
+
+.sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Contenido principal */
+.flex-grow-1 {
+    margin-left: 400px;
+    padding: 2rem;
+}
+
+/* Estilos para cards y tablas */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    font-weight: 600;
+    border-top: none;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Botones y acciones */
+.btn-primary {
+    background-color: #6366F1;
+    border-color: #6366F1;
+}
+
+.btn-primary:hover {
+    background-color: #4F46E5;
+    border-color: #4F46E5;
+}
+
+.btn-outline-primary {
+    color: #6366F1;
+    border-color: #6366F1;
+}
+
+.btn-outline-primary:hover {
+    background-color: #6366F1;
+}
+
+.btn-outline-danger {
+    color: #EF4444;
+    border-color: #EF4444;
+}
+
+.btn-outline-danger:hover {
+    background-color: #EF4444;
+}
+
+/* Estilos para el formulario en modal */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #4B5563;
+}
+
+.form-control:focus {
+    border-color: #6366F1;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+/* Estilos para la vista previa de imagen */
+#imagePreview {
+    padding: 1rem;
+    background-color: #F9FAFB;
+    border-radius: 8px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 70px !important;
+    }
+    
+    .sidebar .nav-link span, 
+    .sidebar .navbar-brand {
+        display: none;
+    }
+    
+    .flex-grow-1 {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .flex-grow-1 {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}
