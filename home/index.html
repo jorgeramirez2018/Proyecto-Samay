@@ -36,12 +36,19 @@
   </section>
 
   <!--Carritoo--------------------------------------------------------------------------->
-  <main class="products container" id="lista-1">
-    <h2>Productos Populares</h2>
-    <div class="products-content" id="productos">
+<main class="products container" id="lista-1">
+  <h2>Productos Populares</h2>
+  <div class="carousel-container">
+    <div class="products-content carousel" id="productos">
+      <!-- Aquí se generan las cards dinámicamente -->
     </div>
-    <a href="/productos/productos.html" class="btn-3">Ver nuestro catalogos de productos</a>
-  </main>
+  </div>
+  <div class="carousel-controls">
+    <button id="prevBtn">&#10094;</button>
+    <button id="nextBtn">&#10095;</button>
+  </div>
+  <a href="/productos/productos.html" class="btn-3">Ver nuestro catálogo de productos</a>
+</main>
 
 
   <div class="cart-container">
@@ -106,6 +113,7 @@
   <script src="productos/productos.js"></script>
   <script src="script.js/script.js"></script>
   <script src="cart/cart.js"></script>
+  <script src="script.js/carruselProducts.js"></script>
   <!-- Swiper JS -->
 
 

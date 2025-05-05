@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const shopContent = document.querySelector(".products-content");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-productos.forEach((product) => {
+productos.slice(0, 8).forEach((product) => {
   const content = document.createElement("div");
   content.classList.add("product");
   content.innerHTML = `
@@ -82,7 +82,10 @@ productos.forEach((product) => {
         img: product.img,
       });
     }
-    localStorage.setItem("cart", JSON.stringify(cart)); // <-- guardamos
+    localStorage.setItem("cart", JSON.stringify(cart));
     displayCartCounter();
   });
 });
+
+
+
