@@ -164,4 +164,5 @@ const productos = [
     img: "https://i.pinimg.com/736x/6b/36/30/6b3630c4d8066a4436836b37c594ffa6.jpg",
     description: "",
   },
+
 ];
