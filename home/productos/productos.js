@@ -55,4 +55,5 @@ const productos = [
     quanty: 1,
     img: "https://artesaniasdecolombia.com.co/Documentos/Catalogo/35165_11-03-011-k-(2).jpg",
   },
+
 ];

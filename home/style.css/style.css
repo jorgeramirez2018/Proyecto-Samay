@@ -61,7 +61,7 @@
   padding: 1.3rem 2.5rem;
   color: white;
   border-radius: 2.5rem;
-  background-color: var(--maiz);
+  background-color: var(--verde);
   text-transform: capitalize;
   font-weight: 600;
   transition: 0.3s ease;
@@ -180,7 +180,7 @@
   font-size: 2.5rem;
   border-radius: 0.5rem;
   color: var(--algodon);
-  background-color: var(--maiz);
+  background-color: var(--arcilla);
   text-decoration: none;
   transition: 0.3s ease;
 }
@@ -226,6 +226,48 @@
   transform: scale(1.1);
 }
 
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 5rem;
+  will-change: transform;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.carousel-controls button {
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: 0.3s ease;
+}
+
+.carousel-controls button:hover {
+  color: var(--maiz);
+}
+
+@media (max-width: 1024px) {
+  .carousel {
+    gap: 2rem;
+  }
+
+  .product {
+    min-width: 80%;
+  }
+}
 
 /*Historias----------------------------------------------------------------*/
 
