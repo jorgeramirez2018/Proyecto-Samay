@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link rel="stylesheet" href="./style.css/registro.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html" class="logo">
+        <img
+          src="./imagenes/iconoSamay.png"
+          alt="Logo Samay"
+          style="height: 40px"
+          class="logo-samay" id="logo-samay""
+        />
+      </a>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <box-icon name="menu" color="#FFD54F" size="md"></box-icon>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <a href="../home/index.html" class="active">Inicio</a>
+        <a href="../aboutUs/acercaDe.html">Acerca de</a>
+        <a href="../contact/contacto.html">Contáctenos</a>
+        <a href="../productos/productos.html">Productos</a>
+        <a href="#">Historias</a>
+
+        <div class="navbar-actions">
+          <a href="../Login/login.html" class="btn-login"
+            >Iniciar Sesión</a
+          >
+          <a href="../Registro/registro.html" class="btn-login"
+            >Registrarse</a
+          >
+          <a href="#"
+            ><box-icon
+              name="cart"
+              color="#FFD54F"
+              style="width: 40px; height: 35px"
+            ></box-icon
+          ></a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Contenido Principal - Layout de dos columnas -->
+    <main class="login-container">
+        <!-- Columna izquierda - Dos imágenes apiladas -->
+    <div class="login-image">
+      <div class="image-container">
+        <img src="./imagenes/imagen1.png" alt="Imagen 1" class="login-image" >
+        <img src="./imagenes/imagen2.png" alt="Imagen 2" class="login-image" >
+      </div>
+    </div>
+      
+      <!-- Columna derecha - Formulario de Registro -->
+      <div class="login-form-container">
+        <div class="login-form-wrapper">
+          <div class="logo-container">
+            <img class="login-logo-oscuro shine-effect" src="./imagenes/logooscuro.png" alt="Logo Samay" />
+          </div>
+          <h1 class="login-title">Registro</h1>
+          
+          <form class="login-form">
+            <div class="form-group">
+              <input type="email" placeholder="Correo electrónico" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="password" placeholder="Contraseña" required>
+            </div>
+            
+            <div class="form-group">
+              <input type="date" placeholder="Fecha de nacimiento" required>
+            </div>
+            
+            <div class="button-container">
+              <button type="submit" class="login-button">Regístrate</button>
+            </div>
+          </form>
+          
+          <div class="register-link">
+            <p>¿Ya tienes una cuenta? No te preocupes, inicia sesión haciendo clic  <a href="../Login/login.html">aquí</a></p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-icons">
+            <a href="#"><box-icon type='logo' name='instagram' color="#fff"></box-icon></a>
+            <a href="#"><box-icon type='logo' name='facebook' color="#fff"></box-icon></a>
+            <a href="#"><box-icon type='logo' name='linkedin' color="#fff"></box-icon></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Inspírate con cada pieza nueva</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="e-mail">
+            <button type="submit">¡Suscríbete a nuestro newsletter!</button>
+          </form>
+        </div>
+        
+        <div class="footer-section">
+          <H3>Contáctanos</H3>
+          <p>contacto@samay.co</p>
+          <p>+57 321 000 0000</p>
+          <p>Bogotá, Colombia</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>©SAMAY. Herencia que inspira</p>
+      </div>
+    </footer>
+
+    <script src="script.js/registro.js"></script>
+  </body>
+</html>
