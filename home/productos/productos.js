@@ -78,14 +78,14 @@ const productos = [
   },
   {
     id: 8,
-    productName: "Mochila Wayuu Gaza Paleteada",
-    community: "xxxx",
-    region: "xxxx",
-    category: "Joyería",
-    price: 34100,
+    productName: "Tela por 6 piezas",
+    community: "Artesanos",
+    region: "Andina",
+    category: "Tejidos",
+    price: 140000,
     quanty: 1,
-    img: "https://artesaniasdecolombia.com.co/Documentos/Catalogo/35165_11-03-011-k-(2).jpg",
-    description: "",
+    img: "https://souvenirscolombia.com.co/public/catalogo/INDIVIDUALES_AZULES_N.jpg",
+    description: "Individuales hechos a mano en algodon de diferentes colores. caja por 6 piezas. se pueden lava en lavadora con agua fria y en ciclos suaves. ",
   },
   {
     id: 9,
@@ -151,7 +151,7 @@ const productos = [
     price: 34100,
     quanty: 1,
     img: "https://i.pinimg.com/736x/0a/62/74/0a6274348a5f7cf415f6f02a2368a3f2.jpg",
-    description: "",
+    description: "Hecho a mano ",
   },
   {
     id: 15,
@@ -162,7 +162,7 @@ const productos = [
     price: 34100,
     quanty: 1,
     img: "https://i.pinimg.com/736x/6b/36/30/6b3630c4d8066a4436836b37c594ffa6.jpg",
-    description: "",
+    description: "Hecho a mano",
   },
 
 ];
