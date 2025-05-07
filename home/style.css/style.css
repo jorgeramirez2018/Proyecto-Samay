@@ -163,12 +163,12 @@
 
 .product h3 {
   color: var(--tierra);
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
 .product p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: 0;
   color: var(--text-color);
   font-weight: 600;
@@ -178,7 +178,7 @@
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.7rem 2rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   border-radius: 0.5rem;
   color: var(--algodon);
   background-color: var(--arcilla);
