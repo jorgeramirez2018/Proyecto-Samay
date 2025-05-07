@@ -35,8 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/*Objetos---------------------------------------------*/
-
 const shopContent = document.querySelector(".products-content");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -86,6 +84,3 @@ productos.slice(0, 8).forEach((product) => {
     displayCartCounter();
   });
 });
-
-
-

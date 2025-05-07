@@ -40,3 +40,4 @@ const displayCartCounter = () => {
     cartCounter.innerText = totalItems;
   }
 };
+
