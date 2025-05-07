@@ -1,14 +1,14 @@
-const shopContent = document.querySelector(".products-content");
+const shopContent = document.getElementById("contenedor-catproductos");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 console.log(productos);
 productos.forEach((product) => {
   const content = document.createElement("div");
   content.classList.add("product");
   content.innerHTML = `
-    <img src="${product.img}" alt="Imagen de artesania">
-    <div class="product-txt">
-      <h3>${product.productName}</h3>
-      <p class="precio">${product.price}</p>
+    <img src="${product.img}" alt="${product.productName}">
+    <h3>${product.productName}</h3>
+    <p class="precio">${product.price}</p>
+    <p class= "origen">${product.community} | ${product.region}</p>
       <div class="estrellas">
         <span class="estrella">&#9733;</span>
         <span class="estrella">&#9733;</span>

@@ -155,20 +155,50 @@
     cursor: pointer;
   }
   
-  /* Grid de productos
-  .productos-grid {
+  .catproductos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
   
   .producto-card {
     background-color: white;
     border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
-  } */
+    transition: transform 0.2s ease;
+  }
+  
+  .producto-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .producto-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .producto-nombre {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .producto-precio {
+    font-weight: bold;
+    color: var(--tierra);
+    margin-bottom: 0.5rem;
+  }
+  
+  .producto-origen {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
   
   /* Responsive para móvil */
   @media (max-width: 768px) {
