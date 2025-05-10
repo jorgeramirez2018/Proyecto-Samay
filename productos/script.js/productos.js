@@ -73,7 +73,7 @@ function obtenerFiltros() {
 // Renderizar filtros
 function renderizarFiltros() {
   const listaFiltros = document.getElementById("lista-filtros");
-  listaFiltros.innerHTML = ""; // Reset por si ya se cargó antes
+  listaFiltros.innerHTML = ""; 
 
   const { categorias, comunidades, regiones, precioMin, precioMax } = obtenerFiltros();
 
