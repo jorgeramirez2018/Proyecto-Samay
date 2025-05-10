@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteCartProduct(product.id);
       });
     });
+    
 
     // Modal Footer
     const total = cart.reduce((acc, elm) => acc + elm.price * elm.quanty, 0);

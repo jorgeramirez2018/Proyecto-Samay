@@ -199,6 +199,11 @@
     color: #666;
     margin-bottom: 1rem;
   }
+
+  #productContainer{
+    margin-left: 33rem;
+    gap: 25rem;
+  }
   
   /* Responsive para móvil */
   @media (max-width: 768px) {
