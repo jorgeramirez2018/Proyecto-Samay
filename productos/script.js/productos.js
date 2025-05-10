@@ -7,7 +7,7 @@ productos.forEach((product) => {
   content.innerHTML = `
     <img src="${product.img}" alt="${product.productName}">
     <h3>${product.productName}</h3>
-    <p class="precio">${product.price}</p>
+    <p class="precio">$${product.price}</p>
     <p class= "origen">${product.community} | ${product.region}</p>
       <div class="estrellas">
         <span class="estrella">&#9733;</span>
@@ -63,7 +63,7 @@ function saveProduct(product) {
 // Función para cargar los productos desde localStorage
 function loadProducts() {
   const products = JSON.parse(localStorage.getItem("products")) || [];
-  const container = document.getElementById("productContainer");
+  const container = document.querySelector(".products-content");
   container.innerHTML = "";
 
   products.forEach((product) => {
@@ -75,17 +75,20 @@ function loadProducts() {
                                  </span>`;
 
     card.innerHTML = `
+           <div class="product-inner">
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
-            <p>$${product.price.toFixed(2)}</p>
-            <p><strong>Comunidad:</strong> ${product.community}</p>
-            <p><strong>Categoría:</strong> ${categoryDisplay}</p>
-            <p><strong>Cantidad:</strong> ${product.quantity}</p>
-            <div class="d-flex gap-2 mt-3">
-                <button class="btn-2 edit-btn" data-id="${
-                  product.id
-                }">Agregar</button>
+            <p class="precio">$${product.price}</p>
+            <p class="origen">${product.community} | ${product.region}</p>
+            <div class="estrellas">
+              <span class="estrella">&#9733;</span>
+              <span class="estrella">&#9733;</span>
+              <span class="estrella">&#9733;</span>
+              <span class="estrella">&#9733;</span>
+              <span class="estrella">&#9733;</span>
             </div>
+            <a href="#" class="agregar-carrito btn-2">Agregar</a>
+          </div>
         `;
 
     container.appendChild(card);
