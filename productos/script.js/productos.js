@@ -106,4 +106,3 @@ function getCategoryDisplayName(category) {
   };
   return categoryMap[category] || category;
 }
-
