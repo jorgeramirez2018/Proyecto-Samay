@@ -45,7 +45,7 @@ productos.slice(0, 8).forEach((product) => {
     <img src="${product.img}" alt="Imagen de artesania">
     <div class="product-txt">
       <h3>${product.productName}</h3>
-      <p class="precio">${product.price}</p>
+      <p class="precio">$${product.price}</p>
       <div class="estrellas">
         <span class="estrella">&#9733;</span>
         <span class="estrella">&#9733;</span>
