@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In - Samay</title>
+  <link rel="stylesheet" href="./style.css/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <main class="login-container">
+    
+
+    <div class="registro-image">
+      <img src="/Registro/imagenes/image1.jpg" alt="Imagen Comunidad" />
+      <img src="/Registro/imagenes/image2.jpeg" alt="Artesanía" />
+    </div>
+
+    <!-- Columna derecha con formulario -->
+    <div class="login-formulario">
+    <div class="logo-title-container">
+      <img src="/Registro/imagenes/Logo Samay Oscuro.png"
+           alt="Logo Samay"
+           class="logo-registro" />
+    </div>
+
+    <form id="form-login">
+      <input type="email"
+             id="username"
+             placeholder="Correo electrónico"
+             required />
+      <input type="password"
+             id="password"
+             placeholder="Contraseña"
+             required minlength="6" />
+      <button type="submit">Iniciar sesión</button>
+    </form>
+
+    <p class="login-link">
+      ¿No tienes cuenta?
+      <a href="/Registro/registro.html">Regístrate</a>
+    </p>
+  </div>
+  </main>
+
+  <!-- Footer (puedes linkearlo con JavaScript si está en archivo separado) -->
+  <div id="footer"></div>
+
+  <script src="script.js/login.js"></script>
+</body>
+</html>
