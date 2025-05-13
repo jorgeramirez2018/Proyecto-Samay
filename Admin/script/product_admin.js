@@ -162,12 +162,12 @@ function loadProducts() {
             <td>$${product.price.toFixed(2)}</td>
             <td>${product.quantity}</td>
             <td>
-                <button class="btn btn-sm btn-outline-secondary me-1 edit-btn" data-id="${product.id}">
-                    <box-icon name='edit-alt' size='sm'></box-icon>
-                </button>
-                <button class="btn btn-sm btn-outline-danger delete-btn" data-id="${product.id}">
-                    <box-icon name='trash' size='sm'></box-icon>
-                </button>
+            <button class="btn btn-sm btn-secondary rounded-pill px-3 me-1 edit-btn" data-id="${product.id}">
+                <i class='bx bx-edit-alt' style='color: white;'></i>                
+            </button>
+            <button class="btn btn-sm btn-danger rounded-pill px-3 delete-btn" data-id="${product.id}">
+                <i class='bx bx-trash' style='color: white;'></i>
+            </button>
             </td>
         `;
         
