@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const password = form.password.value;
     
     // Validar nombre
-    if (nombre.length < 3) {
-      mostrarError('Por favor, ingresa un nombre válido (mínimo 3 caracteres)');
+    if (nombre.length < 4) {
+      mostrarError('Por favor, ingresa un nombre válido (mínimo 4 caracteres)');
       return false;
     }
     
@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
       mostrarError('La contraseña debe incluir al menos un número');
       return false;
     }
+
+    ocultarError();
     
     // Si todo está correcto, guardar en localStorage y redirigir
     guardarUsuario(nombre, telefono, email, password);
@@ -83,21 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Función para mostrar mensajes de error
-  function mostrarError(mensaje) {
-    // Verificar si ya existe un mensaje de error
-    let errorElement = document.querySelector('.error-mensaje');
-    
-    if (!errorElement) {
-      // Crear un nuevo elemento para el mensaje de error
-      errorElement = document.createElement('div');
-      errorElement.className = 'error-mensaje';
-      form.parentNode.insertBefore(errorElement, form);
-    }
-    
-    // Agregar el mensaje y mostrar
-    errorElement.textContent = mensaje;
-    errorElement.style.color = 'red';
-    errorElement.style.marginBottom = '15px';
+ function mostrarError(mensaje) {
+  const errorElement = document.getElementById('errorMensaje');
+  errorElement.textContent = mensaje;
+  errorElement.style.display = 'block';
+  }
+
+  function ocultarError() {
+  const errorElement = document.getElementById('errorMensaje');
+  errorElement.textContent = '';
+  errorElement.style.display = 'none';
   }
   
  function guardarUsuario(nombre, telefono, email, password) {
@@ -133,12 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Redireccionar a la página principal 
     alert('¡Registro exitoso! Bienvenido/a a Samay.');
-    window.location.href = '../home/index.html'; // Cambia esta ruta según tu estructura
+    window.location.href = '../home/index.html'; 
   }
   
   // Agregar evento submit al formulario
   form.addEventListener('submit', validarFormulario);
 });
-
-
 

@@ -18,12 +18,13 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--algodon);
+  height: 100vh;
 }
 
 /* Contenedor principal dividido en dos columnas */
 .registro-container {
   display: flex;
-  height: 100vh;
+  height: 110vh;
 }
 
 /* Columna izquierda: imágenes llenan el espacio completo */
@@ -66,7 +67,12 @@ body {
 /* Logo */
 .logo-registro {
   width: 300px;
-  height: auto;  
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-registro:hover {
+  transform: scale(1.05);
 }
 
 /* Formulario */
@@ -107,6 +113,15 @@ form button:hover {
   background-color: var(--tierra);
   transform: scale(1.03);
 }
+
+.error-mensaje {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 10px;  
+  display: block;
+}
+
+
 
 /* Enlace a login */
 .login-link {
