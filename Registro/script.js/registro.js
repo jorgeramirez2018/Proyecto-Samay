@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Establecer sesión activa
     localStorage.setItem('sesionActiva', 'true');
     
-    // Redireccionar a la página principal o dashboard (ajustar según sea necesario)
+    // Redireccionar a la página principal 
     alert('¡Registro exitoso! Bienvenido/a a Samay.');
     window.location.href = '../home/index.html'; // Cambia esta ruta según tu estructura
   }
@@ -115,5 +115,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//REDIRIGIR AL HOME SI PASA VALIDACIONES
 
