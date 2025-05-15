@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Cargar la navbar
+  fetch("/navbar/navbar.html")
+    .then((res) => res.text())
+    .then((data) => {
+      const container = document.getElementById("navbar");
+      const shadow = container.attachShadow({ mode: "open" });
+      shadow.innerHTML = `
+        <link rel="stylesheet" href="/navbar/style.css/navbar.css">
+        ${data}
+      `;
+    });
+
+  // Footer (si también lo usas)
   fetch("/footer/footer.html")
     .then((res) => res.text())
     .then((data) => {
