@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Cargar la navbar
   fetch("/navbar/navbar.html")
     .then((res) => res.text())
     .then((data) => {
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     });
 
-  // Footer (si también lo usas)
   fetch("/footer/footer.html")
     .then((res) => res.text())
     .then((data) => {
