@@ -84,7 +84,7 @@ function authenticateUser(email, password) {
       //  información de sesión activa
       localStorage.setItem('currentUser', JSON.stringify({
         email: user.email,
-        name: user.name
+        name: user.nombre
       }));
       
       // Redireccionar a la página de inicio

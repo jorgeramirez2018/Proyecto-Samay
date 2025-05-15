@@ -101,22 +101,36 @@ document.addEventListener('DOMContentLoaded', function() {
     errorElement.style.marginBottom = '15px';
   }
   
-  // Función para guardar los datos del usuario en localStorage
-  function guardarUsuario(nombre, telefono, email, password) {
-    // Crear objeto con datos del usuario
-    const usuario = {
-      nombre: nombre,
-      telefono: telefono,
-      email: email,
-      password: password, // En una aplicación real, nunca guardar contraseñas en texto plano
-      fechaRegistro: new Date().toISOString()
-    };
-    
-    // Guardar usuario en localStorage
-    localStorage.setItem('usuario', JSON.stringify(usuario));
-    
-    // Establecer sesión activa
-    localStorage.setItem('sesionActiva', 'true');
+ function guardarUsuario(nombre, telefono, email, password) {
+  const usuario = {
+    nombre: nombre,
+    telefono: telefono,
+    email: email,
+    password: password, // ⚠️ Recuerda: esto debe cifrarse en un proyecto real
+    fechaRegistro: new Date().toISOString()
+  };
+
+  // Obtener usuarios existentes
+  const usuariosGuardados = JSON.parse(localStorage.getItem('users')) || [];
+
+  // Verificar si ya hay un usuario con ese email
+  const yaRegistrado = usuariosGuardados.some(user => user.email === email);
+  if (yaRegistrado) {
+    mostrarError("Este correo ya está registrado.");
+    return;
+  }
+
+  // Agregar el nuevo usuario al array
+  usuariosGuardados.push(usuario);
+
+  // Guardar el array actualizado en localStorage
+  localStorage.setItem('users', JSON.stringify(usuariosGuardados));
+
+  // Guardar sesión actual
+  localStorage.setItem('currentUser', JSON.stringify({
+    email: usuario.email,
+    name: usuario.nombre
+  }));
     
     // Redireccionar a la página principal 
     alert('¡Registro exitoso! Bienvenido/a a Samay.');
