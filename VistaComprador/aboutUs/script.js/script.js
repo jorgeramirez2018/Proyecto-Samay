@@ -1,15 +1,15 @@
-function marcarEnlaceActivo() {
-  const navLinks = document.querySelectorAll(".navbar a");
-  const currentPath = window.location.pathname.replace(/\/$/, "");
+let h1 = document.querySelector('.nosotros h1');
 
-  navLinks.forEach((link) => {
-    const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
+h1.addEventListener('mouseenter', function () {
+  h1.style.transform = 'scale(1.1)';
+});
 
-    if (currentPath.endsWith(linkPath)) {
-      link.classList.add("active");
-    }
-  });
-}
+h1.addEventListener('mouseleave', function () {
+  h1.style.transform = 'scale(1)';
+});
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/navbar/navbar.html")
@@ -17,9 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       document.getElementById("navbar").innerHTML = data;
       activarHamburguesa();
-      marcarEnlaceActivo();
     });
 });
+
+//boton hamburguesa
+
+
 function activarHamburguesa() {
   const menuToggle = document.querySelector("#menu-toggle");
   const navbar = document.querySelector(".navbar");
@@ -33,6 +36,7 @@ function activarHamburguesa() {
   }
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/footer/footer.html")
     .then((res) => res.text())
@@ -45,12 +49,3 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     });
 });
-
-const displayCartCounter = () => {
-  const cartCounter = document.getElementById("cart-counter");
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const totalItems = cart.reduce((acc, product) => acc + product.quanty, 0);
-  if (cartCounter) {
-    cartCounter.innerText = totalItems;
-  }
-};

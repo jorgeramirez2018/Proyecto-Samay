@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const displayCart = () => {
+    cart = JSON.parse(localStorage.getItem("cart")) || []; //
     modalContainer.innerHTML = "";
     modalContainer.style.display = "block";
     modalOverlay.style.display = "block";
@@ -76,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteCartProduct(product.id);
       });
     });
+    
 
     // Modal Footer
     const total = cart.reduce((acc, elm) => acc + elm.price * elm.quanty, 0);
@@ -121,4 +123,3 @@ document.addEventListener("DOMContentLoaded", () => {
   cartBtn.addEventListener("click", displayCart);
   displayCartCounter();
 });
-
