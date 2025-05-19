@@ -583,16 +583,6 @@
   transform: scale(1.05);
 }
 
-.navbar a {
-  border-bottom: 0.2rem solid transparent;
-}
-
-.navbar a.active,
-.navbar a:hover {
-  border-bottom-color: var(--maiz);
-  color: var(--maiz);
-}
-
 
 
 

@@ -9,6 +9,20 @@ h1.addEventListener('mouseleave', function () {
 });
 
 
+function marcarEnlaceActivo() {
+  const navLinks = document.querySelectorAll(".navbar a");
+  const currentPath = window.location.pathname.replace(/\/$/, "");
+
+  navLinks.forEach((link) => {
+    const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
+
+    if (currentPath.endsWith(linkPath)) {
+      link.classList.add("active");
+    }
+  });
+}
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       document.getElementById("navbar").innerHTML = data;
       activarHamburguesa();
+      marcarEnlaceActivo();
     });
 });
 

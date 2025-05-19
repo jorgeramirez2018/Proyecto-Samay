@@ -28,7 +28,7 @@
   }
 
   section {
-    min-height: 100vh;
+    min-height: 100vh ;
     padding: 10rem 10% 2rem;
   }
 
@@ -89,38 +89,39 @@
 
   .btn-login,
   .btn-register {
-    padding: 1.2rem 2.5rem !important;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 1.6rem;
-    line-height: 1.2;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    position: relative;
-    background-color: transparent;
-    overflow: hidden;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: 0.3s ease;
   }
 
-  /* LOGIN */
   .btn-login {
-    border: 2px solid var(--maiz) !important;
+    background-color: transparent;
+    color: var(--text-color);
+
+    border: 2px solid var(--maiz);
+
+    border: 3px solid var(--maiz);
+
+  }
+
+  .btn-login:hover {
+    background-color: var(--tierra);
     color: var(--maiz);
-
+   
   }
 
-  /* REGISTER */
   .btn-register {
-    background-color: var(--verde);
-    color: var(--tierra);
-
+    background-color: transparent;
+    color: var(--text-color);
+    border: 3px solid var(--maiz);
   }
 
-  /* HOVER ESTILO */
-  .btn-login:hover,
   .btn-register:hover {
     background-color: var(--tierra);
     color: var(--maiz);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .menu-toggle {
@@ -147,14 +148,14 @@
       z-index: 99;
     }
 
-
+    
     .navbar.active {
       display: flex;
     }
 
     .navbar-actions {
       flex-direction: column;
-      width: 100%;
+      width: 100%;     
       align-items: flex-start;
     }
 
@@ -171,12 +172,12 @@
     .navbar {
       gap: 1.5rem;
     }
-
+  
     .navbar a {
       font-size: 1.4rem;
       padding: 0.4rem 0.8rem;
     }
-
+  
     .btn-login,
     .btn-register {
       font-size: 1.3rem;
@@ -184,3 +185,5 @@
     }
 
   }
+  
+  
