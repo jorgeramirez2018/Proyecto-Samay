@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/navbar/navbar.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("navbar").innerHTML = data;
+      activarHamburguesa();
+      marcarEnlaceActivo();
+
+    });
+});
 function marcarEnlaceActivo() {
   const navLinks = document.querySelectorAll(".navbar a");
   const currentPath = window.location.pathname.replace(/\/$/, "");
@@ -10,16 +20,6 @@ function marcarEnlaceActivo() {
     }
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("/navbar/navbar.html")
-    .then((res) => res.text())
-    .then((data) => {
-      document.getElementById("navbar").innerHTML = data;
-      activarHamburguesa();
-      marcarEnlaceActivo();
-    });
-});
 function activarHamburguesa() {
   const menuToggle = document.querySelector("#menu-toggle");
   const navbar = document.querySelector(".navbar");
@@ -54,3 +54,4 @@ const displayCartCounter = () => {
     cartCounter.innerText = totalItems;
   }
 };
+

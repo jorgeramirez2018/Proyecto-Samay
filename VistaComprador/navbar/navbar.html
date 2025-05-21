@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar</title>
-    <link rel="stylesheet" href="/navbar/style.css/style.css" />
+    <link rel="stylesheet" href="/VistaComprador/navbar/style.css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,23 +32,26 @@
       </div>
 
       <nav class="navbar" id="navbar">
-        <a href="../home/index.html" class="active">Inicio</a>
-        <a href="../aboutUs/acercaDe.html">Acerca de</a>
-        <a href="../contact/contacto.html">Contáctenos</a>
-        <a href="../productos/productos.html">Productos</a>
-        <a href="#">Historias</a>
-
+        <a href="/VistaComprador/home/index.html">Inicio</a>
+        <a href="/VistaComprador/aboutUs/acercaDe.html">Acerca de</a>
+        <a href="/VistaComprador/contact/contacto.html">Contáctenos</a>
+        <a href="/VistaComprador/productos/productos.html">Productos</a>
+        <a href="../historias">Historias</a>
         <div class="navbar-actions">
-          <a href="../Registro/registro.html" class="btn-login"
-            >Iniciar Sesión</a
-          >
-          <a href="../Registro/registro.html" class="btn-register"
-            >Registrarse</a
-          >
+          <div class="user-menu">
+            <button class="user-icon" onclick="toggleUserMenu()">
+              <box-icon name="user" size="lg"></box-icon>
+            </button>
+            <ul class="dropdown-menu" id="userDropdown">
+              <!-- <li><a href="../Perfil/perfil.html">Mis Datos</a></li> -->
+              <li><a href="/home/index.html">Cerrar Sesión</a></li>
+            </ul>
+          </div>
         </div>
-      </nav>
-    </header>
+        </nav>
+        </header>
 
-    <script src="script.js/script.js"></script>
+    <script src="/VistaComprador/navbar/script.js/script.js"></script>
+    
   </body>
 </html>
