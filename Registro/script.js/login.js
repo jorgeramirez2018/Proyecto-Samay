@@ -70,24 +70,30 @@ function isValidEmail(email) {
 function authenticateUser(email, password) {
   try {
     // Obtener usuarios del localStorage
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
     // Buscar el usuario por correo electrónico
-    const user = storedUsers.find(user => user.email === email);
-    
+    const user = storedUsers.find((user) => user.email === email);
+
     if (user && user.password === password) {
-      // Credenciales correctas
       showAlert("¡Inicio de sesión exitoso!", "success");
-      
-      //  información de sesión activa
-      localStorage.setItem('currentUser', JSON.stringify({
-        email: user.email,
-        name: user.nombre
-      }));
-      
-      // Redireccionar a la página de inicio
+
+      // Guardar información de sesión activa
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          email: user.email,
+          name: user.nombre,
+        })
+      );
+
+      // Redirección según el tipo de usuario
       setTimeout(() => {
-        window.location.href = '../../home/index.html'; 
+        if (user.email === "samay@gmail.com") {
+          window.location.href = "/Admin/vistas/productos.html"; // Ruta del admin
+        } else {
+          window.location.href = "/VistaComprador/home/index.html"; // Ruta del usuario normal
+        }
       }, 1500);
     } else {
       showAlert("Correo electrónico o contraseña inválidos", "error");

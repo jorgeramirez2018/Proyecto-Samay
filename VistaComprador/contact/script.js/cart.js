@@ -121,3 +121,4 @@ document.addEventListener("DOMContentLoaded", () => {
   cartBtn.addEventListener("click", displayCart);
   displayCartCounter();
 });
+
