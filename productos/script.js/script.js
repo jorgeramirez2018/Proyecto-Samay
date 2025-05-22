@@ -34,6 +34,17 @@ function activarHamburguesa() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const filtroToggle = document.getElementById("toggle-filtros");
+  const sidebar = document.getElementById("sidebar");
+
+  if (filtroToggle && sidebar) {
+    filtroToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   fetch("/footer/footer.html")
     .then((res) => res.text())
     .then((data) => {
