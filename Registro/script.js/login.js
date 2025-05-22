@@ -130,3 +130,17 @@ function showAlert(message, type) {
   }, 3000);
 }
 
+// Visibilidad del ojito en la contraseña
+document.getElementById('togglePassword').addEventListener('click', function() {
+  const password = document.getElementById('password');
+  const icon = this;
+  
+  if (password.type === 'password') {
+    password.type = 'text';
+    icon.classList.replace('bx-hide', 'bx-show');
+  } else {
+    password.type = 'password';
+    icon.classList.replace('bx-show', 'bx-hide');
+  }
+});
+
