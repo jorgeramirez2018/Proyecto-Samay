@@ -536,7 +536,7 @@ body {
   transform: scale(1.05);
 }
 
-/* AJUSTE DE CARDS LOCAL STORAGE PARA IGUALAR PRIMER GRID */
+/* AJUSTE DE CARDS LOCAL STORAGE */
 
 .products.container {
   max-width: 1200px;
