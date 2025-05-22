@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Redireccionar a la página principal 
     alert('¡Registro exitoso! Bienvenido/a a Samay.');
-    window.location.href = '../home/index.html'; 
+    window.location.href = '/VistaComprador/home/index.html'; 
   }
   
   // Agregar evento submit al formulario
