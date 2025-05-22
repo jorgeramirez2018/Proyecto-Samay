@@ -170,27 +170,6 @@ body {
 }
 
 
-/* CARDS LOCAL STORAGE */
-.products-content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding-left: 20rem;
-
-}
-
-.product-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
-/* CARDS LOCAL STORAGE */
-
-
 .catproductos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -252,7 +231,7 @@ body {
 
 .products-content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
   grid-auto-rows: 1fr;
   /* Asegura alturas iguales por fila */
@@ -557,6 +536,57 @@ body {
   transform: scale(1.05);
 }
 
+/* AJUSTE DE CARDS LOCAL STORAGE PARA IGUALAR PRIMER GRID */
+
+.products.container {
+  max-width: 1200px;
+  margin: 0.2rem auto;
+  /* padding: 0 2rem;   */
+  margin-bottom: 2rem;
+  padding-right: 3rem;
+}
+
+.products-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(33.5rem, 1fr));
+  gap: 2rem;
+  justify-content: center;  
+  padding-left: 26.5rem;  
+}
+
+.products-content .product {
+  max-width: none;
+  width: 100%;
+  margin: auto;
+  padding: 5rem 2rem;
+  background-color: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.products-content .product img {
+  width: 22rem;
+  height: 20rem;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+}
+
+.products-content .product h3 {
+  color: var(--tierra);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 6rem;
+}
 
 
 
@@ -681,4 +711,28 @@ body {
   .titulo-filtros {
     display: none;
   }
+
+  /* LOCAL STORAGE */
+
+  @media (max-width: 1024px) {
+  .products-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  }
+
+  @media (max-width: 768px) {
+  .catproductos-grid,
+  .products-content {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .products-content .product {
+    max-width: 35rem;
+    margin: auto; /* Centra la card */
+    
+  }
+}
+
+  
 }
