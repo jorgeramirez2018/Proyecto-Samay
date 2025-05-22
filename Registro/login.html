@@ -32,10 +32,13 @@
              id="username"
              placeholder="Correo electrónico"
              required />
-      <input type="password"
-             id="password"
-             placeholder="Contraseña"
-             required minlength="6" />
+      <div class="password-wrapper">
+        <input type="password"
+              id="password"
+              placeholder="Contraseña"
+              required minlength="6" />
+        <i class='bx bx-hide' id="togglePassword"></i>
+      </div>
       <button type="submit">Iniciar sesión</button>
     </form>
 
