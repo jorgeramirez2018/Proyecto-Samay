@@ -57,12 +57,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const displayCartCounter = () => {
-  const cartCounter = document.getElementById("cart-counter");
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const totalItems = cart.reduce((acc, product) => acc + product.quanty, 0);
-  if (cartCounter) {
-    cartCounter.innerText = totalItems;
-  }
-};
-
