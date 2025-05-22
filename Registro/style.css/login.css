@@ -198,3 +198,7 @@ form button:hover {
 #togglePassword:hover {
   color: var(--verde);
 }
+
+.login-link.forgot-password {
+  margin-top: 0px; /* Ajusta este valor según necesites */
+}
