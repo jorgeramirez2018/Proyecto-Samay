@@ -92,6 +92,8 @@ function renderizarFiltros() {
     listaFiltros.appendChild(details);
   }
 
+  
+
   crearGrupoFiltro("Categoría", categorias, "categoria");
   crearGrupoFiltro("Comunidad", comunidades, "community");
   crearGrupoFiltro("Región", regiones, "region");
@@ -132,6 +134,17 @@ function renderizarFiltros() {
     renderizarProductos(productos);
   });
   listaFiltros.appendChild(limpiarBtn);
+
+   if (window.innerWidth <= 870) {
+    const sidebar = document.getElementById("sidebar");
+    const filtrosInteractivos = sidebar.querySelectorAll("li, button");
+
+    filtrosInteractivos.forEach(elemento => {
+      elemento.addEventListener("click", () => {
+        sidebar.classList.remove("show");
+      });
+    });
+  }
 }
 
 function filtrarProductos(tipo, valor) {
