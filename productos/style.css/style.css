@@ -69,12 +69,8 @@ body {
   text-align: center;
   margin: 0;
   padding: 0 2rem;
-<<<<<<< HEAD
-  transition: font-size 0.3s ease;  
-=======
   transition: font-size 0.3s ease;
   font-weight: bold;
->>>>>>> 81b6df2a85581c7944d7e51d8c0c5c069c45c8bf
 }
 
 .catproductos h1:hover {
