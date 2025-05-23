@@ -92,26 +92,26 @@ const displayCart = async() => {
       return;
     }
 
-    try {
+    // try {
 
-      for (const product of cart) {
-        const response = await fetch("http://localhost:8080/articulo", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nombre: product.productName,
-            precio: product.price,
-          }),
-        });
+    //   for (const product of cart) {
+    //     const response = await fetch("http://localhost:8080/articulo", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         nombre: product.productName,
+    //         precio: product.price,
+    //       }),
+    //     });
 
-        if (!response.ok) {
-          throw new Error(
-            `Error al enviar el producto: ${product.productName}`
-          );
-        }
-      }
+    //     if (!response.ok) {
+    //       throw new Error(
+    //         `Error al enviar el producto: ${product.productName}`
+    //       );
+    //     }
+    //   }
 
       alert("¡Gracias por tu compra!");
       cart.length = 0;
@@ -119,12 +119,12 @@ const displayCart = async() => {
       modalContainer.style.display = "none";
       modalOverlay.style.display = "none";
       displayCartCounter();
-    } catch (error) {
-      console.error("Error al procesar la compra:", error);
-      alert(
-        "Hubo un error al procesar tu compra. Por favor, intenta nuevamente."
-      );
-    }
+    // } catch (error) {
+    //   console.error("Error al procesar la compra:", error);
+    //   alert(
+    //     "Hubo un error al procesar tu compra. Por favor, intenta nuevamente."
+    //   );
+    // }
   });
 };
 

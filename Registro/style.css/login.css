@@ -174,3 +174,31 @@ form button:hover {
     margin-bottom: 40px;
   } */
 }
+
+/* Contenedor de contraseña */
+.password-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+#togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  color: #999;
+  font-size: 20px;
+}
+
+#togglePassword:hover {
+  color: var(--verde);
+}
+
+.login-link.forgot-password {
+  margin-top: 0px; /* Ajusta este valor según necesites */
+}
