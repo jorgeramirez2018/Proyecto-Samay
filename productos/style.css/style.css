@@ -65,11 +65,11 @@ body {
   color: var(--algodon);
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2rem, 8vw, 5rem);
-  z-index: 2;
+  z-index: 1;
   text-align: center;
   margin: 0;
   padding: 0 2rem;
-  transition: font-size 0.3s ease;
+  transition: font-size 0.3s ease;  
 }
 
 .catproductos h1:hover {
