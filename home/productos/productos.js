@@ -2,7 +2,7 @@ const productos = [
   {
     id: 1,
     productName: "Manilla",
-    community: "Quimabaya",
+    community: "Quimbaya",
     region: "Quindio",
     category: "Joyería",
     price: 50000,

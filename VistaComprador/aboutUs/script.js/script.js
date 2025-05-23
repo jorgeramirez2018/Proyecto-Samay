@@ -34,6 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
       marcarEnlaceActivo();
     });
 });
+
+function marcarEnlaceActivo() {
+  const navLinks = document.querySelectorAll(".navbar a");
+  const currentPath = window.location.pathname.replace(/\/$/, "");
+
+  navLinks.forEach((link) => {
+    const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
+
+    if (currentPath.endsWith(linkPath)) {
+      link.classList.add("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/VistaComprador/navbar/navbar.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("navbar").innerHTML = data;
+      activarHamburguesa();
+      marcarEnlaceActivo();
+    });
+});
 function toggleUserMenu() {
   const menu = document.getElementById("userDropdown");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
@@ -47,7 +70,6 @@ window.addEventListener("click", function (e) {
     dropdown.style.display = "none";
   }
 }); 
-
 
 //boton hamburguesa
 
