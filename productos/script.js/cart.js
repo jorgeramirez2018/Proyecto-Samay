@@ -42,9 +42,9 @@ const displayCart = async () => {
           <span class="quantity-input">${product.quanty}</span>
           <span class="quantity-btn-increse">+</span>
         </div>
-        <div class="price">${
-          parseFloat(product.price) * parseFloat(product.quanty)
-        } $</div>
+    <div class="price">${
+      (product.price) * (product.quanty)
+    } $</div>
         <div class="delete-product">❌</div>
       </div>
     `;
@@ -77,11 +77,17 @@ const displayCart = async () => {
   // Modal Footer
   const total = cart.reduce((acc, elm) => acc + elm.price * elm.quanty, 0);
 
+  const formatoCOP = new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    minimumFractionDigits: 0,
+  });
+
   const modalFooter = document.createElement("div");
   modalFooter.className = "modal-footer";
   modalFooter.innerHTML = `
   <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
-  <div class="total-price">Total: ${total} $</div>
+  <div class="total-price">Total: ${formatoCOP.format(total)} $</div>
 `;
   modalContainer.append(modalFooter);
 
@@ -112,12 +118,12 @@ const displayCart = async () => {
     //     }
     //   }
 
-      alert("¡Gracias por tu compra!");
-      cart.length = 0;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      modalContainer.style.display = "none";
-      modalOverlay.style.display = "none";
-      displayCartCounter();
+    alert("¡Gracias por tu compra!");
+    cart.length = 0;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    modalContainer.style.display = "none";
+    modalOverlay.style.display = "none";
+    displayCartCounter();
     // } catch (error) {
     //   console.error("Error al procesar la compra:", error);
     //   alert(

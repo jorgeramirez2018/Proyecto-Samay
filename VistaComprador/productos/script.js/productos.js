@@ -2,6 +2,15 @@
 const shopContent = document.getElementById("contenedor-catproductos");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+
+
+const formatoCOP = new Intl.NumberFormat("es-CO", {
+  style: "currency",
+  currency: "COP",
+  minimumFractionDigits: 0,
+});
+
+
 // === RENDER DESDE ARCHIVO JS ===
 function renderizarProductos(productosARenderizar) {
   shopContent.innerHTML = "";
@@ -11,7 +20,7 @@ function renderizarProductos(productosARenderizar) {
     content.innerHTML = `
       <img src="${product.img}" alt="${product.productName}">
       <h3>${product.productName}</h3>
-      <p class="precio">$${product.price}</p>
+      <p class="precio">${formatoCOP.format(product.price)}</p>
       <p class="origen">${product.community} | ${product.region}</p>
       <div class="estrellas">
         <span class="estrella">&#9733;</span><span class="estrella">&#9733;</span>
