@@ -74,6 +74,13 @@ const displayCart = async () => {
     });
   });
 
+  const formatoCOP = new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    minimumFractionDigits: 0,
+  });
+  
+
   // Modal Footer
   const total = cart.reduce((acc, elm) => acc + elm.price * elm.quanty, 0);
 
@@ -81,7 +88,7 @@ const displayCart = async () => {
   modalFooter.className = "modal-footer";
   modalFooter.innerHTML = `
   <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
-  <div class="total-price">Total: ${total} $</div>
+  <div class="total-price">Total: ${formatoCOP.format(total)} $</div>
 `;
   modalContainer.append(modalFooter);
 
