@@ -1,7 +1,28 @@
 /* Estilo general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+}
+
+:root {
+  --tierra: #5c4033;
+  --arcilla: #bb684d;
+  --text-color: #222222;
+  --maiz: #ffd54f;
+  --algodon: #f5f3f9;
+  --verde: #789064;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #333;
 }
 body {
@@ -28,16 +49,17 @@ body {
 }
 
 .texto h2 {
-  font-size: 2.5rem;
+  font-size: 4rem;
   color: #5c4033;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
 .texto p {
-  font-size: 1.2rem;
-  color: #5c4033;
+  font-size: 2rem;
+  color: var(--text-color);
   line-height: 1.6;
+  text-align: justify;
 }
 
 .imagen-centro {
@@ -55,11 +77,12 @@ body {
 /* Header con imagen de fondo */
 .nosotros {
   position: relative;
-  height: 40vh;
+  height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-top: 8.5rem;
 }
 
 .fondo-nosotros {
@@ -85,15 +108,21 @@ body {
 
 .nosotros h1 {
   position: relative;
-  color: #F5F3F9;
+  color: var(--algodon);
   font-family: 'Montserrat', sans-serif;
-  font-size: 20rem;
+  font-size: clamp(2rem, 8vw, 5rem);
   z-index: 2;
   text-align: center;
   margin: 0;
   padding: 0 2rem;
   transition: font-size 0.3s ease;
+  font-weight: bold;
 }
+
+.nosotros h1:hover {
+  font-size: 6rem;
+}
+
 
 .nosotros h1 {
   font-size: clamp(2rem, 8vw, 5rem);
@@ -137,14 +166,16 @@ body {
 
 .historia-info h2 {
   margin-top: 0;
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #5c4033;
 }
 
 .historia-info p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   color: #444;
+  margin-top: 5px;
+  text-align: justify;
 }
 
 /* Responsivo */

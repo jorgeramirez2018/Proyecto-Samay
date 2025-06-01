@@ -20,7 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
       marcarEnlaceActivo();
     });
 });
+function toggleUserMenu() {
+  const menu = document.getElementById("userDropdown");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
 
+// Cerrar si hace clic fuera del menú
+window.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("userDropdown");
+  const button = document.querySelector(".user-icon");
+  if (!button.contains(e.target)) {
+    dropdown.style.display = "none";
+  }
+}) 
 //boton hamburguesa
 
 function activarHamburguesa() {
