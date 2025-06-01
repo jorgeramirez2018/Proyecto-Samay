@@ -39,7 +39,7 @@ body {
 .contenido-flex {
   display: flex;
   align-items: center;       /* Centra verticalmente */
-  gap: 30px;                 /* Espacio entre texto e imagen */
+  gap: 40px;                 /* Espacio entre texto e imagen */
   flex-wrap: wrap;           /* Que sea responsive y baje la imagen debajo en pantallas pequeñas */
 }
 
@@ -70,9 +70,10 @@ body {
 .imagen-centro img {
   max-width: 100%;          
   height: auto;
-  border-radius: 15px;
+  border-radius: 100px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   display: inline-block;
+  
 }
 /* Header con imagen de fondo */
 .nosotros {

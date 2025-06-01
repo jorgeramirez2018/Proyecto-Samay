@@ -145,7 +145,7 @@ section{
   width: 50%;
   padding-right: 1rem;
   max-width: 400px;
-  text-align: center;
+  text-align: justify;
 }
 
 .texto h2 {
@@ -160,7 +160,10 @@ section{
   color: #F5F3F9;
   line-height: 1.6;
   margin-top: 0;
+  font-size: 1.8rem;
   font-family: 'Raleway', 'sans-serif';
+  text-align: justify;
+  margin-right: 15px;
 }
 
 .somos {

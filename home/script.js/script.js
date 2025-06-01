@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       shadow.innerHTML = `
         <link rel="stylesheet" href="/footer/style/footerstyle.css">
         ${data}
-      `;
+      `;    
     });
 });
 
