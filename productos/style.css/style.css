@@ -65,7 +65,7 @@ body {
   color: var(--algodon);
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2rem, 8vw, 5rem);
-  z-index: 2;
+  z-index: 1;
   text-align: center;
   margin: 0;
   padding: 0 2rem;
@@ -128,7 +128,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 5px;
-  font-size: 22px;
+  font-size:20px;
 }
 
 /* Ítems con viñetas */
@@ -173,7 +173,7 @@ body {
 
 .catproductos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
@@ -232,7 +232,7 @@ body {
 
 .products-content {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 5rem;
   grid-auto-rows: 1fr;
   /* Asegura alturas iguales por fila */
@@ -243,7 +243,7 @@ body {
   text-align: center;
   width: 100%;
   margin: auto;
-  padding: 5rem 2rem;
+  padding: 2rem 2rem;
   border-radius: 1.2rem;
   background-color: #fff;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);

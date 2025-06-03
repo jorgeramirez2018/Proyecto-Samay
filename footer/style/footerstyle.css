@@ -73,6 +73,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 26px;
     transition: background 0.3s ease;
     height: 32px;
   }
@@ -113,5 +114,15 @@
 
   .footersection button {
     width: 100%;
+    
   }
 }
+
+ @media (max-width: 1366px){
+  .footersection input[type="email"] {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 12px;
+    margin-left: 50px;
+  }
+ }

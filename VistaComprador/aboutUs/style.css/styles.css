@@ -161,6 +161,9 @@ section{
   line-height: 1.6;
   margin-top: 0;
   font-family: 'Raleway', 'sans-serif';
+  text-align: justify;
+  font-size: 1.8rem;
+  margin-right: 15px;
 }
 
 .somos {

@@ -98,6 +98,7 @@ function emailJs() {
 
       saludo.textContent = `¡Hola ${nombre}! 🔶 Gracias por enviar tus datos, nos contactaremos pronto contigo.`;
       saludo.style.color = "green";
+      saludo.style.marginTop = "10px";
 
       formulario.reset();
     } catch (error) {
