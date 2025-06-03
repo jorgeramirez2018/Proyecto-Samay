@@ -3,7 +3,7 @@ const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
 const cartCounter = document.getElementById("cart-counter");
 
-const displayCart = async() => {
+const displayCart = async () => {
   modalContainer.innerHTML = "";
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
@@ -118,12 +118,12 @@ const displayCart = async() => {
     //     }
     //   }
 
-      alert("¡Gracias por tu compra!");
-      cart.length = 0;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      modalContainer.style.display = "none";
-      modalOverlay.style.display = "none";
-      displayCartCounter();
+    alert("¡Gracias por tu compra!");
+    cart.length = 0;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    modalContainer.style.display = "none";
+    modalOverlay.style.display = "none";
+    displayCartCounter();
     // } catch (error) {
     //   console.error("Error al procesar la compra:", error);
     //   alert(
