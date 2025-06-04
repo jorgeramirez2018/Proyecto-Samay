@@ -179,28 +179,39 @@ renderizarProductos(productos);
 renderizarFiltros();
 
 
-// === CARGA PARA GRID 2 (LOCAL STORAGE) ===
-loadProducts();
 
-function loadProducts() {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  const container = document.querySelector(".products-content");
-  container.innerHTML = "";
 
-  products.forEach((product) => {
-    const card = document.createElement("div");
-    card.className = "product";
+// ✅ Nueva función para cargar productos desde el backend
+async function cargarProductosDesdeBackend() {
+  try {
+    const response = await fetch("http://localhost:8080/productos");
+    if (!response.ok) throw new Error("No se pudieron obtener los productos");
 
-    const categoryDisplay = `<span class="badge category-${product.category}">
-                              ${getCategoryDisplayName(product.category)}
-                            </span>`;
+    const productos = await response.json();
 
-    card.innerHTML = `
-       <div class="product-inner">
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p class="precio">$${product.price}</p>
-        <p class="origen">${product.community} | ${product.region}</p>
+    renderizarProductos(productos.slice(0, 8)); // solo los primeros 8
+  } catch (error) {
+    console.error("Error al cargar productos:", error);
+    shopContent.innerHTML = `<p class="error">No se pudieron cargar los productos.</p>`;
+  }
+}
+
+// ✅ Función reutilizable para renderizar los productos en el DOM
+function renderizarProductos(productos) {
+  shopContent.innerHTML = ""; // Limpiar antes de insertar
+
+  productos.forEach((product) => {
+    const content = document.createElement("div");
+    content.classList.add("product");
+
+    content.innerHTML = `
+      <img src="${
+        product.img || "https://via.placeholder.com/150"
+      }" alt="Imagen de artesanía">
+      <div class="product-txt">
+        <h3>${product.productName}</h3>
+             <p class="origen">${product.community} | ${product.region}</p>	
+        <p class="precio">${formatoCOP.format(product.price || 0)}</p>
         <div class="estrellas">
           <span class="estrella">&#9733;</span>
           <span class="estrella">&#9733;</span>
@@ -211,10 +222,39 @@ function loadProducts() {
         <a href="#" class="agregar-carrito btn-2">Agregar</a>
       </div>
     `;
-    container.appendChild(card);
+
+    shopContent.appendChild(content);
+    const button = content.querySelector(".agregar-carrito");
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      // Buscar si el producto ya está en el carrito
+      const existingProduct = cart.find((p) => p.id === product.producto_id);
+
+      if (existingProduct) {
+        // Solo incrementar cantidad
+        existingProduct.quanty++;
+      } else {
+        // Agregar nuevo producto al carrito con cantidad inicial 1
+        cart.push({
+          id: product.producto_id,
+          productName: product.productName,
+          price: parseFloat(product.price),
+          quanty: 1,
+          img: product.img,
+        });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCartCounter();
+    });
   });
 }
 
+// 👇 Llamada inicial al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  cargarProductosDesdeBackend();
+});
 function getCategoryDisplayName(category) {
   const categoryMap = {
     joyeria: "Joyería",
@@ -223,5 +263,5 @@ function getCategoryDisplayName(category) {
     tejidos: "Tejidos",
     ropa: "Ropa",
   };
-  return categoryMap[category] || category;
+  return categoryMap[category.toLowerCase()] || category;
 }

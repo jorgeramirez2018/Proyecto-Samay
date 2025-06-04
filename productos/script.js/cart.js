@@ -42,9 +42,7 @@ const displayCart = async () => {
           <span class="quantity-input">${product.quanty}</span>
           <span class="quantity-btn-increse">+</span>
         </div>
-    <div class="price">${
-      (product.price) * (product.quanty)
-    } $</div>
+        <div class="price">${product.price * product.quanty} $</div>
         <div class="delete-product">❌</div>
       </div>
     `;
@@ -62,7 +60,7 @@ const displayCart = async () => {
 
     const increase = modalBody.querySelector(".quantity-btn-increse");
     increase.addEventListener("click", () => {
-      product.quanty++;
+      product.quanty++; // ❗ Solo suma 1 al carrito, sin usar el stock original
       localStorage.setItem("cart", JSON.stringify(cart));
       displayCart();
       displayCartCounter();
@@ -70,7 +68,7 @@ const displayCart = async () => {
 
     const deleteProduct = modalBody.querySelector(".delete-product");
     deleteProduct.addEventListener("click", () => {
-      deleteCartProduct(product.id);
+      deleteCartProduct(product.id); // usa .id, no producto_id ni otra
     });
   });
 
@@ -86,9 +84,9 @@ const displayCart = async () => {
   const modalFooter = document.createElement("div");
   modalFooter.className = "modal-footer";
   modalFooter.innerHTML = `
-  <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
-  <div class="total-price">Total: ${formatoCOP.format(total)} $</div>
-`;
+    <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
+    <div class="total-price">Total: ${formatoCOP.format(total)} $</div>
+  `;
   modalContainer.append(modalFooter);
 
   const buyButton = document.getElementById("btn-buy");
@@ -98,38 +96,12 @@ const displayCart = async () => {
       return;
     }
 
-    // try {
-    //   for (const product of cart) {
-    //     const response = await fetch("http://localhost:8080/articulo", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         nombre: product.productName,
-    //         precio: product.price,
-    //       }),
-    //     });
-
-    //     if (!response.ok) {
-    //       throw new Error(
-    //         `Error al enviar el producto: ${product.productName}`
-    //       );
-    //     }
-    //   }
-
     alert("¡Gracias por tu compra!");
     cart.length = 0;
     localStorage.setItem("cart", JSON.stringify(cart));
     modalContainer.style.display = "none";
     modalOverlay.style.display = "none";
     displayCartCounter();
-    // } catch (error) {
-    //   console.error("Error al procesar la compra:", error);
-    //   alert(
-    //     "Hubo un error al procesar tu compra. Por favor, intenta nuevamente."
-    //   );
-    // }
   });
 };
 
@@ -145,6 +117,7 @@ const deleteCartProduct = (id) => {
   displayCartCounter();
 };
 
+// Contador de carrito
 const displayCartCounter = () => {
   const totalItems = cart.reduce((acc, product) => acc + product.quanty, 0);
   cartCounter.innerText = totalItems;
