@@ -45,83 +45,90 @@ document.addEventListener("DOMContentLoaded", () => {
       shadow.innerHTML = `
         <link rel="stylesheet" href="/footer/style/footerstyle.css">
         ${data}
-      `;    
+      `;
     });
 });
 
 const shopContent = document.querySelector(".products-content");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// 🔁 Formateador de moneda COP
 const formatoCOP = new Intl.NumberFormat("es-CO", {
   style: "currency",
   currency: "COP",
   minimumFractionDigits: 0,
 });
 
-productos.slice(0, 8).forEach((product) => {
-  const content = document.createElement("div");
-  content.classList.add("product");
+// ✅ Nueva función para cargar productos desde el backend
+async function cargarProductosDesdeBackend() {
+  try {
+    const response = await fetch("http://localhost:8080/productos");
+    if (!response.ok) throw new Error("No se pudieron obtener los productos");
 
-  content.innerHTML = `
-    <img src="${product.img}" alt="Imagen de artesania">
-    <div class="product-txt">
-      <h3>${product.productName}</h3>
-      <p class="precio">${formatoCOP.format(
-        product.price
-      )}</p> <!-- 💰 Aquí cambia -->
-      <div class="estrellas">
-        <span class="estrella">&#9733;</span>
-        <span class="estrella">&#9733;</span>
-        <span class="estrella">&#9733;</span>
-        <span class="estrella">&#9733;</span>
-        <span class="estrella">&#9733;</span>
+    const productos = await response.json();
+
+    renderizarProductos(productos.slice(0, 8)); // solo los primeros 8
+  } catch (error) {
+    console.error("Error al cargar productos:", error);
+    shopContent.innerHTML = `<p class="error">No se pudieron cargar los productos.</p>`;
+  }
+}
+
+// ✅ Función reutilizable para renderizar los productos en el DOM
+function renderizarProductos(productos) {
+  shopContent.innerHTML = ""; // Limpiar antes de insertar
+
+  productos.forEach((product) => {
+    const content = document.createElement("div");
+    content.classList.add("product");
+
+    content.innerHTML = `
+      <img src="${
+        product.img || "https://via.placeholder.com/150"
+      }" alt="Imagen de artesanía">
+      <div class="product-txt">
+        <h3>${product.productName}</h3>
+        <p class="precio">${formatoCOP.format(product.price || 0)}</p>
+        <div class="estrellas">
+          <span class="estrella">&#9733;</span>
+          <span class="estrella">&#9733;</span>
+          <span class="estrella">&#9733;</span>
+          <span class="estrella">&#9733;</span>
+          <span class="estrella">&#9733;</span>
+        </div>
+        <a href="#" class="agregar-carrito btn-2">Agregar</a>
       </div>
-      <a href="#" class="agregar-carrito btn-2" id="botonCarrito" data-1=""></a>
-    </div>
-  `;
+    `;
 
-  shopContent.appendChild(content);
+    shopContent.appendChild(content);
 
-  const button = content.querySelector(".agregar-carrito");
-  button.innerText = "Agregar";
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
+    const button = content.querySelector(".agregar-carrito");
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
 
-    const repeat = cart.some(
-      (repeatProduct) => repeatProduct.id === product.id
-    );
+      // Buscar si el producto ya está en el carrito
+      const existingProduct = cart.find((p) => p.id === product.producto_id);
 
-    if (repeat) {
-      cart.map((prod) => {
-        if (prod.id === product.id) {
-          prod.quanty++;
-        }
-      });
-    } else {
-      cart.push({
-        id: product.id,
-        productName: product.productName,
-        price: parseFloat(product.price),
-        quanty: product.quanty,
-        img: product.img,
-      });
-    }
+      if (existingProduct) {
+        // Solo incrementar cantidad
+        existingProduct.quanty++;
+      } else {
+        // Agregar nuevo producto al carrito con cantidad inicial 1
+        cart.push({
+          id: product.producto_id,
+          productName: product.productName,
+          price: parseFloat(product.price),
+          quanty: 1,
+          img: product.img,
+        });
+      }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-    displayCartCounter();
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCartCounter();
+    });
   });
-});
+}
 
+// 👇 Llamada inicial al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll(".navbar a");
-  const currentPath = window.location.pathname.replace(/\/$/, ""); // elimina barra final
-
-  navLinks.forEach((link) => {
-    const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
-
-    if (currentPath.endsWith(linkPath)) {
-      link.classList.add("active");
-    }
-  });
+  cargarProductosDesdeBackend();
 });
