@@ -39,8 +39,15 @@ function mostrarVentas(lista) {
       <td>${v.usuario?.nombre ?? "Sin nombre"}</td>
       <td>$${v.total?.toFixed(2) ?? "0.00"}</td>
       <td>${v.fecha_venta?.split("T")[0] ?? "-"}</td>
+      <td>
+    <button class="btn btn-sm btn-outline-primary ver-detalles" data-id="${v.venta_id}">
+      Ver detalles
+    </button>
+  </td>
     `;
     tbody.appendChild(row);
+    const btn = row.querySelector(".ver-detalles");
+    btn?.addEventListener("click", () => mostrarDetallesVenta(v.venta_id));
   });
 }
 
@@ -61,3 +68,41 @@ document.getElementById("btnExportarExcel")?.addEventListener("click", () => {
   XLSX.utils.book_append_sheet(wb, ws, "Ventas");
   XLSX.writeFile(wb, "ventas.xlsx");
 });
+
+// FUNCION MOSTRAR DETALLES VENTAS - VENTA PRODUCTO
+
+async function mostrarDetallesVenta(ventaId) {
+  try {
+    const response = await fetch(`http://localhost:8080/venta-productos/venta/${ventaId}`);
+    if (!response.ok) throw new Error("No se pudo cargar los detalles");
+
+    const detalles = await response.json();
+    const tbody = document.getElementById("detalleVentaBody");
+    tbody.innerHTML = "";
+
+    detalles.forEach(item => {
+      const nombre = item.producto?.productName ?? "Sin nombre";
+      const precio = item.precio_unitario ?? 0;
+      const cantidad = item.cantidad ?? 0;
+      const subtotal = (precio * cantidad).toFixed(2);
+      const imagen = item.producto?.img || "https://via.placeholder.com/60";
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><img src="${imagen}" alt="${nombre}" width="60" height="60" class="img-thumbnail"></td>
+        <td>${nombre}</td>
+        <td>$${precio.toFixed(2)}</td>
+        <td>${cantidad}</td>
+        <td>$${subtotal}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    const modalElement = document.getElementById("modalDetallesVenta");
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  } catch (error) {
+    console.error(error);
+    alert("Error al cargar los detalles de la venta.");
+  }
+}
