@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usuarios - Samay</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
+
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Estilos propios (usamos el de productos como base común) -->
+  <link rel="stylesheet" href="/Admin/style/productos_admin.css" />
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-lg-row">
+
+    <!-- Sidebar -->
+    <nav class="sidebar text-white" id="sidebar">
+      <div class="sidebar-content">
+        <a href="#" class="navbar-brand fw-bold text-white mb-4 d-block">Samay</a>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2 d-flex align-items-center">
+            <i class='bx bx-home' style='color: white;'></i>
+            <a class="nav-link text-white ms-2 menu-text" href="#">Inicio</a>
+          </li>
+          <li class="nav-item mb-2 d-flex align-items-center">
+            <i class='bx bxs-t-shirt' style='color: white;'></i>
+            <a class="nav-link text-white ms-2 menu-text" href="/Admin/vistas/productos.html">Productos</a>
+          </li>
+          <li class="nav-item mb-2 d-flex align-items-center">
+            <i class='bx bx-dollar-circle' style='color: white;'></i>
+            <a class="nav-link text-white ms-2 menu-text" href="/Admin/vistas/ventas.html">Ventas</a>
+          </li>
+          <li class="nav-item mb-2 d-flex align-items-center">
+            <i class='bx bx-user' style='color: white;'></i>
+            <a class="nav-link text-white ms-2 menu-text" href="/Admin/vistas/usuarios.html">Usuarios</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-auto">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2 d-flex align-items-center">
+            <i class='bx bx-exit' style='color: white;'></i>
+            <a class="nav-link text-white ms-2 menu-text" href="/home/index.html">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="content-wrapper" id="mainContent">
+      <div class="container-fluid py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1 class="fw-bold">Gestión de Usuarios</h1>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+            <i class='bx bx-plus'></i> <span class="ms-1">Agregar Usuario</span>
+          </button>
+        </div>
+
+        <!-- Tabla de usuarios -->
+        <div class="card shadow-sm">
+          <div class="card-header bg-white">
+            <h5 class="card-title mb-0">Lista de Usuarios</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover" id="userTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="userTableBody">
+                  <!-- Contenido generado con JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Agregar Usuario -->
+  <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="addUserForm">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title">Agregar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control mb-3" placeholder="Nombre" id="userName" required>
+          <input type="email" class="form-control mb-3" placeholder="Correo" id="userEmail" required>
+          <input type="password" class="form-control mb-3" placeholder="Contraseña" id="userPassword" required>
+          <input type="text" class="form-control mb-3" placeholder="Teléfono" id="userPhone">
+          <select class="form-select mb-3" id="userRole">
+            <option value="cliente" selected>Cliente</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Editar Usuario -->
+  <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" id="editUserForm">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title">Editar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editUserId">
+          <input type="text" class="form-control mb-3" id="editUserName" placeholder="Nombre" required>
+          <input type="email" class="form-control mb-3" id="editUserEmail" placeholder="Correo" required>
+          <input type="text" class="form-control mb-3" id="editUserPhone" placeholder="Teléfono">
+          <select class="form-select mb-3" id="editUserRole">
+            <option value="cliente">Cliente</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const users = [];
+
+    function renderUsers() {
+      const tbody = document.getElementById("userTableBody");
+      tbody.innerHTML = "";
+      users.forEach(user => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${user.id}</td>
+            <td>${user.nombre}</td>
+            <td>${user.correo}</td>
+            <td>${user.telefono || ''}</td>
+            <td>${user.rol}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" onclick="editUser(${user.id})">
+                <i class='bx bx-edit'></i>
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})">
+                <i class='bx bx-trash'></i>
+              </button>
+            </td>
+          </tr>`;
+      });
+    }
+
+    document.getElementById("addUserForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const newUser = {
+        id: users.length + 1,
+        nombre: document.getElementById("userName").value,
+        correo: document.getElementById("userEmail").value,
+        telefono: document.getElementById("userPhone").value,
+        rol: document.getElementById("userRole").value
+      };
+      users.push(newUser);
+      renderUsers();
+      this.reset();
+      bootstrap.Modal.getInstance(document.getElementById("addUserModal")).hide();
+    });
+
+    function editUser(id) {
+      const user = users.find(u => u.id === id);
+      document.getElementById("editUserId").value = user.id;
+      document.getElementById("editUserName").value = user.nombre;
+      document.getElementById("editUserEmail").value = user.correo;
+      document.getElementById("editUserPhone").value = user.telefono;
+      document.getElementById("editUserRole").value = user.rol;
+      new bootstrap.Modal(document.getElementById("editUserModal")).show();
+    }
+
+    document.getElementById("editUserForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const id = parseInt(document.getElementById("editUserId").value);
+      const user = users.find(u => u.id === id);
+      user.nombre = document.getElementById("editUserName").value;
+      user.correo = document.getElementById("editUserEmail").value;
+      user.telefono = document.getElementById("editUserPhone").value;
+      user.rol = document.getElementById("editUserRole").value;
+      renderUsers();
+      bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
+    });
+
+    function deleteUser(id) {
+      if (confirm("¿Eliminar este usuario?")) {
+        const index = users.findIndex(u => u.id === id);
+        users.splice(index, 1);
+        renderUsers();
+      }
+    }
+
+    renderUsers();
+  </script>
+</body>
+</html>
+
+
