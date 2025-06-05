@@ -75,6 +75,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Contraseña</th>
                     <th>Correo</th>
                     <th>Teléfono</th>
                     <th>Rol</th>
@@ -150,6 +151,30 @@
   // Al cargar la página
   document.addEventListener("DOMContentLoaded", cargarUsuariosDesdeBackend);
 
+<<<<<<< HEAD
+    function renderUsers() {
+      const tbody = document.getElementById("userTableBody");
+      tbody.innerHTML = "";
+      users.forEach(user => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${user.id}</td>
+            <td>${user.nombre}</td>
+            <td>${user.contraseña}</td>
+            <td>${user.correo}</td>
+            <td>${user.telefono || ''}</td>
+            <td>${user.rol}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" onclick="editUser(${user.id})">
+                <i class='bx bx-edit'></i>
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})">
+                <i class='bx bx-trash'></i>
+              </button>
+            </td>
+          </tr>`;
+      });
+=======
   // Obtener y renderizar usuarios
   async function cargarUsuariosDesdeBackend() {
     try {
@@ -161,9 +186,24 @@
     } catch (error) {
       console.error("Error al cargar usuarios:", error);
       alert("No se pudo cargar la lista de usuarios.");
+>>>>>>> main
     }
   }
 
+<<<<<<< HEAD
+    document.getElementById("addUserForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const newUser = {
+        id: users.length + 1,
+        nombre: document.getElementById("userName").value,
+        contraseña: document.getElementById("userPassword").value, // <- SE AGREGA AQUÍ
+        correo: document.getElementById("userEmail").value,
+        telefono: document.getElementById("userPhone").value,
+        rol: document.getElementById("userRole").value
+    };
+      users.push(newUser);
+      renderUsers();
+=======
   // Renderizar tabla
   function renderUsers(users) {
     const tbody = document.getElementById("userTableBody");
@@ -211,6 +251,7 @@
       if (!response.ok) throw new Error("Error al crear usuario");
 
       await cargarUsuariosDesdeBackend();
+>>>>>>> main
       this.reset();
       bootstrap.Modal.getInstance(document.getElementById("addUserModal")).hide();
     } catch (error) {
