@@ -1,9 +1,12 @@
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
-const cartBtn = document.getElementById("cart-btn");
-const cartCounter = document.getElementById("cart-counter");
+const cartBtn = document.getElementById("cart-btn"); // Asumo que cartBtn y cartCounter están definidos
+const cartCounter = document.getElementById("cart-counter"); // y que 'cart' es tu array de carrito global o accesible.
 
-const displayCart = async() => {
+// Asumo que 'cart' es una variable global o accesible que contiene los productos del carrito.
+// Ejemplo: let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const displayCart = async () => {
   modalContainer.innerHTML = "";
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
@@ -28,6 +31,8 @@ const displayCart = async() => {
   modalContainer.append(modalHeader);
 
   // Modal Body
+  // Asumo que 'cart' es el array que contiene los productos.
+  // Cada producto en 'cart' debe tener: id, productName, price, quanty, img
   cart.forEach((product) => {
     const modalBody = document.createElement("div");
     modalBody.className = "modal-body";
@@ -54,25 +59,26 @@ const displayCart = async() => {
     decrease.addEventListener("click", () => {
       if (product.quanty !== 1) {
         product.quanty--;
-        localStorage.setItem("cart", JSON.stringify(cart));
-        displayCart();
-        displayCartCounter();
+        localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar localStorage
+        displayCart(); // Volver a renderizar el carrito
+        displayCartCounter(); // Actualizar el contador del carrito
       }
     });
 
     const increase = modalBody.querySelector(".quantity-btn-increse");
     increase.addEventListener("click", () => {
       product.quanty++;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      displayCart();
-      displayCartCounter();
+      localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar localStorage
+      displayCart(); // Volver a renderizar el carrito
+      displayCartCounter(); // Actualizar el contador del carrito
     });
 
     const deleteProduct = modalBody.querySelector(".delete-product");
     deleteProduct.addEventListener("click", () => {
-      deleteCartProduct(product.id);
+      deleteCartProduct(product.id); // Asumo que esta función está definida en otro lugar
     });
   });
+
   const formatoCOP = new Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
@@ -86,53 +92,101 @@ const displayCart = async() => {
   modalFooter.className = "modal-footer";
   modalFooter.innerHTML = `
   <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
-  <div class="total-price">Total: ${formatoCOP.format(total)} $</div>
-`;
+  <div class="total-price">Total: ${formatoCOP.format(total)}</div>
+`; // Removí el signo $ extra ya que formatoCOP lo incluye
   modalContainer.append(modalFooter);
 
+  // --- INICIO DE LA MODIFICACIÓN ---
   const buyButton = document.getElementById("btn-buy");
-  buyButton.addEventListener("click", async () => {
+  buyButton.addEventListener("click", () => {
     if (cart.length === 0) {
-      alert("Tu carrito está vacío.");
+      alert("El carrito está vacío");
       return;
     }
 
-    try {
+    const usuarioIdInput = prompt("Ingresa el ID del usuario:");
+    if (usuarioIdInput === null) return;
 
-      for (const product of cart) {
-        const response = await fetch("http://localhost:8080/articulo", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nombre: product.productName,
-            precio: product.price,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error(
-            `Error al enviar el producto: ${product.productName}`
-          );
-        }
-      }
-
-      alert("¡Gracias por tu compra!");
-      cart.length = 0;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      modalContainer.style.display = "none";
-      modalOverlay.style.display = "none";
-      displayCartCounter();
-    } catch (error) {
-      console.error("Error al procesar la compra:", error);
-      alert(
-        "Hubo un error al procesar tu compra. Por favor, intenta nuevamente."
-      );
+    const usuarioId = parseInt(usuarioIdInput);
+    if (isNaN(usuarioId) || usuarioId <= 0) {
+      alert("Se requiere un ID de usuario válido y numérico positivo.");
+      return;
     }
-  });
-};
 
+    const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
+
+    const ventaData = {
+      fecha_venta: new Date().toISOString(),
+      total: total,
+      usuario: {
+        usuario_id: usuarioId,
+      },
+    };
+
+    // PRIMERA PETICIÓN
+    fetch("http://localhost:8080/ventas/agregarVenta", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ventaData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error("Error en agregarVenta: " + text);
+          });
+        }
+        return response.json(); // ✅ Esto espera el JSON con { "id": 24 }
+      })
+      .then((ventaCreada) => {
+        const ventaId = ventaCreada.id;
+        if (!ventaId)
+          throw new Error("No se recibió el ID de la venta creada.");
+
+        const productosParaEnviar = cart.map((product) => ({
+          productoId: parseInt(product.id),
+          precioUnitario: parseFloat(product.price),
+          cantidad: parseInt(product.quanty),
+        }));
+
+        const payload = {
+          ventaId: ventaId,
+          productos: productosParaEnviar,
+        };
+
+        // SEGUNDA PETICIÓN
+        return fetch(
+          "http://localhost:8080/venta-productos/agregar-multiples",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+      })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error("Error en agregar-multiples: " + text);
+          });
+        }
+        return response.text();
+      })
+      .then((mensajeFinal) => {
+        alert("Venta realizada con éxito:\n" + mensajeFinal);
+        cart.length = 0;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        modalContainer.style.display = "none";
+        modalOverlay.style.display = "none";
+        displayCartCounter();
+      })
+      .catch((error) => {
+        console.error("Error en el proceso de venta:", error);
+        alert("Error en el proceso de venta: " + error.message);
+      });
+  });
+  
+  // --- FIN DE LA MODIFICACIÓN ---
+};
 // Botón de carrito
 cartBtn.addEventListener("click", displayCart);
 
