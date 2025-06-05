@@ -75,6 +75,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Contraseña</th>
                     <th>Correo</th>
                     <th>Teléfono</th>
                     <th>Rol</th>
@@ -157,6 +158,7 @@
           <tr>
             <td>${user.id}</td>
             <td>${user.nombre}</td>
+            <td>${user.contraseña}</td>
             <td>${user.correo}</td>
             <td>${user.telefono || ''}</td>
             <td>${user.rol}</td>
@@ -177,10 +179,11 @@
       const newUser = {
         id: users.length + 1,
         nombre: document.getElementById("userName").value,
+        contraseña: document.getElementById("userPassword").value, // <- SE AGREGA AQUÍ
         correo: document.getElementById("userEmail").value,
         telefono: document.getElementById("userPhone").value,
         rol: document.getElementById("userRole").value
-      };
+    };
       users.push(newUser);
       renderUsers();
       this.reset();
