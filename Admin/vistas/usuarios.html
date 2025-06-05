@@ -148,8 +148,10 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const users = [];
+  // Al cargar la página
+  document.addEventListener("DOMContentLoaded", cargarUsuariosDesdeBackend);
 
+<<<<<<< HEAD
     function renderUsers() {
       const tbody = document.getElementById("userTableBody");
       tbody.innerHTML = "";
@@ -172,8 +174,23 @@
             </td>
           </tr>`;
       });
-    }
+=======
+  // Obtener y renderizar usuarios
+  async function cargarUsuariosDesdeBackend() {
+    try {
+      const response = await fetch("http://localhost:8080/usuarios");
+      if (!response.ok) throw new Error("Error al cargar usuarios");
 
+      const users = await response.json();
+      renderUsers(users);
+    } catch (error) {
+      console.error("Error al cargar usuarios:", error);
+      alert("No se pudo cargar la lista de usuarios.");
+>>>>>>> main
+    }
+  }
+
+<<<<<<< HEAD
     document.getElementById("addUserForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const newUser = {
@@ -186,41 +203,134 @@
     };
       users.push(newUser);
       renderUsers();
+=======
+  // Renderizar tabla
+  function renderUsers(users) {
+    const tbody = document.getElementById("userTableBody");
+    tbody.innerHTML = "";
+
+    users.forEach(user => {
+      tbody.innerHTML += `
+      <tr>
+        <td>${user.usuario_id}</td>
+        <td>${user.nombre}</td>
+        <td>${user.correo}</td>
+        <td>${user.telefono || ''}</td>
+        <td>${user.rol}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" onclick="editUser(${user.usuario_id})">
+            <i class='bx bx-edit'></i>
+          </button>
+          <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.usuario_id})">
+            <i class='bx bx-trash'></i>
+          </button>
+        </td>
+      </tr>`;
+    });
+  }
+
+  // Crear nuevo usuario
+  document.getElementById("addUserForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const newUser = {
+      nombre: document.getElementById("userName").value,
+      contrasena: "123456", // Campo fijo o de entrada
+      correo: document.getElementById("userEmail").value,
+      telefono: document.getElementById("userPhone").value,
+      rol: document.getElementById("userRole").value
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/usuarios/agregarUsuario", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
+
+      if (!response.ok) throw new Error("Error al crear usuario");
+
+      await cargarUsuariosDesdeBackend();
+>>>>>>> main
       this.reset();
       bootstrap.Modal.getInstance(document.getElementById("addUserModal")).hide();
-    });
+    } catch (error) {
+      console.error("Error al crear usuario:", error);
+      alert("No se pudo crear el usuario.");
+    }
+  });
 
-    function editUser(id) {
-      const user = users.find(u => u.id === id);
-      document.getElementById("editUserId").value = user.id;
+  // Cargar datos en el modal de edición
+  async function editUser(id) {
+    try {
+      const response = await fetch(`http://localhost:8080/usuarios/buscar/${id}`);
+      if (!response.ok) throw new Error("Usuario no encontrado");
+
+      const user = await response.json();
+
+      document.getElementById("editUserId").value = user.usuario_id;
       document.getElementById("editUserName").value = user.nombre;
       document.getElementById("editUserEmail").value = user.correo;
       document.getElementById("editUserPhone").value = user.telefono;
       document.getElementById("editUserRole").value = user.rol;
+
       new bootstrap.Modal(document.getElementById("editUserModal")).show();
+    } catch (error) {
+      console.error("Error al cargar usuario para editar:", error);
+      alert("No se pudo cargar el usuario.");
     }
+  }
 
-    document.getElementById("editUserForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const id = parseInt(document.getElementById("editUserId").value);
-      const user = users.find(u => u.id === id);
-      user.nombre = document.getElementById("editUserName").value;
-      user.correo = document.getElementById("editUserEmail").value;
-      user.telefono = document.getElementById("editUserPhone").value;
-      user.rol = document.getElementById("editUserRole").value;
-      renderUsers();
+  // Guardar edición
+  document.getElementById("editUserForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const id = document.getElementById("editUserId").value;
+
+    const updatedUser = {
+      nombre: document.getElementById("editUserName").value,
+      contrasena: "123456", // Puedes ajustar esto si el campo es editable
+      correo: document.getElementById("editUserEmail").value,
+      telefono: document.getElementById("editUserPhone").value,
+      rol: document.getElementById("editUserRole").value
+    };
+
+    try {
+      const response = await fetch(`http://localhost:8080/usuarios/editarUsuario/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser)
+      });
+
+      if (!response.ok) throw new Error("Error al actualizar usuario");
+
+      await cargarUsuariosDesdeBackend();
       bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
-    });
-
-    function deleteUser(id) {
-      if (confirm("¿Eliminar este usuario?")) {
-        const index = users.findIndex(u => u.id === id);
-        users.splice(index, 1);
-        renderUsers();
-      }
+    } catch (error) {
+      console.error("Error al editar usuario:", error);
+      alert("No se pudo editar el usuario.");
     }
+  });
 
-    renderUsers();
+  // Eliminar usuario
+  async function deleteUser(id) {
+    if (!confirm("¿Eliminar este usuario?")) return;
+
+    try {
+      const response = await fetch(`http://localhost:8080/usuarios/borrarUsuario/${id}`, {
+        method: "DELETE"
+      });
+
+      if (!response.ok) throw new Error("Error al eliminar usuario");
+
+      await cargarUsuariosDesdeBackend();
+    } catch (error) {
+      console.error("Error al eliminar usuario:", error);
+      alert("No se pudo eliminar el usuario.");
+    }
+  }
+
+
   </script>
 </body>
 </html>
