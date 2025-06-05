@@ -211,6 +211,9 @@ async function loadProducts() {
         return;
       }
 
+      console.log("Producto recibido:", product);
+      console.log("Imagen en src:", product.img);
+
       const row = document.createElement("tr");
       const categoryDisplay = `<span class="category-badge category-${
         product.category?.toLowerCase() || ""
@@ -218,9 +221,13 @@ async function loadProducts() {
 
       row.innerHTML = `
                 <td>${product.producto_id.toString().slice(-4)}</td>
-                <td><img src="${product.img || ""}" alt="${
-        product.productName || "Sin nombre"
-      }" width="50" height="50" class="img-thumbnail" onerror="this.src='https://via.placeholder.com/50'"></td>
+                <td>
+                    <img src="${product.img || 'https://placehold.co/60x60'}"
+                        alt="${product.productName || 'Sin nombre'}"
+                        width="50" height="50"
+                        class="img-thumbnail"
+                        onerror="this.src='https://placehold.co/60x60'">
+                  </td>
                 <td>${product.productName || "N/A"}</td>
                 <td>${product.community || "N/A"}</td>
                 <td>${categoryDisplay}</td>
