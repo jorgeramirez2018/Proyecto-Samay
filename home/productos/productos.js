@@ -1,5 +1,4 @@
 
-
 const productos = [
   {
     id: 1,
@@ -8,7 +7,7 @@ const productos = [
     region: "Quindio",
     category: "Joyería",
     price: 50000,
-    quanty: 1,
+    quanty: 20,
     img: "/home/recursos/Manilla-tejida-a-mano-celeste.jpg",
     description: "Manilla hecha a mano, con varios tejidos entrelazados",
   },
@@ -19,7 +18,7 @@ const productos = [
     region: "Andina",
     category: "Ropa",
     price: 60000,
-    quanty: 1,
+    quanty: 15,
     img: "https://i.pinimg.com/736x/30/b6/93/30b69382e2c7a6199523bc79563e1b91.jpg",
     description:
       "Chaleco con flecos beige y cuentas. Clara representación de la vestimenta de nuestras comunidades indigenas en la región andina",
@@ -27,11 +26,11 @@ const productos = [
   {
     id: 3,
     productName: "Móvil de Gallina Negra",
-    community: "Artesanos",
+    community: "Kichwas",
     region: "Cundinamarca",
     category: "Tejidos",
     price: 25000,
-    quanty: 1,
+    quanty: 15,
     img: "https://artesaniasdecolombia.com.co/Documentos/Catalogo/36149_15-03-013-c-(5).jpg",
     description:
       "Movil de Gallina elaborado por manos artesanas con Tela y Tagua en la ciudad de Bogotá.",
@@ -39,11 +38,11 @@ const productos = [
   {
     id: 4,
     productName: "Abanico en palma de Iraca",
-    community: "Artesanos",
+    community: "Inga",
     region: "Nariño",
     category: "Tejidos",
     price: 45000,
-    quanty: 1,
+    quanty: 10,
     img: "https://i.pinimg.com/736x/d3/e7/66/d3e766a29ac357772c21d26d51229d97.jpg",
     description:
       "Abanico tejido en palma de iraca fina de varios colores. Hecho a mano por artesanas de Nariño, al sur de Colombia. Hermoso souvenir para tiempos calurosos.",
@@ -51,11 +50,11 @@ const productos = [
   {
     id: 5,
     productName: "Contenedor Iraca Tapa Morado",
-    community: "Artesanos",
+    community: "Inga",
     region: "Nariño",
     category: "Cestería",
     price: 60000,
-    quanty: 1,
+    quanty: 20,
     img: "https://artesaniasdecolombia.com.co/Documentos/Catalogo/36155_02-01-030-b-(3).jpg",
     description:
       "Contenedor elaborado por manos artesanas con Palma de Iraca en el departamento de Nariño.",
@@ -67,7 +66,7 @@ const productos = [
     region: "Colombo - Panameña",
     category: "Ropa",
     price: 100000,
-    quanty: 1,
+    quanty: 15,
     img: "https://www.souvenirscolombia.com.co/public/catalogo/tennis_mola_hombre_14.jpg",
     description:
       "Zapatos completamentes hechos a mano, con aplique de mola de los indígenas Colombo-Panameños  Kunas. Cada diseño es único y plasma la vida diaria del pueblo.",
@@ -75,11 +74,11 @@ const productos = [
   {
     id: 7,
     productName: "Tortuga Panera Iraca",
-    community: "Artesaos",
+    community: "Inga",
     region: "Nariño",
     category: "Tejidos",
     price: 50000,
-    quanty: 1,
+    quanty: 12,
     img: "https://artesaniasdecolombia.com.co/Documentos/Catalogo/36479_02-04-002-g-(2).jpg",
     description:
       "Panera elaborada por manos artesanas con Palma de Iraca en el  departamento de Nariño. ",
@@ -87,11 +86,11 @@ const productos = [
   {
     id: 8,
     productName: "Tela por 6 piezas",
-    community: "Artesanos",
+    community: "Muiscas",
     region: "Andina",
     category: "Tejidos",
     price: 140000,
-    quanty: 1,
+    quanty: 20,
     img: "https://souvenirscolombia.com.co/public/catalogo/INDIVIDUALES_AZULES_N.jpg",
     description:
       "Individuales hechos a mano en algodon de diferentes colores. caja por 6 piezas. se pueden lava en lavadora con agua fria y en ciclos suaves. ",
@@ -103,7 +102,7 @@ const productos = [
     region: "Chocó",
     category: "Cestería",
     price: 40000,
-    quanty: 1,
+    quanty: 15,
     img: "https://artesaniasdecolombia.com.co/Documentos/Catalogo/35015_11-02-016-c-(3).jpg",
     description:
       "Canasto tejido elaborado por manos artesanas con Werregue en el departamento del Chocó.",
@@ -115,7 +114,7 @@ const productos = [
     region: "Chocó",
     category: "Cestería",
     price: 35000,
-    quanty: 1,
+    quanty: 12,
     img: "https://i.pinimg.com/736x/13/ee/49/13ee4926306d50a8fb022e4f2692312a.jpg",
     description:
       "Bandeja de Werregue elaborada por manos artesanas con Palma de Werregue en el departamento del Chocó. ",
@@ -127,7 +126,7 @@ const productos = [
     region: "Tolima",
     category: "Joyería",
     price: 50000,
-    quanty: 1,
+    quanty: 8,
     img: "https://i.pinimg.com/736x/48/58/f9/4858f9dea8e56eeb9a3cb0c44a433a24.jpg",
     description:
       "Este diseño refleja la riqueza cultural de Tolima, destacando las formas redondeadas y los detalles ornamentales que evocan el arte tradicional de la región, fusionando la naturaleza con la técnica artesanal.",
@@ -139,7 +138,7 @@ const productos = [
     region: "Guajira",
     category: "Tejidos",
     price: 35000,
-    quanty: 1,
+    quanty: 10,
     img: "https://i.pinimg.com/736x/6e/85/96/6e8596ac1caaa4ccdcbb0f5d976ffb7b.jpg",
     description:
       "hecho a mano en fibra de mawisa. Entre desiertos guajiros y el Mar Caribe están las condiciones extremas que inspiran el tejido de este sombrero, perfecto para darle estilo a los días soleados. Las artesanías wayúu son parte importante de la economía de esta comunidad que con sus manos crea piezas únicas hechas de materiales sostenibles, diseños creativos y de mucha utilidad en la vida cotidiana. ",
@@ -147,11 +146,11 @@ const productos = [
   {
     id: 13,
     productName: "Portalápices",
-    community: "Artesanos",
+    community: "Zenú",
     region: "Atlántico",
     category: "Tejidos",
-    price: 10200,
-    quanty: 1,
+    price: 10500,
+    quanty: 5,
     img: "https://i.pinimg.com/736x/7d/fd/78/7dfd78462d6ce9b15eec288f1f452cc4.jpg",
     description:
       "Portalápices de trapillo tejido y madera recuperada con forma de pez. Hechos a mano en el Atlántico, norte de Colombia muy cerca al Mar Caribe, disponibles en varios colores. La madera usada para fabricar la base de estos portalápices es recogida en la playa y tratada para ser aprovechada en un producto que demuestra la recursividad, creatividad y maestría artesanal de esta región.",
@@ -159,11 +158,11 @@ const productos = [
   {
     id: 14,
     productName: "Sombrero Toquilla",
-    community: "Artesanos",
+    community: "Inga",
     region: "Nariño",
-    category: "Tejidos",
-    price: 34100,
-    quanty: 1,
+    category: "Ropa",
+    price: 34500,
+    quanty: 12,
     img: "https://i.pinimg.com/736x/0a/62/74/0a6274348a5f7cf415f6f02a2368a3f2.jpg",
     description: "Hecho a mano ",
   },
@@ -173,8 +172,8 @@ const productos = [
     community: "Wayuu",
     region: "Nariño",
     category: "Tejidos",
-    price: 34100,
-    quanty: 1,
+    price: 55000,
+    quanty: 12,
     img: "https://i.pinimg.com/736x/6b/36/30/6b3630c4d8066a4436836b37c594ffa6.jpg",
     description: "Hecho a mano",
   },

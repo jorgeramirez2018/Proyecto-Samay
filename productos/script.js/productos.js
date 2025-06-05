@@ -189,7 +189,8 @@ async function cargarProductosDesdeBackend() {
 
     const productos = await response.json();
 
-    renderizarProductos(productos.slice(0, 8)); // solo los primeros 8
+    renderizarProductos(productos); 
+    
   } catch (error) {
     console.error("Error al cargar productos:", error);
     shopContent.innerHTML = `<p class="error">No se pudieron cargar los productos.</p>`;
