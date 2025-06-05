@@ -151,7 +151,6 @@
   // Al cargar la página
   document.addEventListener("DOMContentLoaded", cargarUsuariosDesdeBackend);
 
-<<<<<<< HEAD
     function renderUsers() {
       const tbody = document.getElementById("userTableBody");
       tbody.innerHTML = "";
@@ -174,7 +173,7 @@
             </td>
           </tr>`;
       });
-=======
+    }
   // Obtener y renderizar usuarios
   async function cargarUsuariosDesdeBackend() {
     try {
@@ -186,11 +185,9 @@
     } catch (error) {
       console.error("Error al cargar usuarios:", error);
       alert("No se pudo cargar la lista de usuarios.");
->>>>>>> main
     }
   }
 
-<<<<<<< HEAD
     document.getElementById("addUserForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const newUser = {
@@ -203,7 +200,7 @@
     };
       users.push(newUser);
       renderUsers();
-=======
+    });
   // Renderizar tabla
   function renderUsers(users) {
     const tbody = document.getElementById("userTableBody");
@@ -214,6 +211,7 @@
       <tr>
         <td>${user.usuario_id}</td>
         <td>${user.nombre}</td>
+        <td>${user.contrasena}</td>
         <td>${user.correo}</td>
         <td>${user.telefono || ''}</td>
         <td>${user.rol}</td>
@@ -235,7 +233,7 @@
 
     const newUser = {
       nombre: document.getElementById("userName").value,
-      contrasena: "123456", // Campo fijo o de entrada
+      contrasena: document.getElementById("userPassword").value, // Campo fijo o de entrada
       correo: document.getElementById("userEmail").value,
       telefono: document.getElementById("userPhone").value,
       rol: document.getElementById("userRole").value
@@ -251,7 +249,6 @@
       if (!response.ok) throw new Error("Error al crear usuario");
 
       await cargarUsuariosDesdeBackend();
->>>>>>> main
       this.reset();
       bootstrap.Modal.getInstance(document.getElementById("addUserModal")).hide();
     } catch (error) {
@@ -289,7 +286,7 @@
 
     const updatedUser = {
       nombre: document.getElementById("editUserName").value,
-      contrasena: "123456", // Puedes ajustar esto si el campo es editable
+      contrasena: document.getElementById("userPassword").value,
       correo: document.getElementById("editUserEmail").value,
       telefono: document.getElementById("editUserPhone").value,
       rol: document.getElementById("editUserRole").value
