@@ -174,14 +174,11 @@ function renderizarProductos(productos) {
     button.addEventListener("click", (event) => {
       event.preventDefault();
 
-      // Buscar si el producto ya está en el carrito
       const existingProduct = cart.find((p) => p.id === product.producto_id);
 
       if (existingProduct) {
-        // Solo incrementar cantidad
         existingProduct.quanty++;
       } else {
-        // Agregar nuevo producto al carrito con cantidad inicial 1
         cart.push({
           id: product.producto_id,
           productName: product.productName,
@@ -195,7 +192,13 @@ function renderizarProductos(productos) {
       displayCartCounter();
     });
   });
+
+  // ⬇️ Aquí llamas a la función del carrusel
+  inicializarCarrusel();
 }
+
+
+
 
 // 👇 Llamada inicial al cargar la página
 document.addEventListener("DOMContentLoaded", () => {

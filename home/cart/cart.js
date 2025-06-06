@@ -1,25 +1,12 @@
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
-const cartBtn = document.getElementById("cart-btn");
-const cartCounter = document.getElementById("cart-counter");
+const cartBtn = document.getElementById("cart-btn"); // Asumo que cartBtn y cartCounter están definidos
+const cartCounter = document.getElementById("cart-counter"); // y que 'cart' es tu array de carrito global o accesible.
 
-// Inicializar el carrito desde localStorage
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-console.log("Carrito inicial:", cart); // Depuración
+// Asumo que 'cart' es una variable global o accesible que contiene los productos del carrito.
+// Ejemplo: let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const displayCart = async () => {
-  console.log("Mostrando carrito, contenido:", cart); // Depuración
-  if (!modalContainer || !modalOverlay || !cartBtn || !cartCounter) {
-    console.error("Elementos del DOM no encontrados:", {
-      modalContainer,
-      modalOverlay,
-      cartBtn,
-      cartCounter,
-    });
-    alert("Error: No se encontraron elementos del carrito en la página.");
-    return;
-  }
-
   modalContainer.innerHTML = "";
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
@@ -44,69 +31,53 @@ const displayCart = async () => {
   modalContainer.append(modalHeader);
 
   // Modal Body
-  if (cart.length === 0) {
+  // Asumo que 'cart' es el array que contiene los productos.
+  // Cada producto en 'cart' debe tener: id, productName, price, quanty, img
+  cart.forEach((product) => {
     const modalBody = document.createElement("div");
     modalBody.className = "modal-body";
-    modalBody.innerText = "El carrito está vacío.";
-    modalContainer.append(modalBody);
-  } else {
-    cart.forEach((product, index) => {
-      console.log(`Renderizando producto ${index}:`, product); // Depuración
-      if (
-        !product.id ||
-        !product.productName ||
-        !product.price ||
-        !product.quanty ||
-        !product.img
-      ) {
-        console.warn("Producto incompleto:", product);
-        return;
-      }
-      const modalBody = document.createElement("div");
-      modalBody.className = "modal-body";
-      modalBody.innerHTML = `
-        <div class="modal-product">
-          <img class="product-img" src="${product.img}" />
-          <div class="product-info">
-            <h4>${product.productName}</h4>
-          </div>
-          <div class="quantity">
-            <span class="quantity-btn-decrese">-</span>
-            <span class="quantity-input">${product.quanty}</span>
-            <span class="quantity-btn-increse">+</span>
-          </div>
-          <div class="price">${
-            parseFloat(product.price) * parseFloat(product.quanty)
-          } $</div>
-          <div class="delete-product">❌</div>
+    modalBody.innerHTML = `
+      <div class="modal-product">
+        <img class="product-img" src="${product.img}" />
+        <div class="product-info">
+          <h4>${product.productName}</h4>
         </div>
-      `;
-      modalContainer.append(modalBody);
+        <div class="quantity">
+          <span class="quantity-btn-decrese">-</span>
+          <span class="quantity-input">${product.quanty}</span>
+          <span class="quantity-btn-increse">+</span>
+        </div>
+        <div class="price">${
+          parseFloat(product.price) * parseFloat(product.quanty)
+        } $</div>
+        <div class="delete-product">❌</div>
+      </div>
+    `;
+    modalContainer.append(modalBody);
 
-      const decrease = modalBody.querySelector(".quantity-btn-decrese");
-      decrease.addEventListener("click", () => {
-        if (product.quanty !== 1) {
-          product.quanty--;
-          localStorage.setItem("cart", JSON.stringify(cart));
-          displayCart();
-          displayCartCounter();
-        }
-      });
-
-      const increase = modalBody.querySelector(".quantity-btn-increse");
-      increase.addEventListener("click", () => {
-        product.quanty++;
-        localStorage.setItem("cart", JSON.stringify(cart));
-        displayCart();
-        displayCartCounter();
-      });
-
-      const deleteProduct = modalBody.querySelector(".delete-product");
-      deleteProduct.addEventListener("click", () => {
-        deleteCartProduct(product.id);
-      });
+    const decrease = modalBody.querySelector(".quantity-btn-decrese");
+    decrease.addEventListener("click", () => {
+      if (product.quanty !== 1) {
+        product.quanty--;
+        localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar localStorage
+        displayCart(); // Volver a renderizar el carrito
+        displayCartCounter(); // Actualizar el contador del carrito
+      }
     });
-  }
+
+    const increase = modalBody.querySelector(".quantity-btn-increse");
+    increase.addEventListener("click", () => {
+      product.quanty++;
+      localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar localStorage
+      displayCart(); // Volver a renderizar el carrito
+      displayCartCounter(); // Actualizar el contador del carrito
+    });
+
+    const deleteProduct = modalBody.querySelector(".delete-product");
+    deleteProduct.addEventListener("click", () => {
+      deleteCartProduct(product.id); // Asumo que esta función está definida en otro lugar
+    });
+  });
 
   const formatoCOP = new Intl.NumberFormat("es-CO", {
     style: "currency",
@@ -115,153 +86,121 @@ const displayCart = async () => {
   });
 
   // Modal Footer
-  const total = cart.reduce(
-    (acc, elm) => acc + parseFloat(elm.price) * elm.quanty,
-    0
-  );
+  const total = cart.reduce((acc, elm) => acc + elm.price * elm.quanty, 0);
 
   const modalFooter = document.createElement("div");
   modalFooter.className = "modal-footer";
   modalFooter.innerHTML = `
-    <input type="number" id="usuario-id" placeholder="Ingresa tu ID de usuario" min="1" required>
-    <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
-    <div class="total-price">Total: ${formatoCOP.format(total)}</div>
-  `;
+  <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
+  <div class="total-price">Total: ${formatoCOP.format(total)}</div>
+`; // Removí el signo $ extra ya que formatoCOP lo incluye
   modalContainer.append(modalFooter);
 
+  // --- INICIO DE LA MODIFICACIÓN ---
   const buyButton = document.getElementById("btn-buy");
-  buyButton.addEventListener("click", async () => {
-    if (cart.length === 0) {
-      alert("Tu carrito está vacío.");
+  buyButton.addEventListener("click", () => {
+    alert("No se puede hacer la compra porque no ha iniciado sesión.");
+    window.location.href = "../Registro/login.html";
+    return;
+
+    const usuarioIdInput = prompt("Ingresa el ID del usuario:");
+    if (usuarioIdInput === null) return;
+
+    const usuarioId = parseInt(usuarioIdInput);
+    if (isNaN(usuarioId) || usuarioId <= 0) {
+      alert("Se requiere un ID de usuario válido y numérico positivo.");
       return;
     }
 
-    // Obtener usuario_id desde el input
-    const usuarioId = parseInt(document.getElementById("usuario-id").value);
-    if (!usuarioId || isNaN(usuarioId) || usuarioId <= 0) {
-      alert(
-        "Por favor, ingresa un ID de usuario válido (número entero positivo)."
-      );
-      return;
-    }
+    const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
 
-    try {
-      // 1. Crear la venta
-      const venta = {
-        fecha_venta: new Date().toISOString(),
-        total: cart.reduce(
-          (acc, elm) => acc + parseFloat(elm.price) * elm.quanty,
-          0
-        ),
-        usuario: {
-          usuario_id: usuarioId,
-        },
-      };
+    const ventaData = {
+      fecha_venta: new Date().toISOString(),
+      total: total,
+      usuario: {
+        usuario_id: usuarioId,
+      },
+    };
 
-      console.log("Enviando venta:", JSON.stringify(venta, null, 2));
-
-      const ventaResponse = await fetch(
-        "http://localhost:8080/ventas/agregarVenta",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(venta),
+    // PRIMERA PETICIÓN
+    fetch("http://localhost:8080/ventas/agregarVenta", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ventaData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error("Error en agregarVenta: " + text);
+          });
         }
-      );
+        return response.json(); // ✅ Esto espera el JSON con { "id": 24 }
+      })
+      .then((ventaCreada) => {
+        const ventaId = ventaCreada.id;
+        if (!ventaId)
+          throw new Error("No se recibió el ID de la venta creada.");
 
-      if (!ventaResponse.ok) {
-        const errorText = await ventaResponse.text();
-        throw new Error(
-          `Error al crear la venta: ${ventaResponse.status} - ${errorText}`
-        );
-      }
-
-      const ventaResponseData = await ventaResponse.json();
-      const ventaId = ventaResponseData.id;
-      console.log("Venta creada con ID:", ventaId);
-
-      // 2. Crear VentaConProductosDTO
-      const ventaConProductos = {
-        ventaId: ventaId,
-        productos: cart.map((product) => ({
+        const productosParaEnviar = cart.map((product) => ({
           productoId: parseInt(product.id),
+          precioUnitario: parseFloat(product.price),
           cantidad: parseInt(product.quanty),
-          precioUnitario: parseFloat(product.price).toFixed(2).toString(), // Enviar como string con 2 decimales
-        })),
-      };
+        }));
 
-      console.log(
-        "Enviando productos:",
-        JSON.stringify(ventaConProductos, null, 2)
-      );
+        const payload = {
+          ventaId: ventaId,
+          productos: productosParaEnviar,
+        };
 
-      const ventaProductosResponse = await fetch(
-        "http://localhost:8080/venta-productos/agregar-multiples",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(ventaConProductos),
-        }
-      );
-
-      if (!ventaProductosResponse.ok) {
-        const errorText = await ventaProductosResponse.text();
-        console.log("Respuesta de error del servidor:", errorText);
-        throw new Error(
-          `Error al agregar los productos: ${ventaProductosResponse.status} - ${errorText}`
+        // SEGUNDA PETICIÓN
+        return fetch(
+          "http://localhost:8080/venta-productos/agregar-multiples",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
         );
-      }
-
-      const ventaProductosData = await ventaProductosResponse.json();
-      console.log(
-        "Respuesta de productos:",
-        JSON.stringify(ventaProductosData, null, 2)
-      );
-
-      // 3. Compra exitosa: vaciar carrito y actualizar UI
-      alert("¡Gracias por tu compra!");
-      cart.length = 0;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      modalContainer.style.display = "none";
-      modalOverlay.style.display = "none";
-      displayCartCounter();
-    } catch (error) {
-      console.error("Error al procesar la compra:", error);
-      alert(
-        `Hubo un error al procesar tu compra: ${error.message}. Por favor, intenta nuevamente.`
-      );
-    }
+      })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error("Error en agregar-multiples: " + text);
+          });
+        }
+        return response.text();
+      })
+      .then((mensajeFinal) => {
+        alert("Venta realizada con éxito:\n" + mensajeFinal);
+        cart.length = 0;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        modalContainer.style.display = "none";
+        modalOverlay.style.display = "none";
+        displayCartCounter();
+      })
+      .catch((error) => {
+        console.error("Error en el proceso de venta:", error);
+        alert("Error en el proceso de venta: " + error.message);
+      });
   });
-};
 
+  // --- FIN DE LA MODIFICACIÓN ---
+};
 // Botón de carrito
 cartBtn.addEventListener("click", displayCart);
 
 // Función para eliminar productos
 const deleteCartProduct = (id) => {
   const foundId = cart.findIndex((element) => element.id === id);
-  if (foundId !== -1) {
-    cart.splice(foundId, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    console.log("Producto eliminado, carrito actual:", cart);
-    displayCart();
-    displayCartCounter();
-  }
+  cart.splice(foundId, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+  displayCartCounter();
 };
 
-// Actualizar contador del carrito
 const displayCartCounter = () => {
-  const totalItems = cart.reduce(
-    (acc, product) => acc + (product.quanty || 0),
-    0
-  );
-  if (cartCounter) {
-    cartCounter.innerText = totalItems;
-  }
+  const totalItems = cart.reduce((acc, product) => acc + product.quanty, 0);
+  cartCounter.innerText = totalItems;
 };
 
 displayCartCounter();
