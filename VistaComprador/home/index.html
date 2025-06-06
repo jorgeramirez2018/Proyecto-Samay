@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio</title>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link rel="stylesheet" href="/VistaComprador/home/style.css/style.css">
+  <link rel="stylesheet" href="footer/style/footerstyle.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+
+
+
+</head>
+
+<body class="home-page">
+
+  <div id="navbar"></div>
+
+  <section class="home">
+    <div class="header-content container">
+      <div class="header-text">
+        <h1>Samay: Cada compra es una historia.</h1>
+        <p>Somos una tienda dedicada a la venta de artesanías colombianas, destacando la riqueza cultural y el talento de nuestros
+        artesanos. Ofrecemos productos únicos, hechos a mano, que reflejan nuestras tradiciones y colores. Cada pieza cuenta una
+        historia y apoya el trabajo local, con calidad y autenticidad garantizadas.</p>
+        <a href="/VistaComprador/productos/productos.html" class="btn-1">Ver nuestros productos<i class='bx bx-link'></i></a>
+      </div>
+      <div class="header-img">
+        <img src="/home/recursos/depositphotos_176383772-stock-photo-cartagena-colombia-october-27-2017.jpg"
+          alt="Artesanias home">
+      </div>
+    </div>
+  </section>
+
+  <!--Carritoo--------------------------------------------------------------------------->
+<main class="products container" id="lista-1">
+  <h2>Productos Populares</h2>
+  <div class="carousel-container">
+    <div class="products-content carousel" id="productos">
+      <!-- Aquí se generan las cards dinámicamente -->
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <button id="prevBtn">&#10094;</button>
+    <button id="nextBtn">&#10095;</button>
+  </div>
+  <a href="/VistaComprador/productos/productos.html" class="btn-3">Ver nuestro catálogo de productos</a>
+</main>
+
+
+  <div class="cart-container">
+    <div class="cart-btn" id="cart-btn">🛒</div>
+    <span class="cart-counter" id="cart-counter">0</span>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-container" id="modal-container"></div>
+  </div>
+
+
+
+
+
+  <section class="history">
+    <h2>Historias de productos</h2>
+    <div class="history-content">
+      <div class="history-item">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Sombrero_vueltiao.jpg/1200px-Sombrero_vueltiao.jpg"
+          alt="Imagen de artesania"><br><br>
+        <h3 class="titulo-historias">Historia del sombrero vueltiao.</h3><br>
+        <p class="parrafo-historias">
+          El sombrero vueltiao es uno de los símbolos culturales más representativos de Colombia. Su historia se remonta a los
+          pueblos indígenas Zenú, ubicados en la región Caribe, especialmente en los departamentos de Córdoba y Sucre.
+        </p>
+        <a href="/VistaComprador/historias/index.html" class="btn-history">Ver más...</a>
+      </div>
+      <div class="history-item">
+        <img
+          src="https://radionacional-v3.s3.amazonaws.com/s3fs-public/styles/portadas_relaciona_4_3/public/node/article/field_image/Matilde%20Castillo%20con%20canasto%20hecho%20en%20rampira.JPG?h=b69e0e0e&itok=H2nH3yEU"
+          alt="Imagen de artesania">
+        <h3 class="titulo-historias">Conoce las tradiciones de las artesanias.</h3><br>
+        <p class="parrafo-historias">
+          Colombia es un país con una rica herencia cultural reflejada en sus tradiciones y artesanías. Desde coloridas mochilas
+          Wayuu hasta sombreros vueltiaos y cerámicas de Ráquira, cada región ofrece productos únicos hechos a mano. Estas
+          expresiones artísticas representan la diversidad étnica, la historia y el talento de sus comunidades.
+        </p>
+        <a href="/VistaComprador/historias/index.html" class="btn-history">Ver más...</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="info">
+    <div class="conoce">
+      <div class="content-conoce">
+      <h2 class="titulo-conoce">¿Ya nos conoces?</h2>
+      <p class="parrafo-conoce">Somos desarrolladores de software apasionados por crear soluciones innovadoras y funcionales. Nos dedicamos a construir
+      experiencias digitales con calidad y compromiso. Si quieres saber más sobre nosotros, ¡estamos listos para compartir
+      nuestra historia!</p>
+      <a  class="btn-nosotros" href="/aboutUs/acercaDe.html">Acerca de nosotros</a>
+      </div>
+      <div class="img-conoce">
+        <img class="img-nosotros" src="/home/recursos/ChatGPT Image 1 may 2025, 04_43_15 p.m..png" alt="Imagen de nosotros">
+      </div>
+    </div>
+  </section>
+
+  <div id="footer">
+
+  </div>
+  <script src="/VistaComprador/home/script.js/carruselProducts.js"></script>
+  <script src="/VistaComprador/home/productos/productos.js  "></script>
+  <script src="/VistaComprador/home/script.js/script.js"></script>
+  <script src="/VistaComprador/home/cart/cart.js"></script>
+  <script src="/VistaComprador/home/productos/server.js"></script>
+
+
+  <!-- Swiper JS -->
+  
+
+</body>
+
+</html>

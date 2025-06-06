@@ -1,0 +1,384 @@
+body {
+  background-color: #F5F3F9;
+  margin-top: 8.5rem;
+}
+section{
+  min-height: 10vh !important;
+}
+.nosotros {
+  position: relative;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fondo-nosotros {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.nosotros::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.nosotros h1 {
+  position: relative;
+  color: #F5F3F9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20rem;
+  z-index: 2;
+  text-align: center;
+  margin: 0;
+  padding: 0 2rem;
+  transition: font-size 0.3s ease;
+}
+
+.nosotros h1 {
+  font-size: clamp(2rem, 8vw, 5rem);
+  transition: transform 0.3s ease;
+}
+
+.explicacion-logo-final {
+  background-color: #F5F3F9;
+  padding: 60px 20px;
+  margin-bottom: 30px;
+}
+
+.titulo-logo {
+  background-color: #5c4033;
+  color: #F5F3F9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  margin: 0 auto 2.5rem;
+  width: fit-content;
+  display: block;
+}
+
+.contenedor-logo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.bloque-logo-flecha {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+}
+
+.imagen-logo {
+  width: 200px;
+  height: auto;
+}
+
+.flecha {
+  font-size: 2.2rem;
+  color: #000;
+}
+
+.texto-logo {
+  max-width: 700px;
+  color: #333;
+  flex: 1;
+
+}
+
+.texto-logo p {
+  margin-bottom: 12px;
+  font-size: 2rem;
+  line-height: 1.6;
+  text-align: justify;
+  font-family: 'Raleway', 'sans-serif';
+}
+
+.mensaje-final {
+  background-color: #789064;
+  color: #F5F3F9;
+  padding: 5px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 2rem;
+  max-width: 100%;
+  margin: 40px auto 0;
+}
+
+.mensaje-final strong {
+  font-weight: bold;
+  color: #F5F3F9;
+}
+
+
+#quienes-somos {
+  background-color: #5c4033;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 1200px;
+  border-radius: 30px;
+  min-height: 350px;
+}
+
+.texto {
+  width: 50%;
+  padding-right: 1rem;
+  max-width: 400px;
+  text-align: justify;
+}
+
+.texto h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #F5F3F9;
+}
+
+.texto p {
+  color: #F5F3F9;
+  line-height: 1.6;
+  margin-top: 0;
+  font-size: 1.8rem;
+  font-family: 'Raleway', 'sans-serif';
+  text-align: justify;
+  margin-right: 15px;
+}
+
+.somos {
+  width: 50%;
+}
+
+.imagen-somos {
+  width: 100%;
+  height: 350px;
+}
+
+.container {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+
+#compromisos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+
+.carta {
+  background-color: #F5F3F9;
+  border: 1px solid #789064;
+  margin-top: none;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 30%;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.imagen-carta {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.carta h3 {
+  font-size: 1.8rem;
+  color: #F5F3F9;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #789064;
+}
+
+
+.carta p {
+  font-size: 2.1rem;
+  color: #000000;
+  line-height: 1.3;
+  text-align: justify;
+  list-style-type: decimal;
+
+  color: #000000;
+  font-family: 'Raleway', 'sans-serif';
+}
+
+.equipo {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #F5F3F9;
+}
+
+.equipo h2 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #5c4033;
+  color: #F5F3F9;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+
+}
+
+.compañeros {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.compañero {
+  width: 150px;
+  font-size: 14px;
+  margin: 10px auto;
+}
+
+.compañero img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.compañero img:hover {
+  transform: scale(1.1);
+}
+
+.compañero h3 .compañero p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+#biografia {
+  text-align: justify;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* ========== MEDIA QUERIES (RESPONSIVE) ========== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  #quienes-somos {
+    width: 90%;
+    flex-direction: column;
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .texto,
+  .somos {
+    width: 100% !important;
+    padding-right: 0;
+  }
+
+  .texto h2 {
+    font-size: 2.5rem;
+  }
+
+  .carta {
+    width: 48%;
+    /* 2 columnas en tablet */
+    margin-bottom: 20px;
+  }
+
+  .bloque-logo-flecha {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .imagen-logo {
+    margin: 0 auto;
+  }
+}
+
+/* Móvil (hasta 768px) */
+@media (max-width: 768px) {
+  body {
+    margin-top: 6rem;
+    /* Reduce espacio para navbar móvil */
+  }
+
+  .nosotros h1 {
+    font-size: 3.5rem !important;
+  }
+
+  .carta {
+    width: 100% !important;
+    /* 1 columna en móvil */
+  }
+
+  .imagen-carta {
+    height: 200px;
+  }
+
+  .compañeros {
+    gap: 15px;
+  }
+
+  .compañero {
+    width: 120px;
+  }
+
+  .texto-logo p,
+  .carta p {
+    font-size: 1.6rem !important;
+    text-align: left;
+  }
+
+  .mensaje-final {
+    font-size: 1.8rem;
+    padding: 10px;
+  }
+}
+
+/* Pantallas muy pequeñas (hasta 480px) */
+@media (max-width: 480px) {
+  .nosotros h1 {
+    font-size: 2.5rem !important;
+    padding: 0 1rem;
+  }
+
+  .titulo-logo {
+    font-size: 1.5rem;
+  }
+
+  .texto h2 {
+    font-size: 2rem;
+  }
+
+  .flecha {
+    display: none;
+    /* Oculta flechas en móviles muy pequeños */
+  }
+}

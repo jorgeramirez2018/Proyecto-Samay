@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+}
+
+:root {
+  --tierra: #5c4033;
+  --arcilla: rgb(187, 104, 77);
+  --text-color: #222222;
+  --maiz: #ffd54f;
+  --algodon: #f5f3f9;
+  --verde: #789064;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--algodon);
+  height: 100vh;
+}
+
+/* Contenedor principal dividido en dos columnas */
+.registro-container {
+  display: flex;
+  height: 110vh;
+}
+
+/* Columna izquierda: imágenes llenan el espacio completo */
+.registro-image {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.registro-image img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+/* Columna derecha: formulario */
+.registro-formulario {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px 60px;
+  background-color: var(--algodon);
+  background-image: url('https://www.transparenttextures.com/patterns/dimension.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+/* Contenedor para logo + título */
+.logo-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+
+/* Logo */
+.logo-registro {
+  width: 300px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-registro:hover {
+  transform: scale(1.05);
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 360px;
+  margin-bottom: 20px; 
+}
+
+form input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--verde);
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+}
+
+form input::placeholder {
+  color: #999;
+}
+
+form button {
+  background-color: var(--arcilla);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+ 
+}
+
+form button:hover {
+  background-color: var(--tierra);
+  transform: scale(1.03);
+}
+
+.error-mensaje {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 10px;  
+  display: block;
+}
+
+
+
+/* Enlace a login */
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-link a {
+  color: var(--verde);
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.login-link a:hover {
+  color: var(--arcilla);
+}
+
+
+@media (max-width: 768px) {
+  .registro-container {
+    flex-direction: column;
+  }
+
+  .registro-image {
+    display: none;
+  }
+
+  .registro-formulario {
+    flex: none;    
+    padding: 0px 20px 40px;
+  }
+
+  .logo-registro {
+    width: 200px;
+  }
+/*    
+  .login-link {
+    margin-bottom: 40px;
+  } */
+}
+
+/* Contenedor de contraseña */
+.password-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+#togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  color: #999;
+  font-size: 20px;
+}
+
+#togglePassword:hover {
+  color: var(--verde);
+}

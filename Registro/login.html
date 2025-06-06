@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In - Samay</title>
+  <link rel="stylesheet" href="./style.css/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <!-- <div id="navbar"></div> -->
+  <main class="login-container">
+    
+
+    <div class="registro-image">
+      <img src="/Registro/imagenes/image1.jpg" alt="Imagen Comunidad" />
+      <img src="/Registro/imagenes/image2.jpeg" alt="Artesanía" />
+    </div>
+
+    <!-- Columna derecha con formulario -->
+    <div class="login-formulario">
+    <div class="logo-title-container">
+      <img src="/Registro/imagenes/Logo Samay Oscuro.png"
+           alt="Logo Samay"
+           class="logo-registro" />
+    </div>
+
+    <form id="form-login">
+      <input type="email"
+             id="username"
+             placeholder="Correo electrónico"
+             required />
+      <div class="password-wrapper">
+        <input type="password"
+              id="password"
+              placeholder="Contraseña"
+              required minlength="6" />
+        <i class='bx bx-hide' id="togglePassword"></i>
+      </div>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <p class="login-link">
+      ¿No tienes cuenta?
+      <a href="/Registro/registro.html">Regístrate</a>
+    </p>
+    <p class="login-link forgot-password">
+      ¿Olvidaste tu contraseña?
+      <a href="/Registro/registro.html">Haz clic aquí</a>
+    </p>
+
+  </div>
+  </main>
+
+  <!-- Footer (puedes linkearlo con JavaScript si está en archivo separado) -->
+  <div id="footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+  <script  type="module" src="script.js/login.js"></script>
+</body>
+</html>

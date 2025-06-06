@@ -1,0 +1,133 @@
+  :root {
+    --tierra: #5c4033;
+    --arcilla: #bb684d;
+    --text-color: #222222;
+    --maiz: #ffd54f;
+    --algodon: #f5f3f9;
+    --verde: #789064;
+  }
+  
+
+  .footer {
+    background-color: var(--tierra);
+    color: var(--algodon);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 3px;
+    flex-wrap: wrap;
+  }
+  
+
+  .footersection {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+  }
+  
+
+  .icons {
+    margin: 0 8px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(1.2);
+  }
+  
+  .icons:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+  }
+  
+
+  .footersection ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+  }
+  
+  .footersection li {
+    margin-bottom: 5px;
+  }
+  
+
+  .footersection form {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footersection input[type="email"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 80%;
+  }
+  
+  .footersection button {
+    padding: 8px 15px;
+    background-color: var(--maiz);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 26px;
+    transition: background 0.3s ease;
+    height: 32px;
+  }
+  
+  .footersection button:hover {
+    background-color: var(--arcilla);
+    color: var(--algodon);
+  }
+  
+
+  .footersection p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .footersection {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .footersection form {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footersection input[type="email"] {
+    width: 20%;
+    margin-bottom: 10px;
+    max-width: 300px;
+    
+  }
+
+  .footersection button {
+    width: 80%;
+    max-width: 100px;
+    margin-left: 45px;
+  }
+
+}
+
+ @media (max-width: 1366px){
+  .footersection input[type="email"] {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 12px;
+    margin-left: 50px;
+  }
+ }

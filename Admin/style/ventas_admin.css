@@ -1,0 +1,30 @@
+:root {
+    /* Colores principales del proyecto */
+    --tierra-profunda: #5C4033;
+    --arcilla: #BB684D;
+    --maiz: #FFD54F;
+    --algodon: #F5F3F9;
+    --verde-monte: #789064;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--algodon);
+    color: #333;
+}
+
+
+.content-wrapper {
+  margin-left: 250px;
+  padding: 2rem;
+  width: calc(100% - 250px);
+}
+
+.table th {
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.table td {
+  vertical-align: middle;
+}
