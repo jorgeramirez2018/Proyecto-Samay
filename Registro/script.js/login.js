@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Cargar navbar con Shadow DOM
   fetch("/navbar/navbar.html")
     .then((res) => res.text())
     .then((data) => {
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     });
 
+  // Cargar footer con Shadow DOM
   fetch("/footer/footer.html")
     .then((res) => res.text())
     .then((data) => {
@@ -20,127 +22,118 @@ document.addEventListener("DOMContentLoaded", () => {
         ${data}
       `;
     });
+
+  // Redirigir si ya está logeado
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      const decoded = jwt_decode(token);
+      if (decoded.role === "admin") {
+        window.location.href = "/Admin/vistas/productos.html";
+      } else if (decoded.role === "cliente") {
+        window.location.href = "/VistaComprador/home/index.html";
+      }
+    } catch {
+      localStorage.removeItem("token");
+      localStorage.removeItem("currentUser");
+    }
+  }
 });
 
- // manejador del formulario de login
-const form = document.getElementById('form-login');
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Obtener los valores del formulario
-    const email = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-    
-    // Validar campos vacíos
-    if (email === "" || password === "") {
-      showAlert("Por favor, completa todos los campos", "error");
-      return;
-    }
-    
-    if (!isValidEmail(email)) {
-      showAlert("Por favor, introduce un correo electrónico válido", "error");
-      return;
-    }
-    
-    if (password.length < 6) {
-      showAlert("La contraseña debe tener al menos 6 caracteres", "error");
-      return;
-    }
-    
-    // Verificar credenciales con localStorage
-    authenticateUser(email, password);
-  });
+// Manejador del formulario de login
+const form = document.getElementById("form-login");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-/**
- * Valida el formato del correo electrónico
- * @param {string} email 
- * @returns {boolean} 
- *  
- * */
+  const email = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!email || !password) {
+    showAlert("Por favor, completa todos los campos", "error");
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    showAlert("Por favor, introduce un correo electrónico válido", "error");
+    return;
+  }
+
+  if (password.length < 6) {
+    showAlert("La contraseña debe tener al menos 6 caracteres", "error");
+    return;
+  }
+
+  authenticateUser(email, password);
+});
+
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-/**
- * Autentica al usuario verificando contra localStorage
- * @param {string} email - Correo electrónico del usuario
- * @param {string} password - Contraseña del usuario
- */
 function authenticateUser(email, password) {
-  try {
-    // Obtener usuarios del localStorage
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+  fetch("http://localhost:8080/usuarios/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ correo: email, contrasena: password }),
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Correo o contraseña inválidos");
+      return res.text(); // ⚠️ Si el token viene como texto plano
+    })
+    .then((token) => {
+      // 🔍 Aquí pegas esto para debuggear
+      console.log("TOKEN:", token); // Verifica si llega correctamente
 
-    // Buscar el usuario por correo electrónico
-    const user = storedUsers.find((user) => user.email === email);
+      const decoded = jwt_decode(token);
+      console.log("DECODED TOKEN:", decoded); // Aquí debe verse el id, rol, etc.
 
-    if (user && user.password === password) {
-      showAlert("¡Inicio de sesión exitoso!", "success");
-
-      // Guardar información de sesión activa
+      // Puedes dejar esto si todo va bien
+      localStorage.setItem("token", token);
       localStorage.setItem(
         "currentUser",
-        JSON.stringify({
-          email: user.email,
-          name: user.nombre,
-        })
+        JSON.stringify({ email, role: decoded.role })
       );
 
-      // Redirección según el tipo de usuario
-      setTimeout(() => {
-        if (user.email === "samay@gmail.com") {
-          window.location.href = "/Admin/vistas/productos.html"; // Ruta del admin
-        } else {
-          window.location.href = "/VistaComprador/home/index.html"; // Ruta del usuario normal
-        }
-      }, 1500);
-    } else {
-      showAlert("Correo electrónico o contraseña inválidos", "error");
-    }
-  } catch (error) {
-    console.error("Error al autenticar:", error);
-    showAlert("Ocurrió un error al intentar iniciar sesión", "error");
-  }
+      if (decoded.role === "admin") {
+        window.location.href = "/Admin/vistas/productos.html";
+      } else if (decoded.role === "cliente") {
+        window.location.href = "/VistaComprador/home/index.html";
+      } else {
+        showAlert("Rol no reconocido", "error");
+      }
+    })
+    .catch((err) => {
+      showAlert(err.message, "error");
+    });
 }
-
-/**
- * Muestra una alerta al usuario
- * @param {string} message 
- * @param {string} type 
- */
 
 function showAlert(message, type) {
-    const prevAlert = document.querySelector('.alert');
-  if (prevAlert) {
-    prevAlert.remove();
-  }
-  
-  // Crear elemento de alerta
-  const alertElement = document.createElement('div');
+  const prevAlert = document.querySelector(".alert");
+  if (prevAlert) prevAlert.remove();
+
+  const alertElement = document.createElement("div");
   alertElement.className = `alert alert-${type}`;
   alertElement.textContent = message;
-  
-  // Insertar alerta después del formulario
-  const formElement = document.getElementById('form-login');
-  formElement.insertAdjacentElement('afterend', alertElement);
-  
-  setTimeout(() => {
-    alertElement.remove();
-  }, 3000);
+
+  const formElement = document.getElementById("form-login");
+  formElement.insertAdjacentElement("afterend", alertElement);
+
+  setTimeout(() => alertElement.remove(), 3000);
 }
 
-// Visibilidad del ojito en la contraseña
-document.getElementById('togglePassword').addEventListener('click', function() {
-  const password = document.getElementById('password');
-  const icon = this;
-  
-  if (password.type === 'password') {
-    password.type = 'text';
-    icon.classList.replace('bx-hide', 'bx-show');
-  } else {
-    password.type = 'password';
-    icon.classList.replace('bx-show', 'bx-hide');
-  }
-});
+// Toggle para mostrar/ocultar contraseña
+document
+  .getElementById("togglePassword")
+  .addEventListener("click", function () {
+    const password = document.getElementById("password");
+    const icon = this;
 
+    if (password.type === "password") {
+      password.type = "text";
+      icon.classList.replace("bx-hide", "bx-show");
+    } else {
+      password.type = "password";
+      icon.classList.replace("bx-show", "bx-hide");
+    }
+  });

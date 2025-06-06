@@ -1,10 +1,7 @@
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn"); // Asumo que cartBtn y cartCounter están definidos
-const cartCounter = document.getElementById("cart-counter"); // y que 'cart' es tu array de carrito global o accesible.
-
-// Asumo que 'cart' es una variable global o accesible que contiene los productos del carrito.
-// Ejemplo: let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartCounter = document.getElementById("cart-counter"); 
 
 const displayCart = async () => {
   modalContainer.innerHTML = "";
@@ -30,9 +27,7 @@ const displayCart = async () => {
   modalHeader.append(modalTitle);
   modalContainer.append(modalHeader);
 
-  // Modal Body
-  // Asumo que 'cart' es el array que contiene los productos.
-  // Cada producto en 'cart' debe tener: id, productName, price, quanty, img
+
   cart.forEach((product) => {
     const modalBody = document.createElement("div");
     modalBody.className = "modal-body";
@@ -75,7 +70,7 @@ const displayCart = async () => {
 
     const deleteProduct = modalBody.querySelector(".delete-product");
     deleteProduct.addEventListener("click", () => {
-      deleteCartProduct(product.id); // Asumo que esta función está definida en otro lugar
+      deleteCartProduct(product.id); 
     });
   });
 
@@ -93,7 +88,7 @@ const displayCart = async () => {
   modalFooter.innerHTML = `
   <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
   <div class="total-price">Total: ${formatoCOP.format(total)}</div>
-`; // Removí el signo $ extra ya que formatoCOP lo incluye
+`;
   modalContainer.append(modalFooter);
 
   // --- INICIO DE LA MODIFICACIÓN ---
@@ -104,12 +99,23 @@ const displayCart = async () => {
       return;
     }
 
-    const usuarioIdInput = prompt("Ingresa el ID del usuario:");
-    if (usuarioIdInput === null) return;
+    const token = localStorage.getItem("token");
+    console.log("Token guardado:", token);
 
-    const usuarioId = parseInt(usuarioIdInput);
-    if (isNaN(usuarioId) || usuarioId <= 0) {
-      alert("Se requiere un ID de usuario válido y numérico positivo.");
+    let usuarioId; // Defino aquí para poder usarla luego
+
+    if (token) {
+      const decoded = jwt_decode(token);
+      console.log("Token decodificado:", decoded);
+      console.log("ID del usuario:", decoded.id);
+
+      usuarioId = parseInt(decoded.id);
+      if (isNaN(usuarioId) || usuarioId <= 0) {
+        alert("Se requiere un ID de usuario válido y numérico positivo.");
+        return;
+      }
+    } else {
+      console.log("No hay token guardado en localStorage");
       return;
     }
 
@@ -135,7 +141,7 @@ const displayCart = async () => {
             throw new Error("Error en agregarVenta: " + text);
           });
         }
-        return response.json(); // ✅ Esto espera el JSON con { "id": 24 }
+        return response.json(); // { "id": 24 }
       })
       .then((ventaCreada) => {
         const ventaId = ventaCreada.id;

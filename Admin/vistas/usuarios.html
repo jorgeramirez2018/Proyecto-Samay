@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Usuarios - Samay</title>
 
   <!-- Bootstrap CSS -->
@@ -47,7 +47,7 @@
         <ul class="nav flex-column">
           <li class="nav-item mb-2 d-flex align-items-center">
             <i class='bx bx-exit' style='color: white;'></i>
-            <a class="nav-link text-white ms-2 menu-text" href="/home/index.html">Salir</a>
+            <a id="logoutBtn" class="nav-link text-white ms-2 menu-text" href="#">Salir</a>
           </li>
         </ul>
       </div>
@@ -148,8 +148,8 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-  // Al cargar la página
-  document.addEventListener("DOMContentLoaded", cargarUsuariosDesdeBackend);
+    // Al cargar la página
+    document.addEventListener("DOMContentLoaded", cargarUsuariosDesdeBackend);
 
     function renderUsers() {
       const tbody = document.getElementById("userTableBody");
@@ -174,19 +174,19 @@
           </tr>`;
       });
     }
-  // Obtener y renderizar usuarios
-  async function cargarUsuariosDesdeBackend() {
-    try {
-      const response = await fetch("http://localhost:8080/usuarios");
-      if (!response.ok) throw new Error("Error al cargar usuarios");
+    // Obtener y renderizar usuarios
+    async function cargarUsuariosDesdeBackend() {
+      try {
+        const response = await fetch("http://localhost:8080/usuarios");
+        if (!response.ok) throw new Error("Error al cargar usuarios");
 
-      const users = await response.json();
-      renderUsers(users);
-    } catch (error) {
-      console.error("Error al cargar usuarios:", error);
-      alert("No se pudo cargar la lista de usuarios.");
+        const users = await response.json();
+        renderUsers(users);
+      } catch (error) {
+        console.error("Error al cargar usuarios:", error);
+        alert("No se pudo cargar la lista de usuarios.");
+      }
     }
-  }
 
     document.getElementById("addUserForm").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -197,17 +197,17 @@
         correo: document.getElementById("userEmail").value,
         telefono: document.getElementById("userPhone").value,
         rol: document.getElementById("userRole").value
-    };
+      };
       users.push(newUser);
       renderUsers();
     });
-  // Renderizar tabla
-  function renderUsers(users) {
-    const tbody = document.getElementById("userTableBody");
-    tbody.innerHTML = "";
+    // Renderizar tabla
+    function renderUsers(users) {
+      const tbody = document.getElementById("userTableBody");
+      tbody.innerHTML = "";
 
-    users.forEach(user => {
-      tbody.innerHTML += `
+      users.forEach(user => {
+        tbody.innerHTML += `
       <tr>
         <td>${user.usuario_id}</td>
         <td>${user.nombre}</td>
@@ -224,112 +224,153 @@
           </button>
         </td>
       </tr>`;
+      });
+    }
+
+    // Crear nuevo usuario
+    document.getElementById("addUserForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const newUser = {
+        nombre: document.getElementById("userName").value,
+        contrasena: document.getElementById("userPassword").value, // Campo fijo o de entrada
+        correo: document.getElementById("userEmail").value,
+        telefono: document.getElementById("userPhone").value,
+        rol: document.getElementById("userRole").value
+      };
+
+      try {
+        const response = await fetch("http://localhost:8080/usuarios/agregarUsuario", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newUser)
+        });
+
+        if (!response.ok) throw new Error("Error al crear usuario");
+
+        await cargarUsuariosDesdeBackend();
+        this.reset();
+        bootstrap.Modal.getInstance(document.getElementById("addUserModal")).hide();
+      } catch (error) {
+        console.error("Error al crear usuario:", error);
+        alert("No se pudo crear el usuario.");
+      }
     });
-  }
 
-  // Crear nuevo usuario
-  document.getElementById("addUserForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+    // Cargar datos en el modal de edición
+    async function editUser(id) {
+      try {
+        const response = await fetch(`http://localhost:8080/usuarios/buscar/${id}`);
+        if (!response.ok) throw new Error("Usuario no encontrado");
 
-    const newUser = {
-      nombre: document.getElementById("userName").value,
-      contrasena: document.getElementById("userPassword").value, // Campo fijo o de entrada
-      correo: document.getElementById("userEmail").value,
-      telefono: document.getElementById("userPhone").value,
-      rol: document.getElementById("userRole").value
-    };
+        const user = await response.json();
 
-    try {
-      const response = await fetch("http://localhost:8080/usuarios/agregarUsuario", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newUser)
+        document.getElementById("editUserId").value = user.usuario_id;
+        document.getElementById("editUserName").value = user.nombre;
+        document.getElementById("editUserEmail").value = user.correo;
+        document.getElementById("editUserPhone").value = user.telefono;
+        document.getElementById("editUserRole").value = user.rol;
+
+        new bootstrap.Modal(document.getElementById("editUserModal")).show();
+      } catch (error) {
+        console.error("Error al cargar usuario para editar:", error);
+        alert("No se pudo cargar el usuario.");
+      }
+    }
+
+    // Guardar edición
+    document.getElementById("editUserForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const id = document.getElementById("editUserId").value;
+
+      const updatedUser = {
+        nombre: document.getElementById("editUserName").value,
+        contrasena: document.getElementById("userPassword").value,
+        correo: document.getElementById("editUserEmail").value,
+        telefono: document.getElementById("editUserPhone").value,
+        rol: document.getElementById("editUserRole").value
+      };
+
+      try {
+        const response = await fetch(`http://localhost:8080/usuarios/editarUsuario/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedUser)
+        });
+
+        if (!response.ok) throw new Error("Error al actualizar usuario");
+
+        await cargarUsuariosDesdeBackend();
+        bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
+      } catch (error) {
+        console.error("Error al editar usuario:", error);
+        alert("No se pudo editar el usuario.");
+      }
+    });
+
+    // Eliminar usuario
+    async function deleteUser(id) {
+      if (!confirm("¿Eliminar este usuario?")) return;
+
+      try {
+        const response = await fetch(`http://localhost:8080/usuarios/borrarUsuario/${id}`, {
+          method: "DELETE"
+        });
+
+        if (!response.ok) throw new Error("Error al eliminar usuario");
+
+        await cargarUsuariosDesdeBackend();
+      } catch (error) {
+        console.error("Error al eliminar usuario:", error);
+        alert("No se pudo eliminar el usuario.");
+      }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          alert("Debes iniciar sesión primero.");
+          window.location.href = "/Registro/login.html";
+          return;
+        }
+
+        try {
+          const decoded = jwt_decode(token);
+
+          if (decoded.role !== "admin") {
+            alert("No tienes permisos para acceder a esta página.");
+            window.location.href = "/VistaComprador/home/index.html";
+            return;
+          }
+
+          // ✅ Si pasa validación, mostrar el contenido
+          document.body.style.display = "block";
+        } catch (error) {
+          console.error("Token inválido o expirado", error);
+          localStorage.removeItem("token");
+          localStorage.removeItem("currentUser");
+          window.location.href = "/home/index.html";
+        }
       });
 
-      if (!response.ok) throw new Error("Error al crear usuario");
-
-      await cargarUsuariosDesdeBackend();
-      this.reset();
-      bootstrap.Modal.getInstance(document.getElementById("addUserModal")).hide();
-    } catch (error) {
-      console.error("Error al crear usuario:", error);
-      alert("No se pudo crear el usuario.");
-    }
-  });
-
-  // Cargar datos en el modal de edición
-  async function editUser(id) {
-    try {
-      const response = await fetch(`http://localhost:8080/usuarios/buscar/${id}`);
-      if (!response.ok) throw new Error("Usuario no encontrado");
-
-      const user = await response.json();
-
-      document.getElementById("editUserId").value = user.usuario_id;
-      document.getElementById("editUserName").value = user.nombre;
-      document.getElementById("editUserEmail").value = user.correo;
-      document.getElementById("editUserPhone").value = user.telefono;
-      document.getElementById("editUserRole").value = user.rol;
-
-      new bootstrap.Modal(document.getElementById("editUserModal")).show();
-    } catch (error) {
-      console.error("Error al cargar usuario para editar:", error);
-      alert("No se pudo cargar el usuario.");
-    }
-  }
-
-  // Guardar edición
-  document.getElementById("editUserForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const id = document.getElementById("editUserId").value;
-
-    const updatedUser = {
-      nombre: document.getElementById("editUserName").value,
-      contrasena: document.getElementById("userPassword").value,
-      correo: document.getElementById("editUserEmail").value,
-      telefono: document.getElementById("editUserPhone").value,
-      rol: document.getElementById("editUserRole").value
-    };
-
-    try {
-      const response = await fetch(`http://localhost:8080/usuarios/editarUsuario/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedUser)
-      });
-
-      if (!response.ok) throw new Error("Error al actualizar usuario");
-
-      await cargarUsuariosDesdeBackend();
-      bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
-    } catch (error) {
-      console.error("Error al editar usuario:", error);
-      alert("No se pudo editar el usuario.");
-    }
-  });
-
-  // Eliminar usuario
-  async function deleteUser(id) {
-    if (!confirm("¿Eliminar este usuario?")) return;
-
-    try {
-      const response = await fetch(`http://localhost:8080/usuarios/borrarUsuario/${id}`, {
-        method: "DELETE"
-      });
-
-      if (!response.ok) throw new Error("Error al eliminar usuario");
-
-      await cargarUsuariosDesdeBackend();
-    } catch (error) {
-      console.error("Error al eliminar usuario:", error);
-      alert("No se pudo eliminar el usuario.");
-    }
-  }
+      document.addEventListener("DOMContentLoaded", () => {
+          const logoutBtn = document.getElementById("logoutBtn");
+          if (logoutBtn) {
+            logoutBtn.addEventListener("click", function (e) {
+              e.preventDefault(); // Previene navegación inmediata
+              localStorage.removeItem("token");
+              localStorage.removeItem("currentUser");
+              window.location.href = "/home/index.html"; // Redirige al home o login
+            });
+          }
+        });
 
 
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </body>
+
 </html>
-
-

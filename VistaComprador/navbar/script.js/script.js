@@ -33,4 +33,14 @@ window.addEventListener("click", function (e) {
 }); 
 
 
-
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function (e) {
+      e.preventDefault(); // Evita que el link intente navegar
+      localStorage.removeItem("token");
+      localStorage.removeItem("currentUser");
+      window.location.href = "/home/index.html"; // o la ruta donde tengas el login
+    });
+  }
+});

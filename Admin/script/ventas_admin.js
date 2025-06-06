@@ -106,3 +106,43 @@ async function mostrarDetallesVenta(ventaId) {
     alert("Error al cargar los detalles de la venta.");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("Debes iniciar sesión primero.");
+    window.location.href = "/Registro/login.html";
+    return;
+  }
+
+  try {
+    const decoded = jwt_decode(token);
+
+    if (decoded.role !== "admin") {
+      alert("No tienes permisos para acceder a esta página.");
+      window.location.href = "/VistaComprador/home/index.html";
+      return;
+    }
+
+    // ✅ Si pasa validación, mostrar el contenido
+    document.body.style.display = "block";
+  } catch (error) {
+    console.error("Token inválido o expirado", error);
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    window.location.href = "/home/index.html";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function (e) {
+      e.preventDefault(); // Previene navegación inmediata
+      localStorage.removeItem("token");
+      localStorage.removeItem("currentUser");
+      window.location.href = "/home/index.html"; // Redirige al home o login
+    });
+  }
+});
