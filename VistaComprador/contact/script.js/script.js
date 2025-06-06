@@ -16,10 +16,24 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.text())
     .then((data) => {
       document.getElementById("navbar").innerHTML = data;
+
+      // Lógica que depende del HTML cargado
       activarHamburguesa();
       marcarEnlaceActivo();
+
+      // Agregar manejador de cierre de sesión
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          localStorage.removeItem("token");
+          localStorage.removeItem("currentUser");
+          window.location.href = "/home/index.html";
+        });
+      }
     });
 });
+
 function toggleUserMenu() {
   const menu = document.getElementById("userDropdown");
   menu.style.display = menu.style.display === "block" ? "none" : "block";

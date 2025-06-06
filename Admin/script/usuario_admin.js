@@ -73,3 +73,32 @@ function deleteUser(id) {
 }
 
 renderUsers();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("Debes iniciar sesión primero.");
+    window.location.href = "/Registro/login.html";
+    return;
+  }
+
+  try {
+    const decoded = jwt_decode(token);
+
+    if (decoded.role !== "admin") {
+      alert("No tienes permisos para acceder a esta página.");
+      window.location.href = "/VistaComprador/home/index.html";
+      return;
+    }
+
+    // ✅ Si pasa validación, mostrar el contenido
+    document.body.style.display = "block";
+  } catch (error) {
+    console.error("Token inválido o expirado", error);
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    window.location.href = "/home/index.html";
+  }
+});

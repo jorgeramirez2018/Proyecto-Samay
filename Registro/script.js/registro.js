@@ -98,41 +98,31 @@ document.addEventListener('DOMContentLoaded', function() {
     errorElement.style.color = 'red';
     errorElement.style.marginBottom = '15px';
   }
-  
- function guardarUsuario(nombre, telefono, email, password) {
-  const usuario = {
-    nombre: nombre,
-    telefono: telefono,
-    email: email,
-    password: password, // ⚠️ Recuerda: esto debe cifrarse en un proyecto real
-    fechaRegistro: new Date().toISOString()
-  };
+  function guardarUsuario(nombre, telefono, email, password) {
+    const usuario = {
+      nombre: nombre,
+      telefono: telefono,
+      correo: email, // ojo que el backend espera 'correo' no 'email'
+      contrasena: password, // ojo que backend usa 'contrasena'
+      // No incluyas fechaRegistro, backend no la espera
+    };
 
-  // Obtener usuarios existentes
-  const usuariosGuardados = JSON.parse(localStorage.getItem('users')) || [];
-
-  // Verificar si ya hay un usuario con ese email
-  const yaRegistrado = usuariosGuardados.some(user => user.email === email);
-  if (yaRegistrado) {
-    mostrarError("Este correo ya está registrado.");
-    return;
-  }
-
-  // Agregar el nuevo usuario al array
-  usuariosGuardados.push(usuario);
-
-  // Guardar el array actualizado en localStorage
-  localStorage.setItem('users', JSON.stringify(usuariosGuardados));
-
-  // Guardar sesión actual
-  localStorage.setItem('currentUser', JSON.stringify({
-    email: usuario.email,
-    name: usuario.nombre
-  }));
-    
-    // Redireccionar a la página principal 
-    alert('¡Registro exitoso! Bienvenido/a a Samay.');
-    window.location.href = '../home/index.html'; // Cambia esta ruta según tu estructura
+    fetch("http://localhost:8080/usuarios/agregarUsuario", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(usuario),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Error al registrar usuario");
+        return response.text();
+      })
+      .then((data) => {
+        alert("¡Registro exitoso! Bienvenido/a a Samay.");
+        window.location.href = "../home/index.html";
+      })
+      .catch((error) => {
+        mostrarError(error.message);
+      });
   }
   
   // Agregar evento submit al formulario
