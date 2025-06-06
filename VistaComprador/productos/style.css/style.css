@@ -621,8 +621,8 @@ body {
   }
 
   .sidebar {
-    position: absolute;
-    top: auto;
+    position: fixed;
+    top: 8.3rem;
     left: 0;
     width: 100%;
     max-width: 100%;
@@ -688,8 +688,8 @@ body {
   }
 
   .sidebar {
-    position: absolute;
-    top: auto;
+    position: fixed;
+    top: 8.3rem;
     left: 0;
     width: 100%;
     max-width: 100%;
