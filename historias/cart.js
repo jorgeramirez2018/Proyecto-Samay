@@ -90,17 +90,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const buyButton = document.getElementById("btn-buy");
     buyButton.addEventListener("click", () => {
-      if (cart.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
+      alert("No se puede hacer la compra porque no ha iniciado sesión.");
+      window.location.href = "../Registro/login.html";
+      return;
 
-      alert("¡Gracias por tu compra!");
-      cart.length = 0;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      modalContainer.style.display = "none";
-      modalOverlay.style.display = "none";
-      displayCartCounter();
+      const usuarioId = usuarioLogueado.usuario_id;
+
+      const total = cart.reduce(
+        (acc, item) => acc + item.price * item.quanty,
+        0
+      );
+
+      const ventaData = {
+        fecha_venta: new Date().toISOString(),
+        total: total,
+        usuario: {
+          usuario_id: usuarioId,
+        },
+      };
+
+      // PRIMERA PETICIÓN
+      fetch("http://localhost:8080/ventas/agregarVenta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ventaData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            return response.text().then((text) => {
+              throw new Error("Error en agregarVenta: " + text);
+            });
+          }
+          return response.json();
+        })
+        .then((ventaCreada) => {
+          const ventaId = ventaCreada.id;
+          if (!ventaId)
+            throw new Error("No se recibió el ID de la venta creada.");
+
+          const productosParaEnviar = cart.map((product) => ({
+            productoId: parseInt(product.id),
+            precioUnitario: parseFloat(product.price),
+            cantidad: parseInt(product.quanty),
+          }));
+
+          const payload = {
+            ventaId: ventaId,
+            productos: productosParaEnviar,
+          };
+
+          return fetch(
+            "http://localhost:8080/venta-productos/agregar-multiples",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            }
+          );
+        })
+        .then((response) => {
+          if (!response.ok) {
+            return response.text().then((text) => {
+              throw new Error("Error en agregar-multiples: " + text);
+            });
+          }
+          return response.text();
+        })
+        .then((mensajeFinal) => {
+          alert("Venta realizada con éxito:\n" + mensajeFinal);
+          cart.length = 0;
+          localStorage.setItem("cart", JSON.stringify(cart));
+          modalContainer.style.display = "none";
+          modalOverlay.style.display = "none";
+          displayCartCounter();
+        })
+        .catch((error) => {
+          console.error("Error en el proceso de venta:", error);
+          alert("Error en el proceso de venta: " + error.message);
+        });
     });
   };
 

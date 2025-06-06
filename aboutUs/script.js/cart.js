@@ -90,10 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const buyButton = document.getElementById("btn-buy");
     buyButton.addEventListener("click", () => {
-      if (cart.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
+      alert("No se puede hacer la compra porque no ha iniciado sesión.");
+      window.location.href = "../Registro/login.html";
+      return;
 
       alert("¡Gracias por tu compra!");
       cart.length = 0;

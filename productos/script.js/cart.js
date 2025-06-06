@@ -90,12 +90,10 @@ const displayCart = async () => {
   modalContainer.append(modalFooter);
 
   const buyButton = document.getElementById("btn-buy");
-  buyButton.addEventListener("click", async () => {
-    if (cart.length === 0) {
-      alert("Tu carrito está vacío.");
-      return;
-    }
-
+  buyButton.addEventListener("click", () => {
+    alert("No se puede hacer la compra porque no ha iniciado sesión.");
+    window.location.href = "../Registro/login.html";
+    return;
     alert("¡Gracias por tu compra!");
     cart.length = 0;
     localStorage.setItem("cart", JSON.stringify(cart));
