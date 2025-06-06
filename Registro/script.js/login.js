@@ -79,12 +79,16 @@ function authenticateUser(email, password) {
   })
     .then((res) => {
       if (!res.ok) throw new Error("Correo o contraseña inválidos");
-      return res.text(); // ⚠️ Importante si backend devuelve token como texto plano
+      return res.text(); // ⚠️ Si el token viene como texto plano
     })
     .then((token) => {
-      const decoded = jwt_decode(token);
+      // 🔍 Aquí pegas esto para debuggear
+      console.log("TOKEN:", token); // Verifica si llega correctamente
 
-      // ✅ Aquí debería guardarse
+      const decoded = jwt_decode(token);
+      console.log("DECODED TOKEN:", decoded); // Aquí debe verse el id, rol, etc.
+
+      // Puedes dejar esto si todo va bien
       localStorage.setItem("token", token);
       localStorage.setItem(
         "currentUser",

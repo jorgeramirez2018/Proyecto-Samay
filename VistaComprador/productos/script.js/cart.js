@@ -99,12 +99,23 @@ const displayCart = async () => {
       return;
     }
 
-    const usuarioIdInput = prompt("Ingresa el ID del usuario:");
-    if (usuarioIdInput === null) return;
+    const token = localStorage.getItem("token");
+    console.log("Token guardado:", token);
 
-    const usuarioId = parseInt(usuarioIdInput);
-    if (isNaN(usuarioId) || usuarioId <= 0) {
-      alert("Se requiere un ID de usuario válido y numérico positivo.");
+    let usuarioId; // Defino aquí para poder usarla luego
+
+    if (token) {
+      const decoded = jwt_decode(token);
+      console.log("Token decodificado:", decoded);
+      console.log("ID del usuario:", decoded.id);
+
+      usuarioId = parseInt(decoded.id);
+      if (isNaN(usuarioId) || usuarioId <= 0) {
+        alert("Se requiere un ID de usuario válido y numérico positivo.");
+        return;
+      }
+    } else {
+      console.log("No hay token guardado en localStorage");
       return;
     }
 
@@ -130,7 +141,7 @@ const displayCart = async () => {
             throw new Error("Error en agregarVenta: " + text);
           });
         }
-        return response.json(); // ✅ Esto espera el JSON con { "id": 24 }
+        return response.json(); // { "id": 24 }
       })
       .then((ventaCreada) => {
         const ventaId = ventaCreada.id;
