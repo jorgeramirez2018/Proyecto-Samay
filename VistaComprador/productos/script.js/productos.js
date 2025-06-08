@@ -240,6 +240,7 @@ function renderizarProductos(productos) {
 
       localStorage.setItem("cart", JSON.stringify(cart));
       displayCartCounter();
+      showCartToast();
     });
   });
 }

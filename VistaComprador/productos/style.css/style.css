@@ -737,3 +737,29 @@ body {
 
   
 }
+
+/* estilo del mensaje */
+.toast-cart{
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  max-width: 320px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  background: var(--algodon);        
+  color:var(--tierra);
+  box-shadow:0 6px 12px rgba(0,0,0,.15);
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .35s ease,transform .35s ease;
+  z-index:9999;
+}
+
+.toast-cart.toast-show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.toast-hidden{display:none;}
