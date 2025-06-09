@@ -2,7 +2,7 @@ const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
 const cartCounter = document.getElementById("cart-counter");
-const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
+
 
 const displayCart = async () => {
   modalContainer.innerHTML = "";

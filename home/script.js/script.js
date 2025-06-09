@@ -1,6 +1,7 @@
 function marcarEnlaceActivo() {
   const navLinks = document.querySelectorAll(".navbar a");
   const currentPath = window.location.pathname.replace(/\/$/, "");
+  const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
 
   navLinks.forEach((link) => {
     const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
@@ -126,7 +127,7 @@ const formatoCOP = new Intl.NumberFormat("es-CO", {
 // ✅ Nueva función para cargar productos desde el backend
 async function cargarProductosDesdeBackend() {
   try {
-    const response = await fetch("http://localhost:8080/productos");
+    const response = await fetch(`${API_BASE_URL}/productos`);
     if (!response.ok) throw new Error("No se pudieron obtener los productos");
 
     const productos = await response.json();
