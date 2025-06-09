@@ -1,8 +1,8 @@
 let ventasGlobales = [];
-const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/ventas`);
+    const response = await fetch("https://25kdtzqrsa.us-east-1.awsapprunner.com/ventas");
     if (!response.ok) throw new Error("No se pudo cargar ventas");
 
     ventasGlobales = await response.json();
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const filtroFecha = document.getElementById("filtroFecha");
     if (filtroFecha) {
       filtroFecha.addEventListener("input", () => {
-        const fechaSeleccionada = filtroFecha.value; // formato: yyyy-mm-dd
+        const fechaSeleccionada = filtroFecha.value;
         if (!fechaSeleccionada) {
-          mostrarVentas(ventasGlobales); // si está vacío, mostrar todas
+          mostrarVentas(ventasGlobales);
         } else {
-          const filtradas = ventasGlobales.filter(v =>
+          const filtradas = ventasGlobales.filter((v) =>
             v.fechaVenta?.startsWith(fechaSeleccionada)
           );
           mostrarVentas(filtradas);
@@ -32,35 +32,88 @@ function mostrarVentas(lista) {
   const tbody = document.getElementById("ventasTableBody");
   tbody.innerHTML = "";
 
-  lista.forEach(v => {
+  lista.forEach((v) => {
     const row = document.createElement("tr");
+
     row.innerHTML = `
       <td>${v.venta_id ?? "N/A"}</td>
       <td>${v.usuario?.nombre ?? "Sin nombre"}</td>
       <td>$${v.total?.toFixed(2) ?? "0.00"}</td>
       <td>${v.fecha_venta?.split("T")[0] ?? "-"}</td>
       <td>
-    <button class="btn btn-sm btn-outline-primary ver-detalles" data-id="${v.venta_id}">
-      Ver detalles
-    </button>
-  </td>
+        <select class="form-select form-select-sm" data-id="${
+          v.venta_id
+        }" data-field="detalleEnvio">
+          <option value="En proceso" ${
+            v.detalleEnvio === "En proceso" ? "selected" : ""
+          }>En proceso</option>
+          <option value="Enviado" ${
+            v.detalleEnvio === "Enviado" ? "selected" : ""
+          }>Enviado</option>
+          <option value="Cancelado" ${
+            v.detalleEnvio === "Cancelado" ? "selected" : ""
+          }>Cancelado</option>
+        </select>
+      </td>
+      <td>✅ Aprobado</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary ver-detalles" data-id="${
+          v.venta_id
+        }">
+          Ver detalles
+        </button>
+        <button class="btn btn-sm btn-outline-success actualizar-venta" data-id="${
+          v.venta_id
+        }">
+          Guardar
+        </button>
+      </td>
     `;
+
     tbody.appendChild(row);
-    const btn = row.querySelector(".ver-detalles");
-    btn?.addEventListener("click", () => mostrarDetallesVenta(v.venta_id));
+
+    row
+      .querySelector(".ver-detalles")
+      ?.addEventListener("click", () => mostrarDetallesVenta(v.venta_id));
+
+    row
+      .querySelector(".actualizar-venta")
+      ?.addEventListener("click", async () => {
+        const selectEnvio = row.querySelector(
+          `select[data-field="detalleEnvio"]`
+        );
+        const nuevaVenta = { detalleEnvio: selectEnvio.value };
+
+        try {
+          const res = await fetch(
+            `https://25kdtzqrsa.us-east-1.awsapprunner.com/ventas/actualizarEstado/${v.venta_id}`,
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(nuevaVenta),
+            }
+          );
+
+          if (!res.ok) throw new Error("Error al actualizar venta");
+
+          alert("Estado de envío actualizado correctamente");
+        } catch (error) {
+          console.error(error);
+          alert("Error al guardar los cambios");
+        }
+      });
   });
 }
 
-
-
-// FUNCION PARA DESCARGAR EXCEL DE VENTAS
-
+// Exportar a Excel
 document.getElementById("btnExportarExcel")?.addEventListener("click", () => {
-  const datos = ventasGlobales.map(v => ({
+  const datos = ventasGlobales.map((v) => ({
     "ID Venta": v.venta_id,
-    "Cliente": v.usuario?.nombre || "Sin nombre",
-    "Total": v.total?.toFixed(2) || "0.00",
-    "Fecha": v.fecha_venta?.split("T")[0] || "-"
+    Cliente: v.usuario?.nombre || "Sin nombre",
+    Total: v.total?.toFixed(2) || "0.00",
+    Fecha: v.fecha_venta?.split("T")[0] || "-",
+    "Estado Envío": v.detalleEnvio || "",
+    "Estado Pago": "Aprobado",
   }));
 
   const wb = XLSX.utils.book_new();
@@ -69,18 +122,19 @@ document.getElementById("btnExportarExcel")?.addEventListener("click", () => {
   XLSX.writeFile(wb, "ventas.xlsx");
 });
 
-// FUNCION MOSTRAR DETALLES VENTAS - VENTA PRODUCTO
-
+// Modal Detalles Venta
 async function mostrarDetallesVenta(ventaId) {
   try {
-    const response = await fetch(`${API_BASE_URL}/venta-productos/venta/${ventaId}`);
+    const response = await fetch(
+      `https://25kdtzqrsa.us-east-1.awsapprunner.com/venta-productos/venta/${ventaId}`
+    );
     if (!response.ok) throw new Error("No se pudo cargar los detalles");
 
     const detalles = await response.json();
     const tbody = document.getElementById("detalleVentaBody");
     tbody.innerHTML = "";
 
-    detalles.forEach(item => {
+    detalles.forEach((item) => {
       const nombre = item.producto?.productName ?? "Sin nombre";
       const precio = item.precio_unitario ?? 0;
       const cantidad = item.cantidad ?? 0;
@@ -107,6 +161,7 @@ async function mostrarDetallesVenta(ventaId) {
   }
 }
 
+// Validación de token y logout
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
 
@@ -125,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ Si pasa validación, mostrar el contenido
     document.body.style.display = "block";
   } catch (error) {
     console.error("Token inválido o expirado", error);
@@ -135,14 +189,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Logout
 document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", function (e) {
-      e.preventDefault(); // Previene navegación inmediata
+      e.preventDefault();
       localStorage.removeItem("token");
       localStorage.removeItem("currentUser");
-      window.location.href = "/home/index.html"; // Redirige al home o login
+      window.location.href = "/home/index.html";
     });
   }
 });
