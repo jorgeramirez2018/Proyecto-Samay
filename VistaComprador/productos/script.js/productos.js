@@ -177,7 +177,7 @@ renderizarFiltros();
 // ✅ Nueva función para cargar productos desde el backend
 async function cargarProductosDesdeBackend() {
   try {
-    const response = await fetch("http://localhost:8080/productos");
+    const response = await fetch(`${API_BASE_URL}/productos`);
     if (!response.ok) throw new Error("No se pudieron obtener los productos");
 
     const productos = await response.json();

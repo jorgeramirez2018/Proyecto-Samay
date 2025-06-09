@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // No incluyas fechaRegistro, backend no la espera
     };
 
-    fetch("http://localhost:8080/usuarios/agregarUsuario", {
+    fetch(`${API_BASE_URL}/usuarios/agregarUsuario`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(usuario),
