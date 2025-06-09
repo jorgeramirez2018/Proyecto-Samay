@@ -1,7 +1,8 @@
+const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
 function marcarEnlaceActivo() {
   const navLinks = document.querySelectorAll(".navbar a");
   const currentPath = window.location.pathname.replace(/\/$/, "");
-  const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
+  
 
   navLinks.forEach((link) => {
     const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
