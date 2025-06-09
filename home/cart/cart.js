@@ -1,39 +1,36 @@
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
-const cartBtn = document.getElementById("cart-btn"); // Asumo que cartBtn y cartCounter están definidos
-const cartCounter = document.getElementById("cart-counter"); // y que 'cart' es tu array de carrito global o accesible.
-const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
-
-// Asumo que 'cart' es una variable global o accesible que contiene los productos del carrito.
-// Ejemplo: let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+const cartBtn = document.getElementById("cart-btn");
+const cartCounter = document.getElementById("cart-counter");
+ 
+// Asume que 'cart' es una variable global accesible
+// let cart = JSON.parse(localStorage.getItem("cart")) || [];
+ 
 const displayCart = async () => {
   modalContainer.innerHTML = "";
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
-
+ 
   // Modal Header
   const modalHeader = document.createElement("div");
-
+ 
   const modalClose = document.createElement("div");
   modalClose.innerText = "❌";
   modalClose.className = "modal-close";
   modalHeader.append(modalClose);
-
+ 
   modalClose.addEventListener("click", () => {
     modalContainer.style.display = "none";
     modalOverlay.style.display = "none";
   });
-
+ 
   const modalTitle = document.createElement("div");
   modalTitle.innerText = "Cart";
   modalTitle.className = "modal-title";
   modalHeader.append(modalTitle);
   modalContainer.append(modalHeader);
-
+ 
   // Modal Body
-  // Asumo que 'cart' es el array que contiene los productos.
-  // Cada producto en 'cart' debe tener: id, productName, price, quanty, img
   cart.forEach((product) => {
     const modalBody = document.createElement("div");
     modalBody.className = "modal-body";
@@ -55,66 +52,65 @@ const displayCart = async () => {
       </div>
     `;
     modalContainer.append(modalBody);
-
+ 
     const decrease = modalBody.querySelector(".quantity-btn-decrese");
     decrease.addEventListener("click", () => {
       if (product.quanty !== 1) {
         product.quanty--;
-        localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar localStorage
-        displayCart(); // Volver a renderizar el carrito
-        displayCartCounter(); // Actualizar el contador del carrito
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+        displayCartCounter();
       }
     });
-
+ 
     const increase = modalBody.querySelector(".quantity-btn-increse");
     increase.addEventListener("click", () => {
       product.quanty++;
-      localStorage.setItem("cart", JSON.stringify(cart)); // Actualizar localStorage
-      displayCart(); // Volver a renderizar el carrito
-      displayCartCounter(); // Actualizar el contador del carrito
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+      displayCartCounter();
     });
-
+ 
     const deleteProduct = modalBody.querySelector(".delete-product");
     deleteProduct.addEventListener("click", () => {
-      deleteCartProduct(product.id); // Asumo que esta función está definida en otro lugar
+      deleteCartProduct(product.id);
     });
   });
-
+ 
   const formatoCOP = new Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
     minimumFractionDigits: 0,
   });
-
-  // Modal Footer
+ 
   const total = cart.reduce((acc, elm) => acc + elm.price * elm.quanty, 0);
-
+ 
   const modalFooter = document.createElement("div");
   modalFooter.className = "modal-footer";
   modalFooter.innerHTML = `
-  <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
-  <div class="total-price">Total: ${formatoCOP.format(total)}</div>
-`; // Removí el signo $ extra ya que formatoCOP lo incluye
+    <button class="btn-buy" id="btn-buy">Comprar Ahora</button>
+    <div class="total-price">Total: ${formatoCOP.format(total)}</div>
+  `;
   modalContainer.append(modalFooter);
-
+ 
   // --- INICIO DE LA MODIFICACIÓN ---
   const buyButton = document.getElementById("btn-buy");
   buyButton.addEventListener("click", () => {
     alert("No se puede hacer la compra porque no ha iniciado sesión.");
     window.location.href = "../Registro/login.html";
     return;
-
+ 
     const usuarioIdInput = prompt("Ingresa el ID del usuario:");
     if (usuarioIdInput === null) return;
-
+ 
     const usuarioId = parseInt(usuarioIdInput);
     if (isNaN(usuarioId) || usuarioId <= 0) {
       alert("Se requiere un ID de usuario válido y numérico positivo.");
       return;
     }
-
+ 
     const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
-
+ 
     const ventaData = {
       fecha_venta: new Date().toISOString(),
       total: total,
@@ -122,9 +118,9 @@ const displayCart = async () => {
         usuario_id: usuarioId,
       },
     };
-
+ 
     // PRIMERA PETICIÓN
-    fetch(`${API_BASE_URL}/ventas/agregarVenta`, {
+    fetch("https://25kdtzqrsa.us-east-1.awsapprunner.com/ventas/agregarVenta", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(ventaData),
@@ -135,33 +131,29 @@ const displayCart = async () => {
             throw new Error("Error en agregarVenta: " + text);
           });
         }
-        return response.json(); // ✅ Esto espera el JSON con { "id": 24 }
+        return response.json();
       })
       .then((ventaCreada) => {
         const ventaId = ventaCreada.id;
-        if (!ventaId)
-          throw new Error("No se recibió el ID de la venta creada.");
-
+        if (!ventaId) throw new Error("No se recibió el ID de la venta creada.");
+ 
         const productosParaEnviar = cart.map((product) => ({
           productoId: parseInt(product.id),
           precioUnitario: parseFloat(product.price),
           cantidad: parseInt(product.quanty),
         }));
-
+ 
         const payload = {
           ventaId: ventaId,
           productos: productosParaEnviar,
         };
-
+ 
         // SEGUNDA PETICIÓN
-        return fetch(
-          `${API_BASE_URL}/venta-productos/agregar-multiples`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          }
-        );
+        return fetch("https://25kdtzqrsa.us-east-1.awsapprunner.com/venta-productos/agregar-multiples", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
       })
       .then((response) => {
         if (!response.ok) {
@@ -184,13 +176,13 @@ const displayCart = async () => {
         alert("Error en el proceso de venta: " + error.message);
       });
   });
-
   // --- FIN DE LA MODIFICACIÓN ---
 };
+ 
 // Botón de carrito
 cartBtn.addEventListener("click", displayCart);
-
-// Función para eliminar productos
+ 
+// Eliminar producto
 const deleteCartProduct = (id) => {
   const foundId = cart.findIndex((element) => element.id === id);
   cart.splice(foundId, 1);
@@ -198,10 +190,11 @@ const deleteCartProduct = (id) => {
   displayCart();
   displayCartCounter();
 };
-
+ 
 const displayCartCounter = () => {
   const totalItems = cart.reduce((acc, product) => acc + product.quanty, 0);
   cartCounter.innerText = totalItems;
 };
-
+ 
 displayCartCounter();
+ 
