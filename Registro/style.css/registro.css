@@ -15,16 +15,21 @@
   --verde: #789064;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--algodon);
-  height: 100vh;
 }
 
 /* Contenedor principal dividido en dos columnas */
 .registro-container {
   display: flex;
-  height: 110vh;
+  flex-direction: row-reverse;
+  height: 100vh;
 }
 
 /* Columna izquierda: imágenes llenan el espacio completo */
@@ -49,7 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0px 20px 60px;
+  padding: 100px 20px 60px;
   background-color: var(--algodon);
   background-image: url('https://www.transparenttextures.com/patterns/dimension.png');
   background-repeat: repeat;
@@ -154,7 +159,8 @@ form button:hover {
 
   .registro-formulario {
     flex: none;    
-    padding: 0px 20px 40px;
+    padding: 40px 20px;
+    min-height: 100vh;
   }
 
   .logo-registro {
