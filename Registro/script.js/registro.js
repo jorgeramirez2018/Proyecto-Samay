@@ -1,3 +1,4 @@
+const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/navbar/navbar.html")
     .then((res) => res.text())
