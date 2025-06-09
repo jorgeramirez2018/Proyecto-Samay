@@ -124,6 +124,7 @@ const displayCart = async () => {
 
     console.log("Contenido del carrito:", JSON.stringify(cart));
     const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
+
     const detalleEnvio = document.getElementById("detalle-envio").value;
 
     const ventaData = {
@@ -138,7 +139,7 @@ const displayCart = async () => {
 
     console.log("Enviando ventaData:", JSON.stringify(ventaData));
 
-    // PRIMERA PETICIÓN - Producción
+    // PRIMERA PETICIÓN
     fetch("https://25kdtzqrsa.us-east-1.awsapprunner.com/ventas/agregarVenta", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -171,9 +172,12 @@ const displayCart = async () => {
           productos: productosParaEnviar,
         };
 
-        console.log("Enviando payload a /agregar-multiples:", JSON.stringify(payload));
+        console.log(
+          "Enviando payload a /agregar-multiples:",
+          JSON.stringify(payload)
+        );
 
-        // SEGUNDA PETICIÓN - Producción
+        // SEGUNDA PETICIÓN
         return fetch(
           "https://25kdtzqrsa.us-east-1.awsapprunner.com/venta-productos/agregar-multiples",
           {
@@ -184,7 +188,11 @@ const displayCart = async () => {
         );
       })
       .then((response) => {
-        console.log("Respuesta de /agregar-multiples:", response.status, response);
+        console.log(
+          "Respuesta de /agregar-multiples:",
+          response.status,
+          response
+        );
         if (!response.ok) {
           return response.text().then((text) => {
             throw new Error("Error en agregar-multiples: " + text);
@@ -219,12 +227,18 @@ const displayCart = async () => {
 
 // Función para mostrar el modal de pago
 const showPaymentModal = (preferenceId) => {
-  const paymentModalContainer = document.getElementById("payment-modal-container");
+  const paymentModalContainer = document.getElementById(
+    "payment-modal-container"
+  );
   const paymentModalOverlay = document.getElementById("payment-modal-overlay");
 
   if (!paymentModalContainer || !paymentModalOverlay) {
-    console.error("No se encontraron los elementos payment-modal-container o payment-modal-overlay en el DOM.");
-    alert("Error: No se pudo abrir el modal de pago. Verifica que los contenedores estén en el HTML.");
+    console.error(
+      "No se encontraron los elementos payment-modal-container o payment-modal-overlay en el DOM."
+    );
+    alert(
+      "Error: No se pudo abrir el modal de pago. Verifica que los contenedores estén en el HTML."
+    );
     return;
   }
 
@@ -234,6 +248,7 @@ const showPaymentModal = (preferenceId) => {
 
   const modalHeader = document.createElement("div");
   const modalClose = document.createElement("div");
+
   modalClose.className = "modal-close";
   modalHeader.append(modalClose);
 
@@ -252,12 +267,17 @@ const showPaymentModal = (preferenceId) => {
   modalBody.id = "checkout-container";
   paymentModalContainer.append(modalBody);
 
-  const mercadopago = new MercadoPago("TEST-257f03fd-7525-43c7-8e1b-1f9b3dd209d0", {
-    locale: "es-CO",
-  });
+  const mercadopago = new MercadoPago(
+    "TEST-257f03fd-7525-43c7-8e1b-1f9b3dd209d0",
+    {
+      locale: "es-CO",
+    }
+  );
 
   mercadopago.checkout({
-    preference: { id: preferenceId },
+    preference: {
+      id: preferenceId,
+    },
     autoOpen: true,
   });
 };
