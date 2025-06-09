@@ -177,7 +177,7 @@
     // Obtener y renderizar usuarios
     async function cargarUsuariosDesdeBackend() {
       try {
-        const response = await fetch("http://localhost:8080/usuarios");
+        const response = await fetch(`${API_BASE_URL}/usuarios`);
         if (!response.ok) throw new Error("Error al cargar usuarios");
 
         const users = await response.json();
@@ -240,7 +240,7 @@
       };
 
       try {
-        const response = await fetch("http://localhost:8080/usuarios/agregarUsuario", {
+        const response = await fetch(`${API_BASE_URL}/usuarios/agregarUsuario`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser)
@@ -260,7 +260,7 @@
     // Cargar datos en el modal de edición
     async function editUser(id) {
       try {
-        const response = await fetch(`http://localhost:8080/usuarios/buscar/${id}`);
+        const response = await fetch(`${API_BASE_URL}/usuarios/buscar/${id}`);
         if (!response.ok) throw new Error("Usuario no encontrado");
 
         const user = await response.json();
@@ -293,7 +293,7 @@
       };
 
       try {
-        const response = await fetch(`http://localhost:8080/usuarios/editarUsuario/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/usuarios/editarUsuario/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedUser)
@@ -314,7 +314,7 @@
       if (!confirm("¿Eliminar este usuario?")) return;
 
       try {
-        const response = await fetch(`http://localhost:8080/usuarios/borrarUsuario/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/usuarios/borrarUsuario/${id}`, {
           method: "DELETE"
         });
 

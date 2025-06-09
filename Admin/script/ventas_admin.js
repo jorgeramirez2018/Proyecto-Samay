@@ -2,7 +2,7 @@ let ventasGlobales = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch("http://localhost:8080/ventas");
+    const response = await fetch(`${API_BASE_URL}/ventas`);
     if (!response.ok) throw new Error("No se pudo cargar ventas");
 
     ventasGlobales = await response.json();
@@ -73,7 +73,7 @@ document.getElementById("btnExportarExcel")?.addEventListener("click", () => {
 
 async function mostrarDetallesVenta(ventaId) {
   try {
-    const response = await fetch(`http://localhost:8080/venta-productos/venta/${ventaId}`);
+    const response = await fetch(`${API_BASE_URL}/venta-productos/venta/${ventaId}`);
     if (!response.ok) throw new Error("No se pudo cargar los detalles");
 
     const detalles = await response.json();

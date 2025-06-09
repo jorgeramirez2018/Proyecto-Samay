@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Actualizar el producto en el backend
         const response = await fetch(
-          `http://localhost:8080/productos/editarProducto/${producto_id}`,
+          `${API_BASE_URL}/productos/editarProducto/${producto_id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function saveProduct(product) {
   console.log("Guardando producto:", product);
   const response = await fetch(
-    "http://localhost:8080/productos/agregarProducto",
+    `${API_BASE_URL}/productos/agregarProducto`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -194,7 +194,7 @@ async function saveProduct(product) {
 // Función para cargar los productos desde el backend
 async function loadProducts() {
   try {
-    const response = await fetch("http://localhost:8080/productos");
+    const response = await fetch(`${API_BASE_URL}/productos`);
     if (!response.ok) throw new Error("Error al cargar los productos");
     const products = await response.json();
     const tableBody = document.getElementById("productTableBody");
@@ -283,7 +283,7 @@ function getCategoryDisplayName(category) {
 async function editProduct(producto_id) {
   try {
     const response = await fetch(
-      `http://localhost:8080/productos/buscar/${producto_id}`
+      `${API_BASE_URL}/productos/buscar/${producto_id}`
     );
     if (!response.ok) throw new Error("Error al obtener el producto");
     const product = await response.json();
@@ -367,7 +367,7 @@ async function deleteProduct(producto_id) {
   if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
     try {
       const response = await fetch(
-        `http://localhost:8080/productos/borrarProducto/${producto_id}`,
+        `${API_BASE_URL}/productos/borrarProducto/${producto_id}`,
         {
           method: "DELETE",
         }

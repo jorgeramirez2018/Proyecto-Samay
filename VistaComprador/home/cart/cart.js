@@ -130,7 +130,7 @@ const displayCart = async () => {
     };
 
     // PRIMERA PETICIÓN
-    fetch("http://localhost:8080/ventas/agregarVenta", {
+    fetch(`${API_BASE_URL}/ventas/agregarVenta`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(ventaData),
@@ -161,7 +161,7 @@ const displayCart = async () => {
 
         // SEGUNDA PETICIÓN
         return fetch(
-          "http://localhost:8080/venta-productos/agregar-multiples",
+          `${API_BASE_URL}/venta-productos/agregar-multiples`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -72,7 +72,7 @@ function isValidEmail(email) {
 }
 
 function authenticateUser(email, password) {
-  fetch("http://localhost:8080/usuarios/login", {
+  fetch(`${API_BASE_URL}/usuarios/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ correo: email, contrasena: password }),
