@@ -1,3 +1,4 @@
+const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
 document.addEventListener("DOMContentLoaded", function () {
   // Configuración del sidebar responsivo
   const sidebarToggle = document.getElementById("sidebarToggle");
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Depuración: mostrar el objeto enviado
         console.log("Enviando producto actualizado:", updatedProduct);
-
+        
         // Actualizar el producto en el backend
         const response = await fetch(
           `${API_BASE_URL}/productos/editarProducto/${producto_id}`,

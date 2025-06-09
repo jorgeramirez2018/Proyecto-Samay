@@ -149,6 +149,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Al cargar la página
+    const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
     document.addEventListener("DOMContentLoaded", cargarUsuariosDesdeBackend);
 
     function renderUsers() {
@@ -308,7 +309,7 @@
         alert("No se pudo editar el usuario.");
       }
     });
-
+    
     // Eliminar usuario
     async function deleteUser(id) {
       if (!confirm("¿Eliminar este usuario?")) return;

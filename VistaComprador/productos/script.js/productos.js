@@ -1,5 +1,6 @@
 const shopContent = document.getElementById("contenedor-catproductos");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
 
 // === RENDER DESDE ARCHIVO JS ===
 function renderizarProductos(productosARenderizar) {

@@ -2,6 +2,7 @@ const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn"); // Asumo que cartBtn y cartCounter están definidos
 const cartCounter = document.getElementById("cart-counter"); // y que 'cart' es tu array de carrito global o accesible.
+const API_BASE_URL = "https://25kdtzqrsa.us-east-1.awsapprunner.com"; 
 
 // Asumo que 'cart' es una variable global o accesible que contiene los productos del carrito.
 // Ejemplo: let cart = JSON.parse(localStorage.getItem("cart")) || [];
