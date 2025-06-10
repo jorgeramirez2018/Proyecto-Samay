@@ -736,6 +736,11 @@ body {
   }
 }
 
+
+
+  
+}
+
 /* estilo del mensaje */
 .toast-cart{
   position: fixed;
@@ -761,6 +766,3 @@ body {
 }
 
 .toast-hidden{display:none;}
-
-  
-}
