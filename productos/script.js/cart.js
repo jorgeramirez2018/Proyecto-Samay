@@ -123,3 +123,19 @@ const displayCartCounter = () => {
 };
 
 displayCartCounter();
+
+/* ---------- Toast “Artículo agregado” ---------- */
+function showCartToast() {
+  const toast = document.getElementById('toast-cart');
+  if (!toast) return;                 // por si aún no existe
+
+  toast.classList.remove('toast-hidden');
+  toast.classList.add('toast-show');
+
+  /* Ocultar después de 2,5 s */
+  setTimeout(() => {
+    toast.classList.remove('toast-show');
+    // esperar la transición antes de volver a ocultar por completo
+    setTimeout(() => toast.classList.add('toast-hidden'), 350);
+  }, 2500);
+}
