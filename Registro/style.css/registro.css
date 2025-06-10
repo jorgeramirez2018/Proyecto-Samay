@@ -24,7 +24,7 @@ body {
 /* Contenedor principal dividido en dos columnas */
 .registro-container {
   display: flex;
-  height: 110vh;
+  height: 100vh;
 }
 
 /* Columna izquierda: imágenes llenan el espacio completo */
@@ -154,7 +154,8 @@ form button:hover {
 
   .registro-formulario {
     flex: none;    
-    padding: 0px 20px 40px;
+    padding: 40px 20px;
+    min-height: 100vh;
   }
 
   .logo-registro {
