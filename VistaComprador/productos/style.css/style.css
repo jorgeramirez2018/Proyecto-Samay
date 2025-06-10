@@ -65,7 +65,7 @@ body {
   color: var(--algodon);
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(2rem, 8vw, 5rem);
-  z-index: 2;
+  z-index: 1;
   text-align: center;
   margin: 0;
   padding: 0 2rem;
@@ -128,7 +128,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 5px;
-  font-size: 22px;
+  font-size:20px;
 }
 
 /* Ítems con viñetas */
@@ -232,7 +232,7 @@ body {
 
 .products-content {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 5rem;
   grid-auto-rows: 1fr;
   /* Asegura alturas iguales por fila */
@@ -622,7 +622,7 @@ body {
 
   .sidebar {
     position: fixed;
-    top: 8.3rem;
+    top: 8.5rem;
     left: 0;
     width: 100%;
     max-width: 100%;
@@ -636,7 +636,7 @@ body {
 
   .sidebar.show {
     transform: translateY(0);
-    position: relative;
+    position: static;
   }
 
   .container-catproductos {
@@ -689,7 +689,7 @@ body {
 
   .sidebar {
     position: fixed;
-    top: 8.3rem;
+    top: 8.5rem;
     left: 0;
     width: 100%;
     max-width: 100%;
@@ -703,7 +703,8 @@ body {
 
   .sidebar.show {
     transform: translateY(0);
-    position: relative;
+    position: static;
+    
   }
 
   .container-catproductos {
@@ -736,6 +737,7 @@ body {
 }
 
 
+
   
 }
 
@@ -764,4 +766,3 @@ body {
 }
 
 .toast-hidden{display:none;}
-
